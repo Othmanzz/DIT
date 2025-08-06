@@ -183,7 +183,7 @@ function App() {
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center gap-3">
               <img 
-                src="/logo.svg" 
+                src="/orange.svg" 
                 alt="Logo" 
                 className="h-8 w-auto"
               />
@@ -238,49 +238,32 @@ function App() {
 
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative md:z-10 z-20">
-          {/* Mobile Security Animation - Above Title */}
-          <div className="md:hidden mb-8 flex justify-center animate-in">
+          {/* Animated DIT Logo for Mobile */}
+          <div className="md:hidden mb-8 pb-4 -mt-8 flex justify-center animate-in">
             <div className="relative">
-              {/* Main Security Circle */}
-              <div className="w-24 h-24 rounded-full border-2 border-[#FC5810]/30 flex items-center justify-center animate-pulse bg-[#FC5810]/5">
-                <div className="w-12 h-12 rounded-full bg-[#FC5810]/20 flex items-center justify-center">
-                  <Zap size={16} className="text-[#FC5810]/60" />
-                </div>
-              </div>
-
-              {/* Orbiting Security Icons */}
-              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+              <img 
+                src="/orange.svg" 
+                alt="DIT Logo" 
+                className="h-20 w-auto animate-bounce"
+                style={{ animationDuration: '3s' }}
+              />
+              {/* Orbiting Dots */}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '8s' }}>
                 <div className="relative w-full h-full">
-                  {/* Camera Icon */}
-                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <Zap size={12} className="text-[#FC5810]/40" />
-                  </div>
-                  {/* Access Control Icon */}
-                  <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <Users size={12} className="text-[#FC5810]/40" />
-                  </div>
-                  {/* Automation Icon */}
-                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <Award size={12} className="text-[#FC5810]/40" />
-                  </div>
-                  {/* Network Icon */}
-                  <div className="absolute top-1/2 -left-6 transform -translate-y-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <BarChart3 size={12} className="text-[#FC5810]/40" />
-                  </div>
+                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
+                  <div className="absolute top-1/2 -right-2 transform -translate-y-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <div className="absolute top-1/2 -left-2 transform -translate-y-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
                 </div>
               </div>
-
-              {/* Connection Lines */}
-              <div className="absolute inset-0">
-                <div className="absolute top-3 left-1/2 w-px h-6 bg-gradient-to-b from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
-                <div className="absolute bottom-3 left-1/2 w-px h-6 bg-gradient-to-t from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
-                <div className="absolute left-3 top-1/2 h-px w-6 bg-gradient-to-r from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
-                <div className="absolute right-3 top-1/2 h-px w-6 bg-gradient-to-l from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
+              {/* Pulsing Ring */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-28 h-28 rounded-full border border-[#FC5810]/20 animate-ping" style={{ animationDuration: '2s' }}></div>
               </div>
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-in">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-in -mt-4 md:mt-0">
             <span className="inline-block transform hover:rotate-3 transition-transform duration-500">Securing</span>{' '}
             <span className="inline-block transform hover:scale-110 transition-transform duration-300">Your</span>{' '}
             <span className="inline-block transform hover:-rotate-2 transition-transform duration-500">Future.</span><br />
@@ -640,7 +623,7 @@ function App() {
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <img 
-                      src="/logo.svg" 
+                      src="/orange.svg" 
                       alt="Logo" 
                       className="h-10 w-auto brightness-0 invert"
                     />
@@ -750,7 +733,7 @@ function App() {
               {/* Logo & Company Name */}
               <div className="flex items-center gap-3 mb-6 justify-center">
                 <img 
-                  src="/logo.svg" 
+                  src="/orange.svg" 
                   alt="Logo" 
                   className="h-8 w-auto brightness-0 invert"
                 />
