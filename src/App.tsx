@@ -644,6 +644,30 @@ function App() {
         <div className="absolute bottom-20 left-20 w-80 h-80 bg-orange-300/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
+          {/* Section Header - Centered */}
+          <div className="text-center mb-16 animate-on-scroll">
+            <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-4 py-2 rounded-full text-[#FC5810] font-semibold text-sm mb-6">
+              <div className="w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
+              Transforming Saudi Business Since 2008
+            </div>
+            
+            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-6">
+              We Are the <br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FC5810] to-orange-600">
+                Architects
+              </span> of{' '}
+              <span className="relative">
+                Modern
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-orange-600 rounded-full"></div>
+              </span>
+              <br/>Environments
+            </h2>
+            
+            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+              Our mission is to empower our clients with <strong>sophisticated, reliable technology</strong> that simplifies complexity and provides uncompromising security.
+            </p>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
             
             {/* Left Column - Modern Visual */}
@@ -683,47 +707,12 @@ function App() {
               </div>
             </div>
             
-            {/* Right Column - Content */}
+            {/* Right Column - Content and Stats */}
             <div className="order-1 lg:order-2 animate-on-scroll">
-              {/* Logo Badge */}
-              <div className="flex justify-start mb-8">
-                <div className="relative bg-white rounded-2xl p-4 shadow-lg hover:shadow-xl transition-all duration-300">
-                  <img 
-                    src="/orange.svg" 
-                    alt="DIT Logo" 
-                    className="h-12 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                  />
-                  <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#FC5810] rounded-full animate-pulse"></div>
-                </div>
-              </div>
-              
-              {/* Main Heading */}
-              <div className="mb-8">
-                <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-4">
-                  We Are the <br/>
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FC5810] to-orange-600">
-                    Architects
-                  </span> of{' '}
-                  <span className="relative">
-                    Modern
-                    <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-orange-600 rounded-full"></div>
-                  </span>
-                  <br/>Environments
-                </h2>
-                
-                {/* Subtitle Badge */}
-                <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-4 py-2 rounded-full text-[#FC5810] font-semibold text-sm mb-6">
-                  <div className="w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
-                  Transforming Saudi Business Since 2008
-                </div>
-              </div>
-              
               {/* Mission Statement */}
               <div className="mb-10">
-                <p className="text-xl text-gray-700 leading-relaxed mb-6">
-                  Our mission is to empower our clients with <strong>sophisticated, reliable technology</strong> that simplifies complexity and provides uncompromising security.
-                </p>
-                <p className="text-lg text-gray-600 leading-relaxed">
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
+                <p className="text-lg text-gray-600 leading-relaxed mb-6">
                   We believe technology should work for you, seamlessly and intelligently, creating environments that are <em>safer, more efficient, and ready for the future</em>.
                 </p>
               </div>
