@@ -86,6 +86,7 @@ function App() {
   // Touch handlers for mobile swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
+    setTouchEnd(0);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
@@ -96,8 +97,8 @@ function App() {
     if (!touchStart || !touchEnd) return;
     
     const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const isLeftSwipe = distance > 30;
+    const isRightSwipe = distance < -30;
 
     if (isLeftSwipe) {
       nextProject();
@@ -105,11 +106,16 @@ function App() {
     if (isRightSwipe) {
       prevProject();
     }
+    
+    // Reset touch values
+    setTouchStart(0);
+    setTouchEnd(0);
   };
 
   // Service carousel touch handlers
   const handleServiceTouchStart = (e: React.TouchEvent) => {
     setServiceTouchStart(e.targetTouches[0].clientX);
+    setServiceTouchEnd(0);
   };
 
   const handleServiceTouchMove = (e: React.TouchEvent) => {
@@ -120,8 +126,8 @@ function App() {
     if (!serviceTouchStart || !serviceTouchEnd) return;
     
     const distance = serviceTouchStart - serviceTouchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
+    const isLeftSwipe = distance > 30;
+    const isRightSwipe = distance < -30;
 
     if (isLeftSwipe && currentService < services.length - 2) {
       nextService();
@@ -129,6 +135,10 @@ function App() {
     if (isRightSwipe && currentService > 0) {
       prevService();
     }
+    
+    // Reset touch values
+    setServiceTouchStart(0);
+    setServiceTouchEnd(0);
   };
   const nextProject = () => {
     setIsAutoPlay(false);
@@ -309,9 +319,9 @@ function App() {
 
           {/* Mobile Carousel Layout - 1.5 columns */}
           <div className="md:hidden animate-on-scroll">
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-hidden carousel-container">
               <div 
-                className="flex transition-transform duration-500 ease-in-out pl-6 pr-2"
+                className="flex carousel-smooth carousel-touch pl-6 pr-2"
                 style={{ transform: `translateX(calc(-${currentService} * (75vw + 1rem)))` }}
                 onTouchStart={handleServiceTouchStart}
                 onTouchMove={handleServiceTouchMove}
@@ -331,14 +341,14 @@ function App() {
             </div>
             
             {/* Mobile carousel indicators */}
-            <div className="flex justify-center mt-6 gap-1.5">
+            <div className="flex justify-center mt-6 gap-1">
               {services.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentService(index)}
-                  className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                  className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
                     index === currentService 
-                      ? 'bg-[#FC5810] scale-110' 
+                      ? 'bg-[#FC5810] scale-150' 
                       : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
                   }`}
                 />
@@ -487,9 +497,9 @@ function App() {
 
           {/* Mobile Portfolio Carousel */}
           <div className="md:hidden animate-on-scroll">
-            <div className="relative overflow-hidden rounded-2xl">
+            <div className="relative overflow-hidden rounded-2xl carousel-container">
               <div 
-                className="flex transition-transform duration-500 ease-in-out"
+                className="flex carousel-smooth carousel-touch"
                 style={{ transform: `translateX(-${currentProject * 100}%)` }}
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
@@ -517,14 +527,14 @@ function App() {
             </div>
             
             {/* Mobile carousel indicators */}
-            <div className="flex justify-center mt-6 gap-1.5">
+            <div className="flex justify-center mt-6 gap-1">
               {projects.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentProject(index)}
-                  className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                  className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
                     index === currentProject 
-                      ? 'bg-[#FC5810] scale-110' 
+                      ? 'bg-[#FC5810] scale-150' 
                       : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
                   }`}
                 />
