@@ -194,11 +194,11 @@ function App() {
             
             <div className="hidden md:block">
               <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#home" className="text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Home</a>
-                <a href="#about" className="text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">About</a>
-                <a href="#services" className="text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Solutions</a>
-                <a href="#portfolio" className="text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Installations</a>
-                <a href="#contact" className="text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Contact</a>
+                <a href="#home" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Home</a>
+                <a href="#about" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">About</a>
+                <a href="#services" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Solutions</a>
+                <a href="#portfolio" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Installations</a>
+                <a href="#contact" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Contact</a>
               </div>
             </div>
 
@@ -220,11 +220,11 @@ function App() {
         {isMenuOpen && (
           <div className="md:hidden bg-[#FFF9F3] border-t border-[#D9D9D9]/20">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#home" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Home</a>
-              <a href="#about" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">About</a>
-              <a href="#services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Solutions</a>
-              <a href="#portfolio" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Installations</a>
-              <a href="#contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-colors duration-300 font-medium">Contact</a>
+              <a href="#home" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Home</a>
+              <a href="#about" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>About</a>
+              <a href="#services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Solutions</a>
+              <a href="#portfolio" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Installations</a>
+              <a href="#contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Contact</a>
               <button className="w-full mt-4 bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-300">
                 Get in Touch
               </button>
@@ -239,7 +239,7 @@ function App() {
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative md:z-10 z-20">
           {/* Animated DIT Logo for Mobile */}
-          <div className="md:hidden mb-8 pb-4 -mt-8 flex justify-center animate-in">
+          <div className="md:hidden mb-8 pb-4 -mt-16 flex justify-center animate-in">
             <div className="relative">
               <img 
                 src="/orange.svg" 
@@ -301,46 +301,61 @@ function App() {
           {/* Desktop Grid Layout */}
           <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-on-scroll">
             {/* Large service card */}
-            <div className="col-span-2 lg:col-span-2 bg-black text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Zap size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 text-[#FC5810]" />
-              <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Smart Surveillance</h3>
-              <p className="text-base md:text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.
-              </p>
+            <div className="col-span-2 lg:col-span-2 bg-black text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 hover:shadow-2xl hover:shadow-[#FC5810]/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <Zap size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 text-[#FC5810] group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 group-hover:text-[#FC5810] transition-colors duration-300">Smart Surveillance</h3>
+                <p className="text-base md:text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.
+                </p>
+              </div>
             </div>
 
             {/* Medium service card */}
-            <div className="col-span-2 lg:col-span-2 bg-[#FC5810] text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Users size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6" />
-              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Total Access Control</h3>
-              <p className="text-sm md:text-base opacity-90 group-hover:opacity-100 transition-opacity duration-300">
-                Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.
-              </p>
+            <div className="col-span-2 lg:col-span-2 bg-[#FC5810] text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 hover:shadow-2xl hover:shadow-[#FC5810]/30 transition-all duration-500 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <Users size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Total Access Control</h3>
+                <p className="text-sm md:text-base opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                  Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.
+                </p>
+              </div>
             </div>
 
             {/* Small service cards */}
-            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Award size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4" />
-              <h3 className="text-lg md:text-xl font-bold mb-2">Seamless Automation</h3>
-              <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                Welcome to convenience. Automatic doors, gates, and barriers for effortless access.
-              </p>
+            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-[#E63D1F]/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <Award size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg md:text-xl font-bold mb-2">Seamless Automation</h3>
+                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  Welcome to convenience. Automatic doors, gates, and barriers for effortless access.
+                </p>
+              </div>
             </div>
 
-            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <BarChart3 size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4" />
-              <h3 className="text-lg md:text-xl font-bold mb-2">Network Infrastructure</h3>
-              <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                Robust cabling and network solutions for seamless connectivity.
-              </p>
+            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-[#E63D1F]/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <BarChart3 size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg md:text-xl font-bold mb-2">Network Infrastructure</h3>
+                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  Robust cabling and network solutions for seamless connectivity.
+                </p>
+              </div>
             </div>
 
-            <div className="col-span-2 bg-[#D9D9D9] text-black p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Code size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 text-[#FC5810]" />
-              <h3 className="text-lg md:text-xl font-bold mb-2">Integrated Systems</h3>
-              <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                A single, unified command center. We connect your security, access, and automation systems into one intelligent platform.
-              </p>
+            <div className="col-span-2 bg-[#D9D9D9] text-black p-4 md:p-6 rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-gray-400/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              <div className="relative z-10">
+                <Code size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 text-[#FC5810] group-hover:scale-110 transition-transform duration-300" />
+                <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-[#FC5810] transition-colors duration-300">Integrated Systems</h3>
+                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                  A single, unified command center. We connect your security, access, and automation systems into one intelligent platform.
+                </p>
+              </div>
             </div>
           </div>
 
@@ -367,21 +382,85 @@ function App() {
               </div>
             </div>
             
-            {/* Mobile carousel indicators */}
-            <div className="flex justify-center mt-6 gap-1">
-              {services.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentService(index)}
-                  className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
-                    index === currentService 
-                      ? 'bg-[#FC5810] scale-150' 
-                      : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
-                  }`}
-                />
-              ))}
+            {/* Mobile carousel indicators with swipe hint */}
+            <div className="flex flex-col items-center mt-6 gap-3">
+              <div className="flex justify-center gap-1">
+                {services.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentService(index)}
+                    className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
+                      index === currentService 
+                        ? 'bg-[#FC5810] scale-150' 
+                        : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
+                    }`}
+                  />
+                ))}
+              </div>
+              {/* Swipe hint */}
+              <div className="flex items-center gap-2 text-xs text-gray-400 animate-pulse">
+                <ChevronLeft size={12} />
+                <span>Swipe to explore</span>
+                <ChevronRight size={12} />
+              </div>
             </div>
             
+          </div>
+        </div>
+      </section>
+
+      {/* Trusted By Section */}
+      <section className="py-16 px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12 animate-on-scroll">
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Trusted by Industry Leaders</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Leading organizations across the Middle East trust us to secure their most valuable assets.
+            </p>
+          </div>
+
+          {/* Client Logos Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity duration-500 animate-on-scroll">
+            {/* Logo placeholders - replace with actual client logos */}
+            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
+              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
+            </div>
+            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
+              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
+            </div>
+            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
+              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
+            </div>
+            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
+              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
+            </div>
+            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
+              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
+            </div>
+            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
+              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
+            </div>
+          </div>
+
+          {/* Mobile Carousel for logos */}
+          <div className="md:hidden mt-8 animate-on-scroll">
+            <div className="flex space-x-4 overflow-x-auto scrollbar-hide pb-4">
+              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
+                <div className="text-sm font-bold text-gray-400">LOGO</div>
+              </div>
+              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
+                <div className="text-sm font-bold text-gray-400">LOGO</div>
+              </div>
+              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
+                <div className="text-sm font-bold text-gray-400">LOGO</div>
+              </div>
+              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
+                <div className="text-sm font-bold text-gray-400">LOGO</div>
+              </div>
+              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
+                <div className="text-sm font-bold text-gray-400">LOGO</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -528,19 +607,27 @@ function App() {
               </div>
             </div>
             
-            {/* Mobile carousel indicators */}
-            <div className="flex justify-center mt-6 gap-1">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentProject(index)}
-                  className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
-                    index === currentProject 
-                      ? 'bg-[#FC5810] scale-150' 
-                      : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
-                  }`}
-                />
-              ))}
+            {/* Mobile carousel indicators with swipe hint */}
+            <div className="flex flex-col items-center mt-6 gap-3">
+              <div className="flex justify-center gap-1">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentProject(index)}
+                    className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
+                      index === currentProject 
+                        ? 'bg-[#FC5810] scale-150' 
+                        : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
+                    }`}
+                  />
+                ))}
+              </div>
+              {/* Swipe hint */}
+              <div className="flex items-center gap-2 text-xs text-gray-400 animate-pulse">
+                <ChevronLeft size={12} />
+                <span>Swipe for more</span>
+                <ChevronRight size={12} />
+              </div>
             </div>
             
             {/* Mobile navigation buttons - centered with play/pause */}
