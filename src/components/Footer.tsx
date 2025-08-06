@@ -41,7 +41,7 @@ const Footer = () => {
                   <p>24/7 Support Available</p>
                 </div>
 
-                <button className="bg-gradient-to-r from-[#FC5810] to-[#E63D1F] text-[#FFF9F3] px-6 py-3 rounded-full font-semibold hover:from-[#E63D1F] hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                <button className="bg-gradient-to-r from-[#FC5810] to-[#E63D1F] text-[#FFF9F3] px-6 py-3 rounded-2xl font-semibold hover:from-[#E63D1F] hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
                   Get Free Consultation <ArrowRight size={18} />
                 </button>
               </div>
@@ -86,10 +86,10 @@ const Footer = () => {
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Home</span>
                     </a></li>
-                    <li><a href="/#about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                    <li><Link to="/about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>About Us</span>
-                    </a></li>
+                    </Link></li>
                     <li><a href="/#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Our Work</span>
@@ -178,10 +178,10 @@ const Footer = () => {
                     <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                     <span>Home</span>
                   </a></li>
-                  <li><a href="/#about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                  <li><Link to="/about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                     <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                     <span>About</span>
-                  </a></li>
+                  </Link></li>
                   <li><a href="/#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                     <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                     <span>Portfolio</span>

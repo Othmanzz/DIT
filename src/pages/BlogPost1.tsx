@@ -130,7 +130,7 @@ const BlogPost1 = () => {
                 </div>
                 <Link 
                   to="/contact"
-                  className="bg-[#FC5810] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#E63D1F] transition-colors duration-200"
+                  className="bg-[#FC5810] text-white px-6 py-3 rounded-2xl font-semibold hover:bg-[#E63D1F] transition-colors duration-200"
                 >
                   Contact Our Experts
                 </Link>
@@ -140,24 +140,6 @@ const BlogPost1 = () => {
         </div>
       </section>
 
-      {/* Related Articles CTA */}
-      <section className="py-16 px-6 lg:px-8 bg-gradient-to-r from-black to-gray-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Explore More Insights
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Discover more articles on digital transformation, cybersecurity, and emerging technologies.
-          </p>
-          <Link 
-            to="/blogs"
-            className="inline-flex items-center gap-2 bg-[#FC5810] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-200"
-          >
-            <span>View All Articles</span>
-            <ArrowLeft size={20} className="rotate-180" />
-          </Link>
-        </div>
-      </section>
 
       <Footer />
       <ScrollToTop />

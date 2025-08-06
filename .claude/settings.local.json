@@ -21,7 +21,8 @@
       "Bash(find:*)",
       "Bash(for file in src/pages/*.tsx)",
       "Bash(do sed -i '/pricing: \\[/,/^\\s*\\],$/d' \"$file\")",
-      "Bash(done)"
+      "Bash(done)",
+      "mcp__ide__getDiagnostics"
     ],
     "deny": []
   }

@@ -302,7 +302,7 @@ p {
   background: #FC5810;
   color: #FFF9F3;
   border: none;
-  border-radius: 9999px;
+  border-radius: 1rem;
   padding: 1rem 2rem;
   font-weight: 600;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -417,6 +417,186 @@ p {
 @keyframes progress {
   from { width: 0%; }
   to { width: 100%; }
+}
+
+/* Terminal Typing Animations */
+@keyframes typeWriter {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing animation for command */
+.typing-animation {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typeWriter 1.5s steps(20, end) 0.5s forwards;
+  width: 0;
+  display: inline-block;
+}
+
+/* Faster, simpler delays for terminal lines */
+.typing-delay-1 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 2.2s forwards;
+}
+
+.typing-delay-2 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 2.8s forwards;
+}
+
+.typing-delay-3 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 3.4s forwards;
+}
+
+.typing-delay-4 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 4.0s forwards;
+}
+
+/* Bouncing animation delays for tech icons */
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* Headline Word Animations */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceIn {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Animation Classes */
+.animate-slide-in-left {
+  opacity: 0;
+  animation: slideInLeft 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  opacity: 0;
+  animation: slideInRight 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  opacity: 0;
+  animation: scaleIn 0.8s ease-out forwards;
+}
+
+.animate-bounce-in {
+  opacity: 0;
+  animation: bounceIn 1.0s ease-out forwards;
+}
+
+/* Enhanced Terminal Styling */
+.terminal-glow {
+  box-shadow: 0 0 50px rgba(252, 88, 16, 0.1);
+}
+
+/* Additional typing delays for enhanced terminal */
+.typing-delay-0 {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease-out 1.0s forwards;
+}
+
+.typing-delay-5 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 4.6s forwards;
+}
+
+.typing-delay-6 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 5.2s forwards;
+}
+
+.typing-delay-7 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 5.8s forwards;
+}
+
+.typing-delay-8 {
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out 6.4s forwards;
+}
+
+/* Enhanced mobile terminal responsiveness */
+@media (max-width: 640px) {
+  .typing-animation {
+    font-size: 0.75rem;
+  }
+  
+  /* Adjust terminal for very small screens */
+  .font-mono {
+    letter-spacing: -0.025em;
+  }
 }
 
 /* Mobile-specific animations */

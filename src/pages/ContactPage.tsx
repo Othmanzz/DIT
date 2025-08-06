@@ -351,27 +351,6 @@ const ContactPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-6 lg:px-8 bg-gradient-to-r from-black to-gray-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Start Your Project?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Schedule a free consultation with our experts to discuss your specific needs and get a customized solution proposal.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="inline-flex items-center gap-2 bg-[#FC5810] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-200">
-              <Phone size={20} />
-              <span>Schedule Call</span>
-            </button>
-            <a href="/blogs" className="inline-flex items-center gap-2 border border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black transition-all duration-200">
-              <span>Read Our Blog</span>
-              <ArrowRight size={20} />
-            </a>
-          </div>
-        </div>
-      </section>
 
       <Footer />
       <ScrollToTop />

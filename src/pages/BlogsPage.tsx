@@ -98,56 +98,65 @@ const BlogsPage = () => {
                 to={`/blog/${blog.id}`}
                 className="block group"
               >
-                <article className="bg-gray-900 rounded-3xl shadow-xl overflow-hidden border border-gray-800 group-hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 h-full">
-                  {/* Background Header */}
+                <article className="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-200 hover:-translate-y-1 h-full">
+                  {/* Image Header */}
                   <div className="relative h-64 overflow-hidden">
                     <img 
                       src={blog.image} 
                       alt={blog.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
+                    {/* Category floating badge */}
+                    <div className="absolute top-4 right-4">
+                      <span className="inline-block bg-[#FC5810] text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-lg">
+                        {blog.category}
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Dark Content Section */}
-                  <div className="p-6 bg-gray-900">
+                  {/* Content Section */}
+                  <div className="p-8 bg-white">
                     {/* Author Section */}
                     <div className="flex items-center gap-3 mb-4">
-                      <div className="w-10 h-10 rounded-full bg-gradient-to-r from-[#FC5810] to-orange-600 flex items-center justify-center">
-                        <User size={16} className="text-white" />
+                      <div className="w-12 h-12 rounded-full bg-gradient-to-r from-[#FC5810] to-orange-500 flex items-center justify-center shadow-md">
+                        <User size={18} className="text-white" />
                       </div>
                       <div>
-                        <p className="text-gray-300 text-sm font-medium">{blog.author}</p>
+                        <p className="text-gray-700 text-sm font-semibold">{blog.author}</p>
+                        <div className="flex items-center gap-3 text-gray-500 text-xs">
+                          <div className="flex items-center gap-1">
+                            <Calendar size={10} />
+                            <span>{blog.date}</span>
+                          </div>
+                          <div className="flex items-center gap-1">
+                            <Clock size={10} />
+                            <span>{blog.readTime}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
                     {/* Title */}
-                    <h2 className="text-xl font-bold text-white mb-3 leading-tight group-hover:text-gray-200 transition-colors duration-200">
+                    <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight group-hover:text-[#FC5810] transition-colors duration-200">
                       {blog.title}
                     </h2>
                     
                     {/* Description */}
-                    <p className="text-gray-400 mb-4 leading-relaxed text-sm line-clamp-3">
+                    <p className="text-gray-600 mb-6 leading-relaxed text-sm line-clamp-3">
                       {blog.excerpt}
                     </p>
 
-                    {/* Meta Info */}
-                    <div className="flex items-center gap-4 text-gray-500 text-xs mb-4">
-                      <div className="flex items-center gap-1">
-                        <Calendar size={10} />
-                        <span>{blog.date}</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Clock size={10} />
-                        <span>{blog.readTime}</span>
-                      </div>
-                    </div>
-
-                    {/* Category Tag */}
+                    {/* Read More Button */}
                     <div className="flex items-center justify-between">
-                      <span className="inline-block bg-[#FC5810] text-white text-xs font-semibold px-3 py-1 rounded-full">
-                        {blog.category}
-                      </span>
-                      <ArrowRight size={16} className="text-gray-500 group-hover:text-[#FC5810] group-hover:translate-x-1 transition-all duration-200" />
+                      <div className="inline-flex items-center gap-2 text-[#FC5810] font-semibold text-sm">
+                        <span>Read More</span>
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
+                      </div>
+                      <div className="flex gap-1">
+                        <div className="w-2 h-2 rounded-full bg-[#FC5810]"></div>
+                        <div className="w-2 h-2 rounded-full bg-orange-300"></div>
+                        <div className="w-2 h-2 rounded-full bg-orange-200"></div>
+                      </div>
                     </div>
                   </div>
                 </article>
@@ -157,21 +166,6 @@ const BlogsPage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 px-6 lg:px-8 bg-gradient-to-r from-black to-gray-900 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Ready to Transform Your Business?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Get expert advice on implementing the technologies discussed in our articles.
-          </p>
-          <a href="/contact" className="inline-flex items-center gap-2 bg-[#FC5810] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-200">
-            <span>Contact Our Experts</span>
-            <ArrowRight size={20} />
-          </a>
-        </div>
-      </section>
 
       <Footer />
       <ScrollToTop />
