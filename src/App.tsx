@@ -626,7 +626,7 @@ function App() {
             </h2>
             
             <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0">
-              Our mission is to empower our clients with <strong>sophisticated, reliable technology</strong> that simplifies complexity and provides uncompromising security.
+
             </p>
           </div>
 
