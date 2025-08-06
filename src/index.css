@@ -1,0 +1,356 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@font-face {
+  font-family: 'RH-Zak Bold';
+  src: url('/fonts/RH-Zak Bold.otf') format('opentype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.animate-on-scroll.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF9F3;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #FC5810;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E63D1F;
+}
+
+/* Smooth transitions for all interactive elements */
+button, a {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced focus states for accessibility */
+button:focus, a:focus {
+  outline: 2px solid #FC5810;
+  outline-offset: 2px;
+}
+
+/* Custom selection color */
+::selection {
+  background: #FC5810;
+  color: #FFF9F3;
+}
+
+/* Responsive text scaling */
+@media (max-width: 640px) {
+  .text-6xl {
+    font-size: 2.5rem;
+  }
+  .text-8xl {
+    font-size: 3.5rem;
+  }
+  .text-9xl {
+    font-size: 4rem;
+  }
+  .text-5xl {
+    font-size: 2.25rem;
+  }
+  .text-4xl {
+    font-size: 2rem;
+  }
+  .text-3xl {
+    font-size: 1.75rem;
+  }
+}
+
+/* Mobile carousel enhancements */
+@media (max-width: 768px) {
+  .carousel-container {
+    touch-action: pan-y pinch-zoom;
+  }
+  
+  .carousel-slide {
+    scroll-snap-align: start;
+  }
+  
+  /* Improved touch targets for mobile */
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Better spacing for mobile */
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  .gap-8 {
+    gap: 1.5rem;
+  }
+  
+  .gap-6 {
+    gap: 1rem;
+  }
+}
+
+/* Enhanced mobile interactions */
+@media (max-width: 640px) {
+  /* Larger touch targets */
+  .mobile-touch-target {
+    min-height: 48px;
+    min-width: 48px;
+  }
+  
+  /* Better button spacing */
+  .flex.gap-6 {
+    gap: 1rem;
+  }
+  
+  /* Improved text readability */
+  p {
+    line-height: 1.6;
+  }
+  
+  /* Better form inputs on mobile */
+  input[type="email"] {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+}
+
+/* Enhanced hover states */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover\:opacity-100 {
+  opacity: 1;
+}
+
+/* Loading animation for images */
+img {
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[loading="lazy"] {
+  opacity: 0;
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+/* Custom gradient backgrounds */
+.gradient-bg {
+  background: linear-gradient(135deg, #FFF9F3 0%, #F5F5F5 100%);
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+}
+
+p {
+  line-height: 1.75;
+}
+
+/* Enhanced button styles */
+.btn-primary {
+  background: #FC5810;
+  color: #FFF9F3;
+  border: none;
+  border-radius: 9999px;
+  padding: 1rem 2rem;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: scale(1);
+}
+
+.btn-primary:hover {
+  background: #E63D1F;
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px rgba(252, 88, 16, 0.1), 0 10px 10px -5px rgba(252, 88, 16, 0.04);
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile-first responsive design enhancements */
+@media (max-width: 768px) {
+  .px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .py-24 {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  /* Better mobile navigation */
+  .mobile-menu {
+    backdrop-filter: blur(10px);
+  }
+  
+  /* Improved mobile cards */
+  .rounded-2xl {
+    border-radius: 1rem;
+  }
+  
+  /* Better mobile typography */
+  .leading-tight {
+    line-height: 1.1;
+  }
+}
+
+/* Carousel specific styles */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+
+.carousel-indicator {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  cursor: pointer;
+}
+
+.carousel-indicator.active {
+  background-color: #FC5810;
+  transform: scale(1.25);
+}
+
+.carousel-indicator:not(.active) {
+  background-color: #D9D9D9;
+}
+
+.carousel-indicator:not(.active):hover {
+  background-color: #E63D1F;
+}
+
+/* Swipe gesture feedback */
+.carousel-slide {
+  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Auto-play indicator */
+.autoplay-indicator {
+  position: relative;
+  overflow: hidden;
+}
+
+.autoplay-indicator::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: #FC5810;
+  animation: progress 4s linear infinite;
+}
+
+@keyframes progress {
+  from { width: 0%; }
+  to { width: 100%; }
+}
+
+/* Mobile-specific animations */
+@media (max-width: 768px) {
+  .animate-on-scroll {
+    transform: translateY(20px);
+  }
+  
+  .hover\:scale-105:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .text-gray-600 {
+    color: #374151;
+  }
+  
+  .text-gray-700 {
+    color: #1f2937;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-on-scroll {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* Dark mode support (future enhancement) */
+@media (prefers-color-scheme: dark) {
+  /* Keep light theme as specified in requirements */
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  * {
+    background: white !important;
+    color: black !important;
+  }
+}
