@@ -159,20 +159,42 @@ function App() {
   };
 
   useEffect(() => {
+    let ticking = false;
+    let scrollTimeout: number;
+    
     const handleScroll = () => {
-      const elements = document.querySelectorAll('.animate-on-scroll');
-      elements.forEach((element) => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-          element.classList.add('animate-in');
-        }
-      });
+      document.body.classList.add('scrolling');
+      
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        document.body.classList.remove('scrolling');
+      }, 100);
+      
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          const elements = document.querySelectorAll('.animate-on-scroll:not(.animate-in)');
+          const viewportHeight = window.innerHeight;
+          const threshold = viewportHeight * 0.85;
+          
+          elements.forEach((element) => {
+            const rect = element.getBoundingClientRect();
+            if (rect.top < threshold) {
+              element.classList.add('animate-in');
+            }
+          });
+          
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
+    };
   }, []);
 
   return (
@@ -313,63 +335,145 @@ function App() {
             </p>
           </div>
 
-          {/* Desktop Grid Layout */}
-          <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-on-scroll">
-            {/* Large service card */}
-            <div className="col-span-2 lg:col-span-2 bg-black text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 hover:shadow-2xl hover:shadow-[#FC5810]/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          {/* Trending Bento Grid with Modern Effects */}
+          <div className="hidden md:grid grid-cols-12 gap-6 animate-on-scroll">
+            {/* Large Hero Card - Smart Surveillance */}
+            <div className="col-span-6 lg:col-span-6 group relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white rounded-[2rem] p-10 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.01]">
+              {/* Animated Background */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 via-transparent to-[#FC5810]/5 animate-pulse"></div>
+              </div>
+              
+              {/* Glow Effect */}
+              <div className="absolute -inset-px bg-gradient-to-r from-[#FC5810] to-[#E63D1F] rounded-[2rem] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"></div>
+              
+              {/* Content */}
               <div className="relative z-10">
-                <Zap size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 text-[#FC5810] group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4 group-hover:text-[#FC5810] transition-colors duration-300">Smart Surveillance</h3>
-                <p className="text-base md:text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="inline-flex p-4 bg-[#FC5810]/10 rounded-2xl mb-6 group-hover:bg-[#FC5810]/20 transition-colors duration-500">
+                  <Zap size={32} className="text-[#FC5810] group-hover:rotate-12 transition-transform duration-500" />
+                </div>
+                <h3 className="text-3xl lg:text-4xl font-bold mb-4 group-hover:text-[#FC5810] transition-colors duration-500">
+                  Smart Surveillance
+                </h3>
+                <p className="text-lg text-gray-300 leading-relaxed mb-6">
                   See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.
                 </p>
+                <div className="flex items-center gap-2 text-[#FC5810] group-hover:gap-4 transition-all duration-500">
+                  <span className="font-semibold">Explore Solution</span>
+                  <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
+                </div>
               </div>
+              
+              {/* Decorative Elements */}
+              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FC5810]/10 rounded-full blur-xl group-hover:bg-[#FC5810]/20 transition-colors duration-500"></div>
             </div>
 
-            {/* Medium service card */}
-            <div className="col-span-2 lg:col-span-2 bg-[#FC5810] text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 hover:shadow-2xl hover:shadow-[#FC5810]/30 transition-all duration-500 group cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Medium Card - Access Control */}
+            <div className="col-span-6 lg:col-span-6 group relative bg-gradient-to-br from-[#FC5810] to-[#E63D1F] text-white rounded-[2rem] p-10 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.01]">
+              {/* Mesh Gradient */}
+              <div className="absolute inset-0 opacity-30">
+                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20"></div>
+              </div>
+              
+              {/* Floating Elements */}
+              <div className="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full blur-md animate-pulse"></div>
+              <div className="absolute bottom-10 left-10 w-16 h-16 bg-white/10 rounded-full blur-md animate-pulse animation-delay-1000"></div>
+              
+              {/* Content */}
               <div className="relative z-10">
-                <Users size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Total Access Control</h3>
-                <p className="text-sm md:text-base opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="inline-flex p-4 bg-white/10 rounded-2xl mb-6 group-hover:bg-white/20 transition-colors duration-500">
+                  <Users size={32} className="text-white group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <h3 className="text-2xl lg:text-3xl font-bold mb-4">
+                  Total Access Control
+                </h3>
+                <p className="text-white/90 leading-relaxed mb-6">
                   Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.
                 </p>
+                <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full group-hover:bg-white/30 transition-all duration-500">
+                  <span className="font-semibold">Learn More</span>
+                  <ArrowRight size={18} />
+                </div>
               </div>
             </div>
 
-            {/* Small service cards */}
-            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-[#E63D1F]/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Small Card 1 - Automation */}
+            <div className="col-span-6 md:col-span-4 group relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-[2rem] p-8 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+              {/* Hover Gradient */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#E63D1F]/0 to-[#E63D1F]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+              
+              {/* Icon */}
+              <div className="relative z-10 mb-6">
+                <div className="inline-flex p-3 bg-[#E63D1F]/10 rounded-xl group-hover:bg-[#E63D1F]/20 transition-colors duration-500">
+                  <Award size={24} className="text-[#E63D1F] group-hover:rotate-12 transition-transform duration-500" />
+                </div>
+              </div>
+              
+              {/* Content */}
               <div className="relative z-10">
-                <Award size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-lg md:text-xl font-bold mb-2">Seamless Automation</h3>
-                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#E63D1F] transition-colors duration-500">
+                  Seamless Automation
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
                   Welcome to convenience. Automatic doors, gates, and barriers for effortless access.
                 </p>
               </div>
+              
+              {/* Decorative Corner */}
+              <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#E63D1F]/5 rounded-full blur-lg group-hover:scale-125 transition-transform duration-300"></div>
             </div>
 
-            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-[#E63D1F]/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            {/* Small Card 2 - Network */}
+            <div className="col-span-6 md:col-span-4 group relative bg-gradient-to-br from-[#E63D1F] to-[#FC5810] text-white rounded-[2rem] p-8 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+              {/* Pattern Background */}
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute inset-0" style={{backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 1px)", backgroundSize: "20px 20px"}}></div>
+              </div>
+              
+              {/* Icon */}
+              <div className="relative z-10 mb-6">
+                <div className="inline-flex p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors duration-500">
+                  <BarChart3 size={24} className="text-white group-hover:scale-110 transition-transform duration-500" />
+                </div>
+              </div>
+              
+              {/* Content */}
               <div className="relative z-10">
-                <BarChart3 size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-lg md:text-xl font-bold mb-2">Network Infrastructure</h3>
-                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-xl font-bold mb-2">
+                  Network Infrastructure
+                </h3>
+                <p className="text-white/80 text-sm leading-relaxed">
                   Robust cabling and network solutions for seamless connectivity.
                 </p>
               </div>
+              
+              {/* Glow Ball */}
+              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-white/20 rounded-full blur-md group-hover:scale-125 transition-transform duration-300"></div>
             </div>
 
-            <div className="col-span-2 bg-[#D9D9D9] text-black p-4 md:p-6 rounded-2xl hover:scale-105 hover:shadow-xl hover:shadow-gray-400/20 transition-all duration-500 group cursor-pointer relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              <div className="relative z-10">
-                <Code size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 text-[#FC5810] group-hover:scale-110 transition-transform duration-300" />
-                <h3 className="text-lg md:text-xl font-bold mb-2 group-hover:text-[#FC5810] transition-colors duration-300">Integrated Systems</h3>
-                <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
-                  A single, unified command center. We connect your security, access, and automation systems into one intelligent platform.
-                </p>
+            {/* Wide Card - Integrated Systems */}
+            <div className="col-span-12 md:col-span-4 group relative bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-[2rem] p-8 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
+              {/* Grid Pattern */}
+              <div className="absolute inset-0 opacity-5">
+                <div className="absolute inset-0" style={{backgroundImage: "linear-gradient(#FC5810 1px, transparent 1px), linear-gradient(90deg, #FC5810 1px, transparent 1px)", backgroundSize: "30px 30px"}}></div>
+              </div>
+              
+              {/* Glowing Border */}
+              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-[#FC5810]/0 via-[#FC5810]/20 to-[#FC5810]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+              
+              {/* Icon and Content */}
+              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div className="inline-flex p-4 bg-[#FC5810]/10 rounded-xl group-hover:bg-[#FC5810]/20 transition-colors duration-500 flex-shrink-0">
+                  <Code size={28} className="text-[#FC5810] group-hover:rotate-180 transition-transform duration-700" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-2 group-hover:text-[#FC5810] transition-colors duration-500">
+                    Integrated Systems
+                  </h3>
+                  <p className="text-gray-400 text-sm leading-relaxed">
+                    A single, unified command center connecting all your security systems.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -527,67 +631,130 @@ function App() {
         </div>
       </section>
 
-      {/* Portfolio Highlight */}
-      <section id="portfolio" className="py-24 px-6 lg:px-8">
+      {/* Featured Installations */}
+      <section id="portfolio" className="py-24 px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll">
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">Featured <span className="text-[#FC5810]">Installations</span></h2>
+            <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-4 py-2 rounded-full text-[#FC5810] font-medium text-sm mb-4">
+              <Award size={16} />
+              <span>Success Stories</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">
+              Featured <span className="text-[#FC5810] relative">
+                Installations
+                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-[#E63D1F] rounded-full"></div>
+              </span>
+            </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              Discover how we've transformed security and automation for businesses and organizations worldwide.
+              Real-world transformations showcasing our cutting-edge security and automation solutions in action.
             </p>
           </div>
 
-          {/* Desktop Portfolio */}
-          <div className="relative animate-on-scroll hidden md:block">
-            <div className="flex items-center justify-between mb-8">
-              <div className="flex items-center gap-4">
-                <button 
-                  onClick={prevProject}
-                  className="p-3 rounded-full bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3] transition-all duration-300 transform hover:scale-110"
-                >
-                  <ChevronLeft size={24} />
-                </button>
-                <button 
-                  onClick={nextProject}
-                  className="p-3 rounded-full bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3] transition-all duration-300 transform hover:scale-110"
-                >
-                  <ChevronRight size={24} />
-                </button>
-              </div>
-              <button 
-                onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className="p-3 rounded-full bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3] transition-all duration-300 transform hover:scale-110"
-              >
-                {isAutoPlay ? <Pause size={20} /> : <Play size={20} />}
-              </button>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Modern Grid Layout - Desktop */}
+          <div className="hidden md:block animate-on-scroll">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
               {projects.map((project, index) => (
                 <div 
                   key={index}
-                  className={`relative group cursor-pointer transform transition-all duration-500 ${
-                    index === currentProject ? 'scale-105 z-10' : 'scale-95 opacity-70'
-                  }`}
+                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className="relative overflow-hidden rounded-2xl">
+                  {/* Image Container */}
+                  <div className="relative h-64 overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title}
-                      className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
                     />
-                    <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                      <div className="text-center text-[#FFF9F3]">
-                        <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                        <p className="mb-4">{project.category}</p>
-                        <span className="text-[#FC5810] hover:text-[#E63D1F] transition-colors duration-300 flex items-center justify-center gap-2">
-                          View Installation <ArrowRight size={16} />
-                        </span>
-                      </div>
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    
+                    {/* Category Badge */}
+                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="text-xs font-semibold text-gray-700">{project.category}</span>
+                    </div>
+                    
+                    {/* Hover Actions */}
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <button className="bg-[#FC5810] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#E63D1F] transition-colors duration-200 flex items-center gap-2 shadow-lg">
+                        <span>View Details</span>
+                        <ArrowRight size={16} />
+                      </button>
                     </div>
                   </div>
+
+                  {/* Content */}
+                  <div className="p-6">
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#FC5810] transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-600 mb-4 leading-relaxed">
+                      Advanced security implementation with state-of-the-art technology and seamless integration.
+                    </p>
+                    
+                    {/* Stats Row */}
+                    <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
+                      <div className="flex items-center gap-1">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <span>Completed</span>
+                      </div>
+                      <div className="flex items-center gap-1">
+                        <Users size={14} />
+                        <span>500+ Users</span>
+                      </div>
+                    </div>
+
+                    {/* Action Button */}
+                    <button className="w-full bg-gray-50 hover:bg-[#FC5810] text-gray-700 hover:text-white py-3 px-4 rounded-xl font-medium transition-all duration-200 group/btn">
+                      <span className="flex items-center justify-center gap-2">
+                        Learn More
+                        <ArrowRight size={16} className="transform group-hover/btn:translate-x-1 transition-transform duration-200" />
+                      </span>
+                    </button>
+                  </div>
+
+                  {/* Decorative Elements */}
+                  <div className="absolute -top-1 -right-1 w-20 h-20 bg-[#FC5810]/5 rounded-full blur-md group-hover:bg-[#FC5810]/15 transition-colors duration-200"></div>
+                  <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-[#E63D1F]/5 rounded-full blur-sm group-hover:bg-[#E63D1F]/15 transition-colors duration-200"></div>
                 </div>
               ))}
+            </div>
+
+            {/* Navigation Controls */}
+            <div className="flex items-center justify-center gap-4">
+              <button 
+                onClick={prevProject}
+                className="p-4 bg-white rounded-full shadow-md hover:shadow-lg hover:bg-[#FC5810] hover:text-white transition-all duration-200 hover:scale-105"
+              >
+                <ChevronLeft size={20} />
+              </button>
+              
+              <div className="flex gap-2">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentProject(index)}
+                    className={`w-3 h-3 rounded-full transition-all duration-200 ${
+                      index === currentProject 
+                        ? 'bg-[#FC5810] scale-110' 
+                        : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              <button 
+                onClick={nextProject}
+                className="p-4 bg-white rounded-full shadow-md hover:shadow-lg hover:bg-[#FC5810] hover:text-white transition-all duration-200 hover:scale-105"
+              >
+                <ChevronRight size={20} />
+              </button>
+              
+              <button 
+                onClick={() => setIsAutoPlay(!isAutoPlay)}
+                className="p-4 bg-white rounded-full shadow-md hover:shadow-lg hover:bg-[#FC5810] hover:text-white transition-all duration-200 hover:scale-105 ml-4"
+              >
+                {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
+              </button>
             </div>
           </div>
 
@@ -629,9 +796,9 @@ function App() {
                   <button
                     key={index}
                     onClick={() => setCurrentProject(index)}
-                    className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
+                    className={`w-0.5 h-0.5 rounded-full transition-all duration-200 ${
                       index === currentProject 
-                        ? 'bg-[#FC5810] scale-150' 
+                        ? 'bg-[#FC5810] scale-125' 
                         : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
                     }`}
                   />
@@ -649,19 +816,19 @@ function App() {
             <div className="flex justify-center mt-6 gap-4">
               <button 
                 onClick={prevProject}
-                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-300 transform hover:scale-110 shadow-lg"
+                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-200 hover:scale-105 shadow-lg"
               >
                 <ChevronLeft size={18} />
               </button>
               <button 
                 onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-300 transform hover:scale-110 shadow-lg"
+                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-200 hover:scale-105 shadow-lg"
               >
                 {isAutoPlay ? <Pause size={16} /> : <Play size={16} />}
               </button>
               <button 
                 onClick={nextProject}
-                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-300 transform hover:scale-110 shadow-lg"
+                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-200 hover:scale-105 shadow-lg"
               >
                 <ChevronRight size={18} />
               </button>

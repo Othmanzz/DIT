@@ -39,31 +39,32 @@ html {
   scroll-padding-top: 80px;
 }
 
-/* Custom animations */
+/* Performance optimized animations */
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transform: translate3d(0, 20px, 0);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
 }
 
 .animate-on-scroll.animate-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
-/* Hero section immediate animation */
+/* Hero section immediate animation - optimized */
 .animate-in {
-  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  animation: fadeInUp 0.6s ease-out forwards;
 }
 
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translate3d(0, 20px, 0);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -76,6 +77,22 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Performance optimization for smooth scrolling */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Optimized blur effects for better performance */
+.blur-3xl { filter: blur(16px); }
+.blur-2xl { filter: blur(12px); }
+.blur-xl { filter: blur(8px); }
+.blur-lg { filter: blur(4px); }
+.blur-md { filter: blur(2px); }
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -97,7 +114,9 @@ html {
 
 /* Smooth transitions for all interactive elements */
 button, a {
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+             background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+             color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Enhanced focus states for accessibility */
@@ -201,14 +220,12 @@ button:focus, a:focus {
   
   /* Services carousel mobile improvements */
   .services-carousel-mobile {
-    will-change: transform;
     backface-visibility: hidden;
     perspective: 1000px;
   }
   
   .service-card-mobile {
     transform: translateZ(0);
-    will-change: transform;
   }
   
   /* Better button spacing */
@@ -236,16 +253,11 @@ button:focus, a:focus {
   opacity: 1;
 }
 
-/* Enhanced scroll-triggered animations */
-.animate-on-scroll {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
 
 .animate-on-scroll.animate-in {
   opacity: 1;
-  transform: translateY(0);
+  transform: translate3d(0, 0, 0);
+  will-change: auto;
 }
 
 /* Staggered animation delays */
@@ -377,7 +389,6 @@ p {
 
 /* Improved carousel performance */
 .carousel-container {
-  will-change: transform;
   transform: translateZ(0);
   backface-visibility: hidden;
 }
@@ -385,7 +396,6 @@ p {
 /* Smooth carousel transitions */
 .carousel-smooth {
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
 }
 
 /* Auto-play indicator */
@@ -429,6 +439,31 @@ p {
   .text-gray-700 {
     color: #1f2937;
   }
+}
+
+/* Performance optimization - pause complex animations during scroll */
+body.scrolling .animate-bounce,
+body.scrolling .animate-spin,
+body.scrolling .animate-ping,
+body.scrolling .animate-pulse {
+  animation-play-state: paused;
+}
+
+/* Optimized hover effects for Featured Installations */
+.group:hover img {
+  transform: scale(1.05);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.group:hover {
+  transform: translateY(-4px);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent layout shift during hover */
+.group {
+  backface-visibility: hidden;
+  transform: translateZ(0);
 }
 
 /* Reduced motion support */
