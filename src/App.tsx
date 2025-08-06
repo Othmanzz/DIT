@@ -238,32 +238,32 @@ function App() {
 
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative md:z-10 z-20">
-          {/* Animated DIT Logo for Mobile */}
-          <div className="md:hidden mb-8 pb-4 -mt-16 flex justify-center animate-in">
+          {/* Animated DIT Logo for All Devices */}
+          <div className="mb-8 pb-4 -mt-16 md:mt-0 flex justify-center animate-in">
             <div className="relative">
               <img 
                 src="/orange.svg" 
                 alt="DIT Logo" 
-                className="h-20 w-auto animate-bounce"
+                className="h-20 md:h-32 w-auto animate-bounce"
                 style={{ animationDuration: '3s' }}
               />
               {/* Orbiting Dots */}
               <div className="absolute inset-0 animate-spin" style={{ animationDuration: '8s' }}>
                 <div className="relative w-full h-full">
-                  <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
-                  <div className="absolute top-1/2 -right-2 transform -translate-y-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                  <div className="absolute top-1/2 -left-2 transform -translate-y-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+                  <div className="absolute -top-2 md:-top-4 left-1/2 transform -translate-x-1/2 w-2 h-2 md:w-3 md:h-3 bg-[#FC5810] rounded-full animate-pulse"></div>
+                  <div className="absolute top-1/2 -right-2 md:-right-4 transform -translate-y-1/2 w-2 h-2 md:w-3 md:h-3 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute -bottom-2 md:-bottom-4 left-1/2 transform -translate-x-1/2 w-2 h-2 md:w-3 md:h-3 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                  <div className="absolute top-1/2 -left-2 md:-left-4 transform -translate-y-1/2 w-2 h-2 md:w-3 md:h-3 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
                 </div>
               </div>
               {/* Pulsing Ring */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-28 h-28 rounded-full border border-[#FC5810]/20 animate-ping" style={{ animationDuration: '2s' }}></div>
+                <div className="w-28 h-28 md:w-40 md:h-40 rounded-full border border-[#FC5810]/20 animate-ping" style={{ animationDuration: '2s' }}></div>
               </div>
             </div>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-in -mt-4 md:mt-0">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-in -mt-4 md:mt-0">
             <span className="inline-block transform hover:rotate-3 transition-transform duration-500">Securing</span>{' '}
             <span className="inline-block transform hover:scale-110 transition-transform duration-300">Your</span>{' '}
             <span className="inline-block transform hover:-rotate-2 transition-transform duration-500">Future.</span><br />
@@ -830,31 +830,31 @@ function App() {
               </div>
 
               {/* Two Column Links for Mobile */}
-              <div className="grid grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-2 gap-6 mb-6 items-start">
                 {/* Left Column - Solutions */}
-                <div>
-                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center gap-2">
+                <div className="text-center">
+                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center justify-center gap-2">
                     <Zap size={16} className="flex-shrink-0" />
                     <span>Solutions</span>
                   </h4>
                   <ul className="space-y-2 text-[#D9D9D9] text-sm">
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <Zap size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Surveillance</span>
                     </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <Users size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Access Control</span>
                     </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <Award size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Automation</span>
                     </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <BarChart3 size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Network</span>
                     </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <Code size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Integration</span>
                     </a></li>
@@ -862,25 +862,25 @@ function App() {
                 </div>
 
                 {/* Right Column - Navigation */}
-                <div>
-                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center gap-2">
+                <div className="text-center">
+                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center justify-center gap-2">
                     <Menu size={16} className="flex-shrink-0" />
                     <span>Links</span>
                   </h4>
                   <ul className="space-y-2 text-[#D9D9D9] text-sm">
-                    <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Home</span>
                     </a></li>
-                    <li><a href="#about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>About</span>
                     </a></li>
-                    <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Portfolio</span>
                     </a></li>
-                    <li><a href="#contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><a href="#contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Contact</span>
                     </a></li>
