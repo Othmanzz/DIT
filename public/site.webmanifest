@@ -1,0 +1,16 @@
+{
+  "name": "DIT - Dar Al Ibtikar Wa Al Taqnia",
+  "short_name": "DIT",
+  "description": "Transforming Saudi Business Through Intelligent Technology",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF9F3",
+  "theme_color": "#FC5810",
+  "icons": [
+    {
+      "src": "/orange.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

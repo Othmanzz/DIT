@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Star, Users, Award, Zap, Palette, Code, Megaphone, BarChart3, Quote, Play, Pause } from 'lucide-react';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,64 +13,118 @@ function App() {
   const [serviceTouchStart, setServiceTouchStart] = useState(0);
   const [serviceTouchEnd, setServiceTouchEnd] = useState(0);
 
-  const projects = [
+  // Technology logos data
+  const technologies = [
+    { name: "Odoo", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Odoo_logo.svg" },
+    { name: "React", logo: "https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" },
+    { name: "Microsoft", logo: "https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" },
+    { name: "AWS", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" },
+    { name: "Oracle", logo: "https://upload.wikimedia.org/wikipedia/commons/5/50/Oracle_logo.svg" },
+    { name: "SAP", logo: "https://upload.wikimedia.org/wikipedia/commons/5/59/SAP_2011_logo.svg" },
+    { name: "Docker", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Docker_%28container_engine%29_logo.svg" },
+    { name: "Node.js", logo: "https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" },
+    { name: "Python", logo: "https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" },
+    { name: "PostgreSQL", logo: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" },
+    { name: "MongoDB", logo: "https://upload.wikimedia.org/wikipedia/commons/9/93/MongoDB_Logo.svg" },
+    { name: "TypeScript", logo: "https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg" }
+  ];
+
+  const blogs = [
     {
-      title: "Corporate Headquarters",
-      category: "Integrated Security System",
-      image: "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "The Future of Digital Transformation in Saudi Arabia",
+      category: "Technology Trends",
+      image: "https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800",
+      date: "January 15, 2025",
+      excerpt: "Exploring how Vision 2030 is driving technological innovation across the Kingdom and what it means for businesses."
     },
     {
-      title: "Smart Manufacturing",
-      category: "Access Control & Automation",
-      image: "https://images.pexels.com/photos/1181675/pexels-photo-1181675.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "Cybersecurity Best Practices for Modern Enterprises",
+      category: "Security",
+      image: "https://images.pexels.com/photos/60504/security-protection-anti-virus-software-60504.jpeg?auto=compress&cs=tinysrgb&w=800",
+      date: "January 10, 2025",
+      excerpt: "Essential strategies to protect your business from evolving cyber threats in today's digital landscape."
     },
     {
-      title: "Luxury Residential",
-      category: "Home Automation & Security",
-      image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"
+      title: "Cloud Migration: A Complete Guide for Saudi Businesses",
+      category: "Cloud Computing",
+      image: "https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&w=800",
+      date: "January 5, 2025",
+      excerpt: "Step-by-step approach to successfully migrating your infrastructure to the cloud while ensuring compliance."
     }
   ];
 
   const services = [
     {
       icon: Zap,
-      title: "Smart Surveillance",
-      description: "See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.",
+      title: "IT Solutions & Management",
+      description: "Streamline your infrastructure with proactive monitoring, strategic planning, and 24/7 support that keeps your business running at peak performance.",
       bgColor: "bg-black",
       textColor: "text-[#FFF9F3]",
-      iconColor: "text-[#FC5810]"
+      iconColor: "text-[#FC5810]",
+      link: "/services/it-solutions"
     },
     {
       icon: Users,
-      title: "Total Access Control",
-      description: "Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.",
-      bgColor: "bg-[#FC5810]",
+      title: "Business Apps Solutions",
+      description: "Transform operations with tailored ERP, CRM, and enterprise applications that automate workflows and deliver actionable insights.",
+      bgColor: "bg-black",
       textColor: "text-[#FFF9F3]",
-      iconColor: "text-[#FFF9F3]"
-    },
-    {
-      icon: Award,
-      title: "Seamless Automation",
-      description: "Welcome to convenience. Automatic doors, gates, and barriers for effortless access.",
-      bgColor: "bg-[#E63D1F]",
-      textColor: "text-[#FFF9F3]",
-      iconColor: "text-[#FFF9F3]"
-    },
-    {
-      icon: BarChart3,
-      title: "Network Infrastructure",
-      description: "Robust cabling and network solutions for seamless connectivity.",
-      bgColor: "bg-[#E63D1F]",
-      textColor: "text-[#FFF9F3]",
-      iconColor: "text-[#FFF9F3]"
+      iconColor: "text-[#FC5810]",
+      link: "/services/business-apps"
     },
     {
       icon: Code,
-      title: "Integrated Systems",
-      description: "A single, unified command center. We connect your security, access, and automation systems into one intelligent platform.",
-      bgColor: "bg-[#D9D9D9]",
-      textColor: "text-black",
-      iconColor: "text-[#FC5810]"
+      title: "Software Development",
+      description: "Bring your vision to life with custom applications built using cutting-edge technologies, designed specifically for your business needs.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]",
+      link: "/services/software-development"
+    },
+    {
+      icon: Award,
+      title: "Cybersecurity Solutions",
+      description: "Protect your assets with comprehensive security strategies, from threat detection to incident response, ensuring business continuity.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]",
+      link: "/services/cybersecurity"
+    },
+    {
+      icon: BarChart3,
+      title: "Cloud & DevOps Solutions",
+      description: "Accelerate innovation with scalable cloud infrastructure and automated deployment pipelines that reduce time-to-market.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]",
+      link: "/services/cloud-devops"
+    },
+    {
+      icon: Palette,
+      title: "Procurement Solutions",
+      description: "Optimize your technology investments with strategic sourcing, vendor management, and cost-effective procurement strategies.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]",
+      link: "/services/procurement"
+    },
+    {
+      icon: Megaphone,
+      title: "EduIT Solutions",
+      description: "Empower learning institutions with digital transformation, from smart classrooms to comprehensive learning management systems.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]",
+      link: "/services/eduit"
+    },
+    {
+      icon: BarChart3,
+      title: "IT Projects Solutions",
+      description: "Execute complex technology initiatives with confidence through expert project management and proven implementation methodologies.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]",
+      link: "/services/it-projects"
     }
   ];
 
@@ -77,11 +133,11 @@ function App() {
     if (!isAutoPlay) return;
     
     const interval = setInterval(() => {
-      setCurrentProject((prev) => (prev + 1) % projects.length);
+      setCurrentProject((prev) => (prev + 1) % blogs.length);
     }, 4000);
     
     return () => clearInterval(interval);
-  }, [isAutoPlay, projects.length]);
+  }, [isAutoPlay, blogs.length]);
 
   // Touch handlers for mobile swipe
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -203,13 +259,13 @@ function App() {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FFF9F3]/95 backdrop-blur-sm border-b border-[#D9D9D9]/20 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 flex items-center gap-3">
+            <div className="flex-shrink-0 flex flex-col items-center">
               <img 
                 src="/orange.svg" 
                 alt="Logo" 
                 className="h-8 w-auto"
               />
-              <div className="text-xl font-bold text-black" dir="rtl" style={{ fontFamily: 'RH-Zak Bold, sans-serif' }}>
+              <div className="text-sm font-bold text-black mt-1 text-center" dir="rtl" style={{ fontFamily: 'RH-Zak Bold, sans-serif' }}>
                 دار الابتكار والتقنية
               </div>
             </div>
@@ -228,11 +284,11 @@ function App() {
                   <span>Solutions</span>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
                 </a>
-                <a href="#portfolio" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
-                  <span>Installations</span>
+                <a href="/blogs" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                  <span>Blogs</span>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
                 </a>
-                <a href="#contact" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                <a href="/contact" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
                   <span>Contact</span>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
                 </a>
@@ -260,8 +316,8 @@ function App() {
               <a href="#home" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Home</a>
               <a href="#about" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>About</a>
               <a href="#services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Solutions</a>
-              <a href="#portfolio" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Installations</a>
-              <a href="#contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Contact</a>
+              <a href="/blogs" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Blogs</a>
+              <a href="/contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Contact</a>
               <button className="w-full mt-4 bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-300">
                 Get in Touch
               </button>
@@ -301,18 +357,18 @@ function App() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-in -mt-4 md:mt-0">
-            <span className="inline-block transform hover:rotate-3 transition-transform duration-500">Securing</span>{' '}
-            <span className="inline-block transform hover:scale-110 transition-transform duration-300">Your</span>{' '}
-            <span className="inline-block transform hover:-rotate-2 transition-transform duration-500">Future.</span><br />
+            <span className="inline-block transform hover:rotate-1 transition-transform duration-500">Transforming</span>{' '}
+            <span className="inline-block transform hover:scale-105 transition-transform duration-300">Saudi</span>{' '}
+            <span className="inline-block transform hover:-rotate-1 transition-transform duration-500">Business</span><br />
             <span className="text-[#FC5810] relative inline-block">
-              <span className="inline-block transform hover:skew-x-6 transition-transform duration-400">Automating</span>{' '}
-              <span className="inline-block transform hover:scale-125 transition-transform duration-300">Your</span>{' '}
-              <span className="inline-block transform hover:rotate-6 transition-transform duration-500">World.</span>
+              <span className="inline-block transform hover:skew-x-3 transition-transform duration-400">Through</span>{' '}
+              <span className="inline-block transform hover:scale-110 transition-transform duration-300">Intelligent</span>{' '}
+              <span className="inline-block transform hover:rotate-3 transition-transform duration-500">Technology</span>
               <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FC5810] to-transparent transform scale-x-0 hover:scale-x-100 transition-transform duration-700 origin-center"></div>
             </span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 md:mb-12 animate-in px-4" style={{ animationDelay: '0.2s' }}>
-            We design and deploy state-of-the-art technology solutions, from intelligent surveillance to seamless automation, empowering you to take full control of your environment.
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-8 md:mb-12 animate-in px-4" style={{ animationDelay: '0.2s' }}>
+            From cybersecurity to cloud solutions, we deliver comprehensive IT services that drive growth, ensure security, and unlock innovation for businesses across the Kingdom and GCC region.
           </p>
           <div className="flex flex-col sm:flex-row gap-6 justify-center animate-in" style={{ animationDelay: '0.4s' }}>
             <button className="bg-[#FC5810] text-[#FFF9F3] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#E63D1F] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
@@ -331,151 +387,30 @@ function App() {
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">Our <span className="text-[#FC5810]">Solutions</span></h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              We deliver cutting-edge security and automation technology that transforms how you protect and manage your environment.
+              Empowering your digital transformation journey with comprehensive IT services that drive growth, ensure security, and unlock innovation across the Kingdom.
             </p>
           </div>
 
-          {/* Trending Bento Grid with Modern Effects */}
-          <div className="hidden md:grid grid-cols-12 gap-6 animate-on-scroll">
-            {/* Large Hero Card - Smart Surveillance */}
-            <div className="col-span-6 lg:col-span-6 group relative bg-gradient-to-br from-gray-900 via-black to-gray-900 text-white rounded-[2rem] p-10 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.01]">
-              {/* Animated Background */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 via-transparent to-[#FC5810]/5 animate-pulse"></div>
-              </div>
-              
-              {/* Glow Effect */}
-              <div className="absolute -inset-px bg-gradient-to-r from-[#FC5810] to-[#E63D1F] rounded-[2rem] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"></div>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="inline-flex p-4 bg-[#FC5810]/10 rounded-2xl mb-6 group-hover:bg-[#FC5810]/20 transition-colors duration-500">
-                  <Zap size={32} className="text-[#FC5810] group-hover:rotate-12 transition-transform duration-500" />
-                </div>
-                <h3 className="text-3xl lg:text-4xl font-bold mb-4 group-hover:text-[#FC5810] transition-colors duration-500">
-                  Smart Surveillance
-                </h3>
-                <p className="text-lg text-gray-300 leading-relaxed mb-6">
-                  See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.
-                </p>
-                <div className="flex items-center gap-2 text-[#FC5810] group-hover:gap-4 transition-all duration-500">
-                  <span className="font-semibold">Explore Solution</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-2 transition-transform duration-500" />
-                </div>
-              </div>
-              
-              {/* Decorative Elements */}
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#FC5810]/10 rounded-full blur-xl group-hover:bg-[#FC5810]/20 transition-colors duration-500"></div>
-            </div>
-
-            {/* Medium Card - Access Control */}
-            <div className="col-span-6 lg:col-span-6 group relative bg-gradient-to-br from-[#FC5810] to-[#E63D1F] text-white rounded-[2rem] p-10 overflow-hidden cursor-pointer transition-all duration-500 hover:scale-[1.01]">
-              {/* Mesh Gradient */}
-              <div className="absolute inset-0 opacity-30">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-black/20"></div>
-              </div>
-              
-              {/* Floating Elements */}
-              <div className="absolute top-10 right-10 w-20 h-20 bg-white/10 rounded-full blur-md animate-pulse"></div>
-              <div className="absolute bottom-10 left-10 w-16 h-16 bg-white/10 rounded-full blur-md animate-pulse animation-delay-1000"></div>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <div className="inline-flex p-4 bg-white/10 rounded-2xl mb-6 group-hover:bg-white/20 transition-colors duration-500">
-                  <Users size={32} className="text-white group-hover:scale-110 transition-transform duration-500" />
-                </div>
-                <h3 className="text-2xl lg:text-3xl font-bold mb-4">
-                  Total Access Control
-                </h3>
-                <p className="text-white/90 leading-relaxed mb-6">
-                  Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.
-                </p>
-                <div className="inline-flex items-center gap-3 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full group-hover:bg-white/30 transition-all duration-500">
-                  <span className="font-semibold">Learn More</span>
-                  <ArrowRight size={18} />
-                </div>
-              </div>
-            </div>
-
-            {/* Small Card 1 - Automation */}
-            <div className="col-span-6 md:col-span-4 group relative bg-gradient-to-br from-gray-50 to-gray-100 rounded-[2rem] p-8 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
-              {/* Hover Gradient */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#E63D1F]/0 to-[#E63D1F]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              {/* Icon */}
-              <div className="relative z-10 mb-6">
-                <div className="inline-flex p-3 bg-[#E63D1F]/10 rounded-xl group-hover:bg-[#E63D1F]/20 transition-colors duration-500">
-                  <Award size={24} className="text-[#E63D1F] group-hover:rotate-12 transition-transform duration-500" />
-                </div>
-              </div>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#E63D1F] transition-colors duration-500">
-                  Seamless Automation
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
-                  Welcome to convenience. Automatic doors, gates, and barriers for effortless access.
-                </p>
-              </div>
-              
-              {/* Decorative Corner */}
-              <div className="absolute -top-6 -right-6 w-24 h-24 bg-[#E63D1F]/5 rounded-full blur-lg group-hover:scale-125 transition-transform duration-300"></div>
-            </div>
-
-            {/* Small Card 2 - Network */}
-            <div className="col-span-6 md:col-span-4 group relative bg-gradient-to-br from-[#E63D1F] to-[#FC5810] text-white rounded-[2rem] p-8 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
-              {/* Pattern Background */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0" style={{backgroundImage: "radial-gradient(circle at 2px 2px, white 1px, transparent 1px)", backgroundSize: "20px 20px"}}></div>
-              </div>
-              
-              {/* Icon */}
-              <div className="relative z-10 mb-6">
-                <div className="inline-flex p-3 bg-white/10 rounded-xl group-hover:bg-white/20 transition-colors duration-500">
-                  <BarChart3 size={24} className="text-white group-hover:scale-110 transition-transform duration-500" />
-                </div>
-              </div>
-              
-              {/* Content */}
-              <div className="relative z-10">
-                <h3 className="text-xl font-bold mb-2">
-                  Network Infrastructure
-                </h3>
-                <p className="text-white/80 text-sm leading-relaxed">
-                  Robust cabling and network solutions for seamless connectivity.
-                </p>
-              </div>
-              
-              {/* Glow Ball */}
-              <div className="absolute -bottom-4 -right-4 w-16 h-16 bg-white/20 rounded-full blur-md group-hover:scale-125 transition-transform duration-300"></div>
-            </div>
-
-            {/* Wide Card - Integrated Systems */}
-            <div className="col-span-12 md:col-span-4 group relative bg-gradient-to-br from-gray-800 to-gray-900 text-white rounded-[2rem] p-8 overflow-hidden cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-lg">
-              {/* Grid Pattern */}
-              <div className="absolute inset-0 opacity-5">
-                <div className="absolute inset-0" style={{backgroundImage: "linear-gradient(#FC5810 1px, transparent 1px), linear-gradient(90deg, #FC5810 1px, transparent 1px)", backgroundSize: "30px 30px"}}></div>
-              </div>
-              
-              {/* Glowing Border */}
-              <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-[#FC5810]/0 via-[#FC5810]/20 to-[#FC5810]/0 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              
-              {/* Icon and Content */}
-              <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="inline-flex p-4 bg-[#FC5810]/10 rounded-xl group-hover:bg-[#FC5810]/20 transition-colors duration-500 flex-shrink-0">
-                  <Code size={28} className="text-[#FC5810] group-hover:rotate-180 transition-transform duration-700" />
-                </div>
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold mb-2 group-hover:text-[#FC5810] transition-colors duration-500">
-                    Integrated Systems
-                  </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
-                    A single, unified command center connecting all your security systems.
-                  </p>
-                </div>
-              </div>
-            </div>
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 animate-on-scroll">
+            {services.map((service, index) => {
+              const IconComponent = service.icon;
+              return (
+                <Link 
+                  key={index} 
+                  to={service.link}
+                  className={`${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                >
+                  <IconComponent size={36} className={`mb-6 ${service.iconColor}`} />
+                  <h3 className="text-xl font-bold mb-4">{service.title}</h3>
+                  <p className="text-sm opacity-90 leading-relaxed mb-4">{service.description}</p>
+                  <div className="flex items-center gap-2 mt-auto opacity-80">
+                    <span className="text-sm font-medium">Learn More</span>
+                    <ArrowRight size={16} />
+                  </div>
+                </Link>
+              );
+            })}
           </div>
 
           {/* Mobile Carousel Layout - 1.5 columns */}
@@ -491,11 +426,11 @@ function App() {
                 {services.map((service, index) => {
                   const IconComponent = service.icon;
                   return (
-                    <div key={index} className={`w-[75vw] flex-shrink-0 mr-4 ${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl`}>
+                    <Link key={index} to={service.link} className={`w-[75vw] flex-shrink-0 mr-4 ${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl hover:opacity-90 transition-opacity`}>
                       <IconComponent size={36} className={`w-10 h-10 mb-6 ${service.iconColor}`} />
                       <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
                       <p className="text-base opacity-90 leading-relaxed">{service.description}</p>
-                    </div>
+                    </Link>
                   );
                 })}
               </div>
@@ -532,53 +467,50 @@ function App() {
       <section className="py-16 px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12 animate-on-scroll">
-            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Trusted by Industry Leaders</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold mb-4 text-gray-800">Technologies We <span className="text-[#FC5810]">Use</span></h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Leading organizations across the Middle East trust us to secure their most valuable assets.
+              Partnering with leading technology providers to deliver cutting-edge solutions that power your digital transformation.
             </p>
           </div>
 
-          {/* Client Logos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-60 hover:opacity-100 transition-opacity duration-500 animate-on-scroll">
-            {/* Logo placeholders - replace with actual client logos */}
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
-              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
-            </div>
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
-              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
-            </div>
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
-              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
-            </div>
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
-              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
-            </div>
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
-              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
-            </div>
-            <div className="flex items-center justify-center h-16 bg-gray-50 rounded-lg border border-gray-100 hover:border-[#FC5810]/20 transition-all duration-300 group">
-              <div className="text-2xl font-bold text-gray-400 group-hover:text-[#FC5810] transition-colors duration-300">LOGO</div>
-            </div>
-          </div>
-
-          {/* Mobile Carousel for logos */}
-          <div className="md:hidden mt-8 animate-on-scroll">
-            <div className="flex space-x-4 overflow-x-auto scrollbar-hide pb-4">
-              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
-                <div className="text-sm font-bold text-gray-400">LOGO</div>
-              </div>
-              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
-                <div className="text-sm font-bold text-gray-400">LOGO</div>
-              </div>
-              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
-                <div className="text-sm font-bold text-gray-400">LOGO</div>
-              </div>
-              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
-                <div className="text-sm font-bold text-gray-400">LOGO</div>
-              </div>
-              <div className="flex-shrink-0 w-32 h-16 bg-gray-50 rounded-lg border border-gray-100 flex items-center justify-center">
-                <div className="text-sm font-bold text-gray-400">LOGO</div>
-              </div>
+          {/* Technology Partners Slider */}
+          <div className="relative overflow-hidden animate-on-scroll">
+            {/* Sliding animation container */}
+            <div 
+              className="flex gap-12 items-center animate-slide"
+              style={{
+                animation: 'slide 30s linear infinite',
+                width: 'calc(200px * 24)' // Double the logos for seamless loop
+              }}
+            >
+              {/* First set of logos */}
+              {technologies.map((tech, index) => (
+                <div key={index} className="flex-shrink-0 w-24 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                  <img 
+                    src={tech.logo} 
+                    alt={tech.name}
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement.innerHTML = `<div class="text-xs font-semibold text-gray-500">${tech.name}</div>`;
+                    }}
+                    className="h-10 w-10 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+              ))}
+              {/* Duplicate set for seamless loop */}
+              {technologies.map((tech, index) => (
+                <div key={`duplicate-${index}`} className="flex-shrink-0 w-24 h-16 flex items-center justify-center bg-white rounded-lg shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
+                  <img 
+                    src={tech.logo} 
+                    alt={tech.name}
+                    onError={(e) => {
+                      e.currentTarget.style.display = 'none';
+                      e.currentTarget.parentElement.innerHTML = `<div class="text-xs font-semibold text-gray-500">${tech.name}</div>`;
+                    }}
+                    className="h-10 w-10 object-contain opacity-70 group-hover:opacity-100 group-hover:scale-110 transition-all duration-300"
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -590,8 +522,8 @@ function App() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="order-2 lg:order-1 animate-on-scroll">
               <img 
-                src="https://images.pexels.com/photos/3184338/pexels-photo-3184338.jpeg?auto=compress&cs=tinysrgb&w=800" 
-                alt="Creative team at work" 
+                src="/riyadh.jpg" 
+                alt="Modern Riyadh cityscape" 
                 className="rounded-2xl shadow-2xl hover:scale-105 transition-transform duration-500 w-full h-64 sm:h-80 lg:h-96 object-cover"
               />
             </div>
@@ -631,90 +563,77 @@ function App() {
         </div>
       </section>
 
-      {/* Featured Installations */}
-      <section id="portfolio" className="py-24 px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
+      {/* Blogs */}
+      <section id="blogs" className="py-24 px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-gray-50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll">
             <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-4 py-2 rounded-full text-[#FC5810] font-medium text-sm mb-4">
               <Award size={16} />
-              <span>Success Stories</span>
+              <span>Latest Articles</span>
             </div>
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">
-              Featured <span className="text-[#FC5810] relative">
-                Installations
+              Our <span className="text-[#FC5810] relative">
+                Blogs
                 <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-[#E63D1F] rounded-full"></div>
               </span>
             </h2>
             <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              Real-world transformations showcasing our cutting-edge security and automation solutions in action.
+              Stay updated with the latest insights, trends, and best practices in technology and digital transformation.
             </p>
           </div>
 
           {/* Modern Grid Layout - Desktop */}
           <div className="hidden md:block animate-on-scroll">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-              {projects.map((project, index) => (
+              {blogs.map((blog, index) => (
                 <div 
                   key={index}
-                  className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  className="group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-1 border border-gray-100"
                 >
                   {/* Image Container */}
-                  <div className="relative h-64 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden">
                     <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400"
+                      src={blog.image} 
+                      alt={blog.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                     />
-                    {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    {/* Subtle Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent"></div>
                     
                     {/* Category Badge */}
-                    <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
-                      <span className="text-xs font-semibold text-gray-700">{project.category}</span>
+                    <div className="absolute top-4 left-4">
+                      <span className="inline-block bg-[#FC5810] text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        {blog.category}
+                      </span>
                     </div>
                     
-                    {/* Hover Actions */}
-                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                      <button className="bg-[#FC5810] text-white px-6 py-3 rounded-full font-semibold hover:bg-[#E63D1F] transition-colors duration-200 flex items-center gap-2 shadow-lg">
-                        <span>View Details</span>
-                        <ArrowRight size={16} />
-                      </button>
+                    {/* Date Badge */}
+                    <div className="absolute bottom-4 left-4">
+                      <span className="inline-block bg-white/90 backdrop-blur-sm text-gray-700 text-xs font-medium px-3 py-1 rounded-full">
+                        {blog.date}
+                      </span>
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#FC5810] transition-colors duration-300">
-                      {project.title}
+                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#FC5810] transition-colors duration-200 line-clamp-2">
+                      {blog.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 leading-relaxed">
-                      Advanced security implementation with state-of-the-art technology and seamless integration.
+                    <p className="text-gray-600 mb-6 leading-relaxed text-sm line-clamp-3">
+                      {blog.excerpt}
                     </p>
                     
-                    {/* Stats Row */}
-                    <div className="flex justify-between items-center text-sm text-gray-500 mb-4">
-                      <div className="flex items-center gap-1">
-                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                        <span>Completed</span>
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <Users size={14} />
-                        <span>500+ Users</span>
-                      </div>
+                    {/* Read More Link */}
+                    <div className="flex items-center gap-2 text-[#FC5810] font-semibold group-hover:gap-3 transition-all duration-200">
+                      <span>Read Article</span>
+                      <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
                     </div>
-
-                    {/* Action Button */}
-                    <button className="w-full bg-gray-50 hover:bg-[#FC5810] text-gray-700 hover:text-white py-3 px-4 rounded-xl font-medium transition-all duration-200 group/btn">
-                      <span className="flex items-center justify-center gap-2">
-                        Learn More
-                        <ArrowRight size={16} className="transform group-hover/btn:translate-x-1 transition-transform duration-200" />
-                      </span>
-                    </button>
                   </div>
 
                   {/* Decorative Elements */}
-                  <div className="absolute -top-1 -right-1 w-20 h-20 bg-[#FC5810]/5 rounded-full blur-md group-hover:bg-[#FC5810]/15 transition-colors duration-200"></div>
-                  <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-[#E63D1F]/5 rounded-full blur-sm group-hover:bg-[#E63D1F]/15 transition-colors duration-200"></div>
+                  <div className="absolute -top-1 -right-1 w-20 h-20 bg-[#FC5810]/5 rounded-full blur-md group-hover:bg-[#FC5810]/10 transition-colors duration-150"></div>
+                  <div className="absolute -bottom-2 -left-2 w-16 h-16 bg-[#E63D1F]/5 rounded-full blur-sm group-hover:bg-[#E63D1F]/10 transition-colors duration-150"></div>
                 </div>
               ))}
             </div>
@@ -729,7 +648,7 @@ function App() {
               </button>
               
               <div className="flex gap-2">
-                {projects.map((_, index) => (
+                {blogs.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentProject(index)}
@@ -768,20 +687,21 @@ function App() {
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
               >
-                {projects.map((project, index) => (
+                {blogs.map((blog, index) => (
                   <div key={index} className="w-full flex-shrink-0 relative group">
                     <img 
-                      src={project.image} 
-                      alt={project.title}
+                      src={blog.image} 
+                      alt={blog.title}
                       className="w-full h-80 object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex items-end">
                       <div className="p-6 text-[#FFF9F3] w-full">
-                        <div className="text-sm text-[#FC5810] mb-2 font-medium">{project.category}</div>
-                        <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                        <button className="text-[#FC5810] hover:text-[#E63D1F] transition-colors duration-300 flex items-center gap-2 font-medium">
-                          View Installation <ArrowRight size={16} />
-                        </button>
+                        <div className="text-sm text-[#FC5810] mb-2 font-medium">{blog.category}</div>
+                        <h3 className="text-2xl font-bold mb-3">{blog.title}</h3>
+                        <div className="flex items-center gap-2 text-[#FC5810] font-semibold">
+                          <span>Read Article</span>
+                          <ArrowRight size={16} />
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -792,7 +712,7 @@ function App() {
             {/* Mobile carousel indicators with swipe hint */}
             <div className="flex flex-col items-center mt-6 gap-3">
               <div className="flex justify-center gap-1">
-                {projects.map((_, index) => (
+                {blogs.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentProject(index)}
@@ -834,6 +754,17 @@ function App() {
               </button>
             </div>
           </div>
+          
+          {/* View All Blogs Button */}
+          <div className="text-center mt-16">
+            <Link 
+              to="/blogs"
+              className="inline-flex items-center gap-2 bg-[#FC5810] text-white px-8 py-4 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-200 hover:scale-105 shadow-lg"
+            >
+              <span>View All Articles</span>
+              <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -866,7 +797,7 @@ function App() {
             Ready to upgrade your <span className="text-[#FC5810]">reality?</span>
           </h2>
           <p className="text-lg sm:text-xl opacity-80 mb-8 sm:mb-12 max-w-2xl mx-auto px-4">
-            Whether you have a detailed plan or just the beginning of an idea, our team is ready to listen. Let's discuss how we can bring security and automation to your project.
+            Whether you have a detailed plan or just the beginning of an idea, our team is ready to listen. Let's discuss how we can bring security and automation to your blog.
           </p>
           <button className="bg-[#FC5810] text-[#FFF9F3] px-8 sm:px-12 py-4 sm:py-6 rounded-full font-semibold text-lg sm:text-xl hover:bg-[#E63D1F] transition-all duration-300 transform hover:scale-105 flex items-center gap-3 mx-auto">
             Design My Solution <ArrowRight size={20} className="sm:w-6 sm:h-6" />
@@ -963,11 +894,11 @@ function App() {
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                         <span>About Us</span>
                       </a></li>
-                      <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      <li><a href="/blogs" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
-                        <span>Our Work</span>
+                        <span>Blogs</span>
                       </a></li>
-                      <li><a href="#contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      <li><a href="/contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                         <span>Contact</span>
                       </a></li>
@@ -1058,11 +989,11 @@ function App() {
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>About</span>
                     </a></li>
-                    <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    <li><a href="/blogs" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
-                      <span>Portfolio</span>
+                      <span>Blogs</span>
                     </a></li>
-                    <li><a href="#contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    <li><a href="/contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Contact</span>
                     </a></li>
@@ -1104,6 +1035,7 @@ function App() {
           </div>
         </div>
       </footer>
+      <ScrollToTop />
     </div>
   );
 }

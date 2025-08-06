@@ -8,7 +8,20 @@
       "Bash(git remote set-url:*)",
       "Bash(git push:*)",
       "Bash(cp:*)",
-      "Bash(npm run dev:*)"
+      "Bash(npm run dev:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run build:*)",
+      "Bash(ls:*)",
+      "Bash(sed:*)",
+      "Bash(git checkout:*)",
+      "Bash(rm:*)",
+      "Bash(mv:*)",
+      "Bash(grep:*)",
+      "Bash(touch:*)",
+      "Bash(find:*)",
+      "Bash(for file in src/pages/*.tsx)",
+      "Bash(do sed -i '/pricing: \\[/,/^\\s*\\],$/d' \"$file\")",
+      "Bash(done)"
     ],
     "deny": []
   }
