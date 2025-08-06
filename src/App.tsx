@@ -332,30 +332,104 @@ function App() {
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 relative md:z-10 z-20">
-          {/* Mobile Layout */}
-          <div className="lg:hidden text-center">
-            {/* Animated DIT Logo for Mobile */}
-            <div className="mb-8 pb-4 pt-20 sm:pt-24 flex justify-center animate-in">
-              <div className="relative">
-                <img 
-                  src="/orange.svg" 
-                  alt="DIT Logo" 
-                  className="h-20 w-auto animate-bounce"
-                  style={{ animationDuration: '3s' }}
-                />
-                {/* Orbiting Dots */}
-                <div className="absolute inset-0 animate-spin" style={{ animationDuration: '8s' }}>
-                  <div className="relative w-full h-full">
-                    <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
-                    <div className="absolute top-1/2 -right-2 transform -translate-y-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
-                    <div className="absolute top-1/2 -left-2 transform -translate-y-1/2 w-2 h-2 bg-[#FC5810] rounded-full animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+          {/* Mobile Layout - Modern Design */}
+          <div className="lg:hidden px-4 pt-20 sm:pt-24 pb-12">
+            <div className="max-w-sm mx-auto">
+              {/* Main Heading */}
+              <div className="text-center mb-8 animate-in">
+                <h1 className="text-3xl sm:text-4xl font-black leading-tight mb-4">
+                  <span className="inline-block">Transforming</span>{' '}
+                  <span className="inline-block">Saudi</span>{' '}
+                  <span className="inline-block">Business</span>
+                  <br />
+                  <span className="text-[#FC5810] relative inline-block">
+                    Through Intelligent
+                    <br />Technology
+                  </span>
+                </h1>
+                
+                {/* Animated Subheading */}
+                <div className="mt-6 mb-8">
+                  <h2 className="text-lg sm:text-xl font-bold text-gray-700">
+                    Where <span className="text-[#FC5810]">Innovation</span> Meets <span className="text-[#FC5810]">Excellence</span>
+                  </h2>
+                </div>
+              </div>
+
+              {/* Mobile Terminal Frame */}
+              <div className="mb-8 animate-in" style={{ animationDelay: '0.2s' }}>
+                <div className="bg-gray-900 rounded-2xl shadow-xl overflow-hidden border border-gray-700 mx-auto max-w-xs">
+                  {/* Terminal Header */}
+                  <div className="bg-gray-800 px-4 py-3 flex items-center gap-3">
+                    <div className="flex gap-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                    </div>
+                    <span className="text-gray-300 text-xs font-medium">DIT Mobile v3.0</span>
+                  </div>
+
+                  {/* Terminal Content */}
+                  <div className="p-4 font-mono text-xs bg-gradient-to-b from-gray-900 to-gray-800">
+                    {/* System Init */}
+                    <div className="text-cyan-400 mb-3 typing-delay-0">
+                      <span className="animate-pulse">⚡ DIT Engine Started</span>
+                    </div>
+                    
+                    {/* Command */}
+                    <div className="text-green-400 mb-2 typing-delay-1">
+                      <span className="text-blue-400">dit@saudi:~$</span> 
+                      <span className="typing-animation text-white"> ./transform --saudi</span>
+                    </div>
+                    
+                    {/* Progress */}
+                    <div className="space-y-1 mb-3">
+                      <div className="text-gray-300 typing-delay-2 text-xs">
+                        <span className="text-green-400">✓</span> Security Active
+                      </div>
+                      <div className="text-gray-300 typing-delay-3 text-xs">
+                        <span className="text-green-400">✓</span> Cloud Ready
+                      </div>
+                      <div className="text-gray-300 typing-delay-4 text-xs">
+                        <span className="text-green-400">✓</span> AI Deployed
+                      </div>
+                    </div>
+
+                    {/* Success */}
+                    <div className="text-green-400 mb-3 typing-delay-5 text-xs">
+                      <span className="animate-pulse">🚀 Transformation Complete!</span>
+                    </div>
+
+                    {/* Stats Mini */}
+                    <div className="bg-gray-800 rounded-lg p-2 mb-3 typing-delay-6 border border-gray-600">
+                      <div className="text-[#FC5810] text-xs mb-1 font-bold">📊 LIVE STATUS</div>
+                      <div className="grid grid-cols-2 gap-2 text-xs">
+                        <div className="text-center">
+                          <div className="text-green-400 font-bold">99.9%</div>
+                          <div className="text-gray-400 text-xs">Uptime</div>
+                        </div>
+                        <div className="text-center">
+                          <div className="text-green-400 font-bold">24/7</div>
+                          <div className="text-gray-400 text-xs">Support</div>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    {/* Ready Prompt */}
+                    <div className="text-blue-400 typing-delay-7 flex items-center">
+                      <span>dit@saudi:~$</span>
+                      <span className="inline-block w-1.5 h-3 bg-green-400 ml-1 animate-pulse"></span>
+                    </div>
                   </div>
                 </div>
-                {/* Pulsing Ring */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-28 h-28 rounded-full border border-[#FC5810]/20 animate-ping" style={{ animationDuration: '2s' }}></div>
-                </div>
+              </div>
+
+              {/* CTA Button */}
+              <div className="text-center animate-in" style={{ animationDelay: '0.4s' }}>
+                <button className="bg-gradient-to-r from-[#FC5810] to-orange-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-orange-600 hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 mx-auto shadow-lg">
+                  <span>Design My Solution</span>
+                  <ArrowRight size={20} />
+                </button>
               </div>
             </div>
           </div>
@@ -521,234 +595,122 @@ function App() {
 
           </div>
 
-          {/* Mobile Content - Same as before but centered */}
-          <div className="lg:hidden text-center">
-            <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-6 animate-in -mt-4">
-              <span className="inline-block transform hover:rotate-1 transition-transform duration-500">Transforming</span>{' '}
-              <span className="inline-block transform hover:scale-105 transition-transform duration-300">Saudi</span>{' '}
-              <span className="inline-block transform hover:-rotate-1 transition-transform duration-500">Business</span><br />
-              <span className="text-[#FC5810] relative inline-block">
-                <span className="inline-block transform hover:skew-x-3 transition-transform duration-400">Through</span>{' '}
-                <span className="inline-block transform hover:scale-110 transition-transform duration-300">Intelligent</span>{' '}
-                <span className="inline-block transform hover:rotate-3 transition-transform duration-500">Technology</span>
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FC5810] to-transparent transform scale-x-0 hover:scale-x-100 transition-transform duration-700 origin-center"></div>
-              </span>
-            </h1>
-            
-            <div className="max-w-4xl mx-auto mb-12 px-4 animate-in" style={{ animationDelay: '0.2s' }}>
-              {/* Animated Headline */}
-              <div className="mb-12">
-                <h2 className="text-2xl sm:text-3xl font-bold mb-6">
-                  <span className="inline-block animate-slide-in-left" style={{ animationDelay: '0.1s' }}>
-                    Where
-                  </span>
-                  <span className="inline-block bg-gradient-to-r from-[#FC5810] via-orange-500 to-red-500 bg-clip-text text-transparent animate-scale-in ml-3" style={{ animationDelay: '0.3s' }}>
-                    Innovation
-                  </span>
-                  <span className="inline-block animate-slide-in-right ml-3" style={{ animationDelay: '0.5s' }}>
-                    Meets
-                  </span>
-                  <span className="inline-block bg-gradient-to-r from-[#FC5810] via-orange-500 to-red-500 bg-clip-text text-transparent animate-bounce-in ml-3" style={{ animationDelay: '0.7s' }}>
-                    Excellence
-                  </span>
-                </h2>
-              </div>
-
-              {/* Enhanced Creative Terminal */}
-              <div className="bg-gray-900 rounded-2xl shadow-2xl max-w-lg mx-auto overflow-hidden animate-in terminal-glow border border-gray-700" style={{ animationDelay: '0.4s' }}>
-                {/* Terminal Header */}
-                <div className="bg-gray-800 px-6 py-4 flex items-center gap-3">
-                  <div className="flex gap-2">
-                    <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
-                    <div className="w-3 h-3 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
-                    <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
-                  </div>
-                  <span className="text-gray-300 text-sm ml-4 font-medium">DIT Terminal v2.0</span>
-                  <div className="ml-auto text-gray-400 text-xs">🇸🇦 Saudi Arabia</div>
-                </div>
-
-                {/* Terminal Content */}
-                <div className="p-8 font-mono text-sm bg-gradient-to-b from-gray-900 to-gray-800">
-                  {/* Welcome Message */}
-                  <div className="text-cyan-400 mb-4 typing-delay-0">
-                    <span className="animate-pulse">⚡ DIT Transformation Engine Initialized</span>
-                  </div>
-                  
-                  {/* Command Input */}
-                  <div className="text-green-400 mb-3">
-                    <span className="text-blue-400">dit@saudi:~$</span> 
-                    <span className="typing-animation"> ./deploy_excellence --enterprise</span>
-                  </div>
-                  
-                  {/* Loading Animation */}
-                  <div className="text-yellow-400 mb-3 typing-delay-1">
-                    <span className="animate-pulse">🔄 Scanning digital infrastructure...</span>
-                  </div>
-                  
-                  {/* Progress Steps */}
-                  <div className="space-y-1 mb-4">
-                    <div className="text-gray-300 typing-delay-2">
-                      <span className="text-green-400">✓</span> Advanced security protocols → ACTIVE
-                    </div>
-                    <div className="text-gray-300 typing-delay-3">
-                      <span className="text-green-400">✓</span> Cloud architecture → OPTIMIZED  
-                    </div>
-                    <div className="text-gray-300 typing-delay-4">
-                      <span className="text-green-400">✓</span> AI automation → DEPLOYED
-                    </div>
-                  </div>
-
-                  {/* Success Message */}
-                  <div className="text-green-400 mb-4 typing-delay-5">
-                    <span className="animate-pulse">🚀 Digital transformation COMPLETED!</span>
-                  </div>
-
-                  {/* Stats Display */}
-                  <div className="bg-gray-800 rounded-lg p-3 mb-3 typing-delay-6 border border-gray-600">
-                    <div className="text-cyan-400 text-xs mb-2 font-bold">⚡ SYSTEM STATUS</div>
-                    <div className="grid grid-cols-2 gap-2 text-xs">
-                      <div>
-                        <div className="text-gray-400">Security:</div>
-                        <div className="text-green-400 font-bold">🔒 MAXIMUM</div>
-                      </div>
-                      <div>
-                        <div className="text-gray-400">Performance:</div>
-                        <div className="text-green-400 font-bold">📊 OPTIMAL</div>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  {/* Ready Prompt */}
-                  <div className="text-blue-400 typing-delay-7">
-                    <span>dit@saudi:~$</span>
-                    <span className="inline-block w-2 h-5 bg-green-400 ml-1 animate-pulse"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="flex justify-center animate-in mt-8" style={{ animationDelay: '0.4s' }}>
-              <button className="bg-[#FC5810] text-[#FFF9F3] px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold text-base sm:text-lg hover:bg-[#E63D1F] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
-                Design My Solution <ArrowRight size={20} />
-              </button>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* About Us Section - Modern Style */}
-      <section id="about" className="py-20 lg:py-32 px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Background Elements */}
+      {/* About Us Section - Modern Style - Fully Responsive */}
+      <section id="about" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+        {/* Background Elements - Responsive */}
         <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-20 right-20 w-96 h-96 bg-[#FC5810]/5 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-20 w-80 h-80 bg-orange-300/10 rounded-full blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-10 right-10 sm:top-20 sm:right-20 w-48 h-48 sm:w-96 sm:h-96 bg-[#FC5810]/5 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-10 left-10 sm:bottom-20 sm:left-20 w-32 h-32 sm:w-80 sm:h-80 bg-orange-300/10 rounded-full blur-xl sm:blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Section Header - Centered */}
-          <div className="text-center mb-16 animate-on-scroll">
-            <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-4 py-2 rounded-full text-[#FC5810] font-semibold text-sm mb-6">
-              <div className="w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
+          {/* Section Header - Centered and Responsive */}
+          <div className="text-center mb-12 sm:mb-16 animate-on-scroll">
+            <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-3 sm:px-4 py-2 rounded-full text-[#FC5810] font-semibold text-xs sm:text-sm mb-4 sm:mb-6">
+              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
               Transforming Saudi Business Since 2008
             </div>
             
-            <h2 className="text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-6">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-4 sm:mb-6">
               We Are the <br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FC5810] to-orange-600">
                 Architects
               </span> of{' '}
               <span className="relative">
                 Modern
-                <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-orange-600 rounded-full"></div>
+                <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#FC5810] to-orange-600 rounded-full"></div>
               </span>
               <br/>Environments
             </h2>
             
-            <p className="text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0">
               Our mission is to empower our clients with <strong>sophisticated, reliable technology</strong> that simplifies complexity and provides uncompromising security.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
             
-            {/* Left Column - Modern Visual */}
+            {/* Left Column - Modern Visual - Responsive */}
             <div className="order-2 lg:order-1 animate-on-scroll">
               <div className="relative">
-                {/* Main Image Container */}
-                <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2">
+                {/* Main Image Container - Responsive */}
+                <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl sm:shadow-2xl hover:shadow-2xl sm:hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2">
                   <img 
                     src="/riyadh.jpg" 
                     alt="Modern Saudi Business Environment" 
-                    className="w-full h-72 lg:h-80 object-cover rounded-2xl shadow-lg"
+                    className="w-full h-48 sm:h-64 lg:h-72 xl:h-80 object-cover rounded-xl sm:rounded-2xl shadow-lg"
                   />
                   
-                  {/* Floating Stats Cards */}
-                  <div className="absolute -top-4 -right-4 bg-white rounded-2xl shadow-xl p-4 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}>
+                  {/* Floating Stats Cards - Responsive */}
+                  <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-2 sm:p-3 lg:p-4 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-[#FC5810] mb-1">99.9%</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#FC5810] mb-1">99.9%</div>
                       <div className="text-xs text-gray-600 font-semibold">Uptime</div>
                     </div>
                   </div>
                   
-                  <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-4 animate-bounce" style={{ animationDelay: '2s', animationDuration: '4s' }}>
+                  <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-2 sm:p-3 lg:p-4 animate-bounce" style={{ animationDelay: '2s', animationDuration: '4s' }}>
                     <div className="text-center">
-                      <div className="text-2xl font-bold text-[#FC5810] mb-1">24/7</div>
+                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#FC5810] mb-1">24/7</div>
                       <div className="text-xs text-gray-600 font-semibold">Support</div>
                     </div>
                   </div>
                   
-                  {/* Tech Icons Floating */}
-                  <div className="absolute top-4 left-4 bg-[#FC5810]/10 rounded-full p-3 animate-pulse">
-                    <div className="w-6 h-6 bg-[#FC5810] rounded-sm"></div>
+                  {/* Tech Icons Floating - Responsive */}
+                  <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-[#FC5810]/10 rounded-full p-2 sm:p-3 animate-pulse">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-[#FC5810] rounded-sm"></div>
                   </div>
                 </div>
                 
-                {/* Decorative Elements */}
-                <div className="absolute -z-10 top-8 left-8 w-full h-full bg-gradient-to-br from-[#FC5810]/20 to-transparent rounded-3xl"></div>
+                {/* Decorative Elements - Responsive */}
+                <div className="absolute -z-10 top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 w-full h-full bg-gradient-to-br from-[#FC5810]/20 to-transparent rounded-2xl sm:rounded-3xl"></div>
               </div>
             </div>
             
-            {/* Right Column - Content and Stats */}
+            {/* Right Column - Content and Stats - Responsive */}
             <div className="order-1 lg:order-2 animate-on-scroll">
-              {/* Mission Statement */}
-              <div className="mb-10">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Our Mission</h3>
-                <p className="text-lg text-gray-600 leading-relaxed mb-6">
+              {/* Mission Statement - Responsive */}
+              <div className="mb-8 sm:mb-10">
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Our Mission</h3>
+                <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-4 sm:mb-6">
                   We believe technology should work for you, seamlessly and intelligently, creating environments that are <em>safer, more efficient, and ready for the future</em>.
                 </p>
               </div>
               
-              {/* Modern Stats Cards */}
-              <div className="grid grid-cols-2 gap-4 mb-10">
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-3xl font-black text-[#FC5810] mb-2">15+</div>
-                  <div className="text-sm text-gray-600 font-medium">Years Experience</div>
-                  <div className="w-8 h-1 bg-[#FC5810] rounded-full mt-3"></div>
+              {/* Modern Stats Cards - Responsive */}
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-10">
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
+                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">15+</div>
+                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Years Experience</div>
+                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
                 </div>
                 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-3xl font-black text-[#FC5810] mb-2">500+</div>
-                  <div className="text-sm text-gray-600 font-medium">Systems Installed</div>
-                  <div className="w-8 h-1 bg-[#FC5810] rounded-full mt-3"></div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
+                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">500+</div>
+                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Systems Installed</div>
+                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
                 </div>
                 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-3xl font-black text-[#FC5810] mb-2">100+</div>
-                  <div className="text-sm text-gray-600 font-medium">Secure Buildings</div>
-                  <div className="w-8 h-1 bg-[#FC5810] rounded-full mt-3"></div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
+                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">100+</div>
+                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Secure Buildings</div>
+                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
                 </div>
                 
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-3xl font-black text-[#FC5810] mb-2">24/7</div>
-                  <div className="text-sm text-gray-600 font-medium">Support Available</div>
-                  <div className="w-8 h-1 bg-[#FC5810] rounded-full mt-3"></div>
+                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
+                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Support Available</div>
+                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
                 </div>
               </div>
 
-              {/* Modern CTA Button */}
-              <div className="flex gap-4">
-                <button className="bg-gradient-to-r from-[#FC5810] to-orange-600 text-white px-8 py-4 rounded-2xl font-semibold hover:from-orange-600 hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center gap-3 shadow-lg hover:shadow-xl">
+              {/* Modern CTA Button - Responsive */}
+              <div className="flex justify-center lg:justify-start">
+                <button className="bg-gradient-to-r from-[#FC5810] to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold hover:from-orange-600 hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center gap-2 sm:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
                   <span>Explore Our Solutions</span>
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight size={18} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
