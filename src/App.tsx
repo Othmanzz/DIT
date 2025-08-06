@@ -235,12 +235,133 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        {/* Additional Security Elements */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-4 md:left-20 w-48 h-48 md:w-72 md:h-72 bg-[#D9D9D9] rounded-full animate-pulse"></div>
           <div className="absolute bottom-40 right-4 md:right-20 w-64 h-20 md:w-96 md:h-32 bg-[#E63D1F] rounded-full opacity-20 animate-pulse delay-1000"></div>
         </div>
+
+        {/* Desktop Security Tech Visualization */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 hidden md:block">
+          <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
+            
+            {/* Central Security Hub */}
+            <div className="relative">
+              {/* Main Security Circle */}
+              <div className="w-40 h-40 rounded-full border-2 border-[#FC5810]/30 flex items-center justify-center animate-pulse bg-[#FC5810]/5">
+                <div className="w-20 h-20 rounded-full bg-[#FC5810]/20 flex items-center justify-center">
+                  <Zap size={32} className="text-[#FC5810]/60" />
+                </div>
+              </div>
+
+              {/* Orbiting Security Icons */}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+                <div className="relative w-full h-full">
+                  {/* Camera Icon */}
+                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <Zap size={16} className="text-[#FC5810]/40" />
+                  </div>
+                  {/* Access Control Icon */}
+                  <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <Users size={16} className="text-[#FC5810]/40" />
+                  </div>
+                  {/* Automation Icon */}
+                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <Award size={16} className="text-[#FC5810]/40" />
+                  </div>
+                  {/* Network Icon */}
+                  <div className="absolute top-1/2 -left-8 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <BarChart3 size={16} className="text-[#FC5810]/40" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Connection Lines */}
+              <div className="absolute inset-0">
+                <div className="absolute top-4 left-1/2 w-px h-8 bg-gradient-to-b from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
+                <div className="absolute bottom-4 left-1/2 w-px h-8 bg-gradient-to-t from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
+                <div className="absolute left-4 top-1/2 h-px w-8 bg-gradient-to-r from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
+                <div className="absolute right-4 top-1/2 h-px w-8 bg-gradient-to-l from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
+              </div>
+            </div>
+
+            {/* Floating Security Elements */}
+            <div className="absolute top-20 left-20 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}>
+              <div className="w-8 h-8 rounded-lg bg-[#FC5810]/10 flex items-center justify-center">
+                <Code size={14} className="text-[#FC5810]/50" />
+              </div>
+            </div>
+            
+            <div className="absolute top-32 right-20 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}>
+              <div className="w-6 h-6 rounded-full bg-[#FC5810]/15 flex items-center justify-center">
+                <div className="w-2 h-2 rounded-full bg-[#FC5810]/60"></div>
+              </div>
+            </div>
+            
+            <div className="absolute bottom-32 left-32 animate-bounce" style={{ animationDelay: '2s', animationDuration: '3s' }}>
+              <div className="w-10 h-10 rounded-full border border-[#FC5810]/20 flex items-center justify-center">
+                <Star size={12} className="text-[#FC5810]/40" />
+              </div>
+            </div>
+
+            <div className="absolute bottom-20 right-32 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3s' }}>
+              <div className="w-7 h-7 rounded-lg bg-[#FC5810]/8 flex items-center justify-center">
+                <Menu size={12} className="text-[#FC5810]/50" />
+              </div>
+            </div>
+
+            {/* Pulsing Rings */}
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-80 h-80 rounded-full border border-[#FC5810]/10 animate-ping" style={{ animationDuration: '4s' }}></div>
+            </div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-96 h-96 rounded-full border border-[#FC5810]/5 animate-ping" style={{ animationDuration: '6s', animationDelay: '1s' }}></div>
+            </div>
+          </div>
+        </div>
         
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative md:z-10 z-20">
+          {/* Mobile Security Animation - Above Title */}
+          <div className="md:hidden mb-8 flex justify-center animate-in">
+            <div className="relative">
+              {/* Main Security Circle */}
+              <div className="w-24 h-24 rounded-full border-2 border-[#FC5810]/30 flex items-center justify-center animate-pulse bg-[#FC5810]/5">
+                <div className="w-12 h-12 rounded-full bg-[#FC5810]/20 flex items-center justify-center">
+                  <Zap size={16} className="text-[#FC5810]/60" />
+                </div>
+              </div>
+
+              {/* Orbiting Security Icons */}
+              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
+                <div className="relative w-full h-full">
+                  {/* Camera Icon */}
+                  <div className="absolute -top-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <Zap size={12} className="text-[#FC5810]/40" />
+                  </div>
+                  {/* Access Control Icon */}
+                  <div className="absolute top-1/2 -right-6 transform -translate-y-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <Users size={12} className="text-[#FC5810]/40" />
+                  </div>
+                  {/* Automation Icon */}
+                  <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <Award size={12} className="text-[#FC5810]/40" />
+                  </div>
+                  {/* Network Icon */}
+                  <div className="absolute top-1/2 -left-6 transform -translate-y-1/2 w-8 h-8 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
+                    <BarChart3 size={12} className="text-[#FC5810]/40" />
+                  </div>
+                </div>
+              </div>
+
+              {/* Connection Lines */}
+              <div className="absolute inset-0">
+                <div className="absolute top-3 left-1/2 w-px h-6 bg-gradient-to-b from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
+                <div className="absolute bottom-3 left-1/2 w-px h-6 bg-gradient-to-t from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
+                <div className="absolute left-3 top-1/2 h-px w-6 bg-gradient-to-r from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
+                <div className="absolute right-3 top-1/2 h-px w-6 bg-gradient-to-l from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
+              </div>
+            </div>
+          </div>
+
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-in">
             Securing Your Future.<br />
             <span className="text-[#FC5810] relative">Automating Your World.
@@ -578,12 +699,133 @@ function App() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-black text-[#FFF9F3] py-16 px-6 lg:px-8 border-t border-[#D9D9D9]/20">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center gap-3 mb-4">
+      {/* Optimized Mobile Footer */}
+      <footer className="bg-gradient-to-br from-black via-gray-900 to-black text-[#FFF9F3] relative overflow-hidden">
+        {/* Subtle Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 right-0 w-24 h-24 border border-[#FC5810]/30 rounded-full"></div>
+          <div className="absolute bottom-0 left-0 w-32 h-32 bg-gradient-to-br from-[#FC5810]/5 to-transparent rounded-full"></div>
+        </div>
+
+        <div className="relative z-10">
+          {/* Desktop Layout */}
+          <div className="hidden lg:block">
+            <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
+              <div className="grid grid-cols-2 gap-20">
+                
+                {/* Left Column - Company Info */}
+                <div className="space-y-6">
+                  <div className="flex items-center gap-4">
+                    <img 
+                      src="/logo.svg" 
+                      alt="Logo" 
+                      className="h-10 w-auto brightness-0 invert"
+                    />
+                    <div className="text-xl font-bold text-[#FFF9F3]" dir="rtl" style={{ fontFamily: 'RH-Zak Bold, sans-serif' }}>
+                      دار الابتكار والتقنية
+                    </div>
+                  </div>
+
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#FC5810] mb-4">Securing Tomorrow, Today</h3>
+                    <p className="text-[#D9D9D9] leading-relaxed max-w-md">
+                      Leading the future of security and automation with intelligent solutions.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 text-[#D9D9D9]">
+                    <p>Technology Center, Innovation District, Dubai</p>
+                    <p>info@dit-solutions.com • 24/7 Support</p>
+                  </div>
+
+                  <button className="bg-gradient-to-r from-[#FC5810] to-[#E63D1F] text-[#FFF9F3] px-6 py-3 rounded-full font-semibold hover:from-[#E63D1F] hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center gap-2">
+                    Get Free Consultation <ArrowRight size={18} />
+                  </button>
+                </div>
+
+                {/* Right Column - Links */}
+                <div className="grid grid-cols-2 gap-12">
+                  <div>
+                    <h4 className="text-lg font-bold text-[#FC5810] mb-4 flex items-center gap-2">
+                      <Zap size={18} />
+                      Our Solutions
+                    </h4>
+                    <ul className="space-y-3 text-[#D9D9D9]">
+                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <Zap size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                        Smart Surveillance
+                      </a></li>
+                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <Users size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                        Access Control
+                      </a></li>
+                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <Award size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                        Smart Automation
+                      </a></li>
+                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <BarChart3 size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                        Network Infrastructure
+                      </a></li>
+                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <Code size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                        Integrated Systems
+                      </a></li>
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-bold text-[#FC5810] mb-4 flex items-center gap-2">
+                      <Menu size={18} />
+                      Quick Links
+                    </h4>
+                    <ul className="space-y-3 text-[#D9D9D9] mb-6">
+                      <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                        Home
+                      </a></li>
+                      <li><a href="#about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                        About Us
+                      </a></li>
+                      <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                        Our Work
+                      </a></li>
+                      <li><a href="#contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                        <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                        Contact
+                      </a></li>
+                    </ul>
+                    
+                    <div>
+                      <h5 className="text-sm font-semibold text-[#FC5810] mb-3 flex items-center gap-2">
+                        <Star size={14} />
+                        Connect
+                      </h5>
+                      <div className="flex gap-3">
+                        <a href="#" className="w-8 h-8 rounded-full bg-[#D9D9D9]/10 flex items-center justify-center hover:bg-[#FC5810] transition-all duration-300 group" title="LinkedIn">
+                          <Users size={14} className="text-[#D9D9D9] group-hover:text-white transition-colors duration-300" />
+                        </a>
+                        <a href="#" className="w-8 h-8 rounded-full bg-[#D9D9D9]/10 flex items-center justify-center hover:bg-[#FC5810] transition-all duration-300 group" title="Twitter">
+                          <Star size={14} className="text-[#D9D9D9] group-hover:text-white transition-colors duration-300" />
+                        </a>
+                        <a href="#" className="w-8 h-8 rounded-full bg-[#D9D9D9]/10 flex items-center justify-center hover:bg-[#FC5810] transition-all duration-300 group" title="Instagram">
+                          <Award size={14} className="text-[#D9D9D9] group-hover:text-white transition-colors duration-300" />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Optimized Layout */}
+          <div className="lg:hidden">
+            <div className="px-6 py-8">
+              {/* Logo & Company Name */}
+              <div className="flex items-center gap-3 mb-6 justify-center">
                 <img 
                   src="/logo.svg" 
                   alt="Logo" 
@@ -593,50 +835,97 @@ function App() {
                   دار الابتكار والتقنية
                 </div>
               </div>
-              <p className="text-[#D9D9D9] mb-4">
-                Technology Center, Building A<br />
-                Innovation District, Dubai<br />
-                info@dit-solutions.com
-              </p>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Navigation</h3>
-              <ul className="space-y-2 text-[#D9D9D9]">
-                <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300">Home</a></li>
-                <li><a href="#about" className="hover:text-[#FC5810] transition-colors duration-300">About</a></li>
-                <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300">Solutions</a></li>
-                <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300">Installations</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Social Media</h3>
-              <ul className="space-y-2 text-[#D9D9D9]">
-                <li><a href="#" className="hover:text-[#FC5810] transition-colors duration-300">Instagram</a></li>
-                <li><a href="#" className="hover:text-[#FC5810] transition-colors duration-300">Twitter</a></li>
-                <li><a href="#" className="hover:text-[#FC5810] transition-colors duration-300">LinkedIn</a></li>
-                <li><a href="#" className="hover:text-[#FC5810] transition-colors duration-300">Dribbble</a></li>
-              </ul>
-            </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Newsletter</h3>
-              <div className="flex flex-col gap-2">
-                <input 
-                  type="email" 
-                  placeholder="Your email" 
-                  className="px-4 py-2 rounded-full bg-[#D9D9D9]/20 text-[#FFF9F3] placeholder-[#D9D9D9] border border-[#D9D9D9]/30 focus:outline-none focus:border-[#FC5810] w-full"
-                />
-                <button className="bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-full font-semibold hover:bg-[#E63D1F] transition-all duration-300 w-full sm:w-auto">
-                  Subscribe
-                </button>
+
+              {/* Two Column Links for Mobile */}
+              <div className="grid grid-cols-2 gap-6 mb-6">
+                {/* Left Column - Solutions */}
+                <div>
+                  <h4 className="text-[#FC5810] font-bold mb-3 text-center flex items-center justify-center gap-1">
+                    <Zap size={16} />
+                    Solutions
+                  </h4>
+                  <ul className="space-y-2 text-[#D9D9D9] text-sm">
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <Zap size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                      Surveillance
+                    </a></li>
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <Users size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                      Access Control
+                    </a></li>
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <Award size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                      Automation
+                    </a></li>
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <BarChart3 size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                      Network
+                    </a></li>
+                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <Code size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810]" />
+                      Integration
+                    </a></li>
+                  </ul>
+                </div>
+
+                {/* Right Column - Navigation */}
+                <div>
+                  <h4 className="text-[#FC5810] font-bold mb-3 text-center flex items-center justify-center gap-1">
+                    <Menu size={16} />
+                    Links
+                  </h4>
+                  <ul className="space-y-2 text-[#D9D9D9] text-sm">
+                    <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                      Home
+                    </a></li>
+                    <li><a href="#about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                      About
+                    </a></li>
+                    <li><a href="#portfolio" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                      Portfolio
+                    </a></li>
+                    <li><a href="#contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                      <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300"></div>
+                      Contact
+                    </a></li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Contact Info */}
+              <div className="text-center text-[#D9D9D9] text-sm mb-4">
+                <p>Dubai • info@dit-solutions.com</p>
+              </div>
+
+              {/* Social Links */}
+              <div className="flex justify-center gap-4 mb-4">
+                <a href="#" className="w-8 h-8 rounded-full bg-[#D9D9D9]/10 flex items-center justify-center hover:bg-[#FC5810] transition-all duration-300 group" title="LinkedIn">
+                  <Users size={14} className="text-[#D9D9D9] group-hover:text-white transition-colors duration-300" />
+                </a>
+                <a href="#" className="w-8 h-8 rounded-full bg-[#D9D9D9]/10 flex items-center justify-center hover:bg-[#FC5810] transition-all duration-300 group" title="Twitter">
+                  <Star size={14} className="text-[#D9D9D9] group-hover:text-white transition-colors duration-300" />
+                </a>
+                <a href="#" className="w-8 h-8 rounded-full bg-[#D9D9D9]/10 flex items-center justify-center hover:bg-[#FC5810] transition-all duration-300 group" title="Instagram">
+                  <Award size={14} className="text-[#D9D9D9] group-hover:text-white transition-colors duration-300" />
+                </a>
               </div>
             </div>
           </div>
-          
-          <div className="border-t border-[#D9D9D9]/20 mt-12 pt-8 text-center text-[#D9D9D9]">
-            <p className="text-sm sm:text-base">&copy; 2025 دار الابتكار والتقنية. All rights reserved.</p>
+
+          {/* Bottom Bar */}
+          <div className="border-t border-[#D9D9D9]/10 bg-black/50">
+            <div className="max-w-7xl mx-auto px-6 py-4">
+              <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-[#D9D9D9] text-xs">
+                <p>&copy; 2025 دار الابتكار والتقنية. All rights reserved.</p>
+                <div className="flex gap-4">
+                  <a href="#" className="hover:text-[#FC5810] transition-colors duration-300">Privacy</a>
+                  <a href="#" className="hover:text-[#FC5810] transition-colors duration-300">Terms</a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </footer>
