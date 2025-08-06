@@ -235,89 +235,7 @@ function App() {
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
-        {/* Additional Security Elements */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute bottom-40 right-4 md:right-20 w-64 h-20 md:w-96 md:h-32 bg-[#E63D1F] rounded-full opacity-20 animate-pulse delay-1000"></div>
-        </div>
 
-        {/* Desktop Security Tech Visualization */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 hidden md:block">
-          <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
-            
-            {/* Central Security Hub */}
-            <div className="relative">
-              {/* Main Security Circle */}
-              <div className="w-40 h-40 rounded-full border-2 border-[#FC5810]/30 flex items-center justify-center animate-pulse bg-[#FC5810]/5">
-                <div className="w-20 h-20 rounded-full bg-[#FC5810]/20 flex items-center justify-center">
-                  <Zap size={32} className="text-[#FC5810]/60" />
-                </div>
-              </div>
-
-              {/* Orbiting Security Icons */}
-              <div className="absolute inset-0 animate-spin" style={{ animationDuration: '20s' }}>
-                <div className="relative w-full h-full">
-                  {/* Camera Icon */}
-                  <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <Zap size={16} className="text-[#FC5810]/40" />
-                  </div>
-                  {/* Access Control Icon */}
-                  <div className="absolute top-1/2 -right-8 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <Users size={16} className="text-[#FC5810]/40" />
-                  </div>
-                  {/* Automation Icon */}
-                  <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <Award size={16} className="text-[#FC5810]/40" />
-                  </div>
-                  {/* Network Icon */}
-                  <div className="absolute top-1/2 -left-8 transform -translate-y-1/2 w-12 h-12 rounded-full bg-[#FC5810]/10 flex items-center justify-center">
-                    <BarChart3 size={16} className="text-[#FC5810]/40" />
-                  </div>
-                </div>
-              </div>
-
-              {/* Connection Lines */}
-              <div className="absolute inset-0">
-                <div className="absolute top-4 left-1/2 w-px h-8 bg-gradient-to-b from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
-                <div className="absolute bottom-4 left-1/2 w-px h-8 bg-gradient-to-t from-[#FC5810]/30 to-transparent transform -translate-x-1/2"></div>
-                <div className="absolute left-4 top-1/2 h-px w-8 bg-gradient-to-r from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
-                <div className="absolute right-4 top-1/2 h-px w-8 bg-gradient-to-l from-[#FC5810]/30 to-transparent transform -translate-y-1/2"></div>
-              </div>
-            </div>
-
-            {/* Floating Security Elements */}
-            <div className="absolute top-20 left-20 animate-bounce" style={{ animationDelay: '0s', animationDuration: '3s' }}>
-              <div className="w-8 h-8 rounded-lg bg-[#FC5810]/10 flex items-center justify-center">
-                <Code size={14} className="text-[#FC5810]/50" />
-              </div>
-            </div>
-            
-            <div className="absolute top-32 right-20 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}>
-              <div className="w-6 h-6 rounded-full bg-[#FC5810]/15 flex items-center justify-center">
-                <div className="w-2 h-2 rounded-full bg-[#FC5810]/60"></div>
-              </div>
-            </div>
-            
-            <div className="absolute bottom-32 left-32 animate-bounce" style={{ animationDelay: '2s', animationDuration: '3s' }}>
-              <div className="w-10 h-10 rounded-full border border-[#FC5810]/20 flex items-center justify-center">
-                <Star size={12} className="text-[#FC5810]/40" />
-              </div>
-            </div>
-
-            <div className="absolute bottom-20 right-32 animate-bounce" style={{ animationDelay: '0.5s', animationDuration: '3s' }}>
-              <div className="w-7 h-7 rounded-lg bg-[#FC5810]/8 flex items-center justify-center">
-                <Menu size={12} className="text-[#FC5810]/50" />
-              </div>
-            </div>
-
-            {/* Pulsing Rings */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-80 h-80 rounded-full border border-[#FC5810]/10 animate-ping" style={{ animationDuration: '4s' }}></div>
-            </div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-96 h-96 rounded-full border border-[#FC5810]/5 animate-ping" style={{ animationDuration: '6s', animationDelay: '1s' }}></div>
-            </div>
-          </div>
-        </div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative md:z-10 z-20">
           {/* Mobile Security Animation - Above Title */}
@@ -363,9 +281,14 @@ function App() {
           </div>
 
           <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-in">
-            Securing Your Future.<br />
-            <span className="text-[#FC5810] relative">Automating Your World.
-              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-[#FC5810] opacity-30"></div>
+            <span className="inline-block transform hover:rotate-3 transition-transform duration-500">Securing</span>{' '}
+            <span className="inline-block transform hover:scale-110 transition-transform duration-300">Your</span>{' '}
+            <span className="inline-block transform hover:-rotate-2 transition-transform duration-500">Future.</span><br />
+            <span className="text-[#FC5810] relative inline-block">
+              <span className="inline-block transform hover:skew-x-6 transition-transform duration-400">Automating</span>{' '}
+              <span className="inline-block transform hover:scale-125 transition-transform duration-300">Your</span>{' '}
+              <span className="inline-block transform hover:rotate-6 transition-transform duration-500">World.</span>
+              <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FC5810] to-transparent transform scale-x-0 hover:scale-x-100 transition-transform duration-700 origin-center"></div>
             </span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 md:mb-12 animate-in px-4" style={{ animationDelay: '0.2s' }}>
@@ -700,7 +623,7 @@ function App() {
       </section>
 
       {/* Optimized Mobile Footer */}
-      <footer className="bg-gradient-to-br from-black via-gray-900 to-black text-[#FFF9F3] relative overflow-hidden">
+      <footer className="bg-black text-[#FFF9F3] relative overflow-hidden">
         {/* Subtle Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-24 h-24 border border-[#FC5810]/30 rounded-full"></div>
