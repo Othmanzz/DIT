@@ -7,6 +7,9 @@ function App() {
   const [isAutoPlay, setIsAutoPlay] = useState(true);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [currentService, setCurrentService] = useState(0);
+  const [serviceTouchStart, setServiceTouchStart] = useState(0);
+  const [serviceTouchEnd, setServiceTouchEnd] = useState(0);
 
   const projects = [
     {
@@ -23,6 +26,49 @@ function App() {
       title: "Luxury Residential",
       category: "Home Automation & Security",
       image: "https://images.pexels.com/photos/1643383/pexels-photo-1643383.jpeg?auto=compress&cs=tinysrgb&w=800"
+    }
+  ];
+
+  const services = [
+    {
+      icon: Zap,
+      title: "Smart Surveillance",
+      description: "See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.",
+      bgColor: "bg-black",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FC5810]"
+    },
+    {
+      icon: Users,
+      title: "Total Access Control",
+      description: "Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.",
+      bgColor: "bg-[#FC5810]",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FFF9F3]"
+    },
+    {
+      icon: Award,
+      title: "Seamless Automation",
+      description: "Welcome to convenience. Automatic doors, gates, and barriers for effortless access.",
+      bgColor: "bg-[#E63D1F]",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FFF9F3]"
+    },
+    {
+      icon: BarChart3,
+      title: "Network Infrastructure",
+      description: "Robust cabling and network solutions for seamless connectivity.",
+      bgColor: "bg-[#E63D1F]",
+      textColor: "text-[#FFF9F3]",
+      iconColor: "text-[#FFF9F3]"
+    },
+    {
+      icon: Code,
+      title: "Integrated Systems",
+      description: "A single, unified command center. We connect your security, access, and automation systems into one intelligent platform.",
+      bgColor: "bg-[#D9D9D9]",
+      textColor: "text-black",
+      iconColor: "text-[#FC5810]"
     }
   ];
 
@@ -60,6 +106,30 @@ function App() {
       prevProject();
     }
   };
+
+  // Service carousel touch handlers
+  const handleServiceTouchStart = (e: React.TouchEvent) => {
+    setServiceTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleServiceTouchMove = (e: React.TouchEvent) => {
+    setServiceTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleServiceTouchEnd = () => {
+    if (!serviceTouchStart || !serviceTouchEnd) return;
+    
+    const distance = serviceTouchStart - serviceTouchEnd;
+    const isLeftSwipe = distance > 50;
+    const isRightSwipe = distance < -50;
+
+    if (isLeftSwipe && currentService < services.length - 2) {
+      nextService();
+    }
+    if (isRightSwipe && currentService > 0) {
+      prevService();
+    }
+  };
   const nextProject = () => {
     setIsAutoPlay(false);
     setCurrentProject((prev) => (prev + 1) % projects.length);
@@ -68,6 +138,14 @@ function App() {
   const prevProject = () => {
     setIsAutoPlay(false);
     setCurrentProject((prev) => (prev - 1 + projects.length) % projects.length);
+  };
+
+  const nextService = () => {
+    setCurrentService((prev) => Math.min(prev + 1, services.length - 2));
+  };
+
+  const prevService = () => {
+    setCurrentService((prev) => Math.max(prev - 1, 0));
   };
 
   useEffect(() => {
@@ -153,16 +231,16 @@ function App() {
         </div>
         
         <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center relative z-10">
-          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-on-scroll">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-6 animate-in">
             Securing Your Future.<br />
             <span className="text-[#FC5810] relative">Automating Your World.
               <div className="absolute -bottom-2 left-0 right-0 h-1 bg-[#FC5810] opacity-30"></div>
             </span>
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 md:mb-12 animate-on-scroll px-4">
+          <p className="text-lg sm:text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-8 md:mb-12 animate-in px-4" style={{ animationDelay: '0.2s' }}>
             We design and deploy state-of-the-art technology solutions, from intelligent surveillance to seamless automation, empowering you to take full control of your environment.
           </p>
-          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-on-scroll">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center animate-in" style={{ animationDelay: '0.4s' }}>
             <button className="bg-[#FC5810] text-[#FFF9F3] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#E63D1F] transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
               Design My Solution <ArrowRight size={20} />
             </button>
@@ -183,48 +261,114 @@ function App() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-on-scroll">
+          {/* Desktop Grid Layout */}
+          <div className="hidden md:grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 animate-on-scroll">
             {/* Large service card */}
-            <div className="sm:col-span-2 md:col-span-2 lg:col-span-2 bg-black text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Zap size={36} className="sm:w-12 sm:h-12 mb-4 md:mb-6 text-[#FC5810]" />
-              <h3 className="text-2xl sm:text-3xl font-bold mb-3 md:mb-4">Smart Surveillance</h3>
-              <p className="text-base sm:text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="col-span-2 lg:col-span-2 bg-black text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
+              <Zap size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6 text-[#FC5810]" />
+              <h3 className="text-2xl md:text-3xl font-bold mb-3 md:mb-4">Smart Surveillance</h3>
+              <p className="text-base md:text-lg opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                 See everything, everywhere. Our intelligent CCTV systems offer crystal-clear imaging and AI-powered analytics for proactive security.
               </p>
             </div>
 
             {/* Medium service card */}
-            <div className="sm:col-span-2 md:col-span-1 lg:col-span-2 bg-[#FC5810] text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Users size={36} className="sm:w-12 sm:h-12 mb-4 md:mb-6" />
-              <h3 className="text-xl sm:text-2xl font-bold mb-3 md:mb-4">Total Access Control</h3>
-              <p className="text-sm sm:text-base opacity-90 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="col-span-2 lg:col-span-2 bg-[#FC5810] text-[#FFF9F3] p-6 md:p-8 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
+              <Users size={36} className="w-10 h-10 md:w-12 md:h-12 mb-4 md:mb-6" />
+              <h3 className="text-xl md:text-2xl font-bold mb-3 md:mb-4">Total Access Control</h3>
+              <p className="text-sm md:text-base opacity-90 group-hover:opacity-100 transition-opacity duration-300">
                 Your space, your rules. From keycards to biometrics, our solutions ensure only the right people get in.
               </p>
             </div>
 
             {/* Small service cards */}
-            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 sm:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Award size={28} className="sm:w-9 sm:h-9 mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Seamless Automation</h3>
+            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
+              <Award size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4" />
+              <h3 className="text-lg md:text-xl font-bold mb-2">Seamless Automation</h3>
               <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                 Welcome to convenience. Automatic doors, gates, and barriers for effortless access.
               </p>
             </div>
 
-            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 sm:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <BarChart3 size={28} className="sm:w-9 sm:h-9 mb-3 sm:mb-4" />
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Network Infrastructure</h3>
+            <div className="bg-[#E63D1F] text-[#FFF9F3] p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
+              <BarChart3 size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4" />
+              <h3 className="text-lg md:text-xl font-bold mb-2">Network Infrastructure</h3>
               <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                 Robust cabling and network solutions for seamless connectivity.
               </p>
             </div>
 
-            <div className="sm:col-span-2 md:col-span-2 bg-[#D9D9D9] text-black p-4 sm:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
-              <Code size={28} className="sm:w-9 sm:h-9 mb-3 sm:mb-4 text-[#FC5810]" />
-              <h3 className="text-lg sm:text-xl font-bold mb-2">Integrated Systems</h3>
+            <div className="col-span-2 bg-[#D9D9D9] text-black p-4 md:p-6 rounded-2xl hover:scale-105 transition-all duration-300 group cursor-pointer">
+              <Code size={28} className="w-8 h-8 md:w-9 md:h-9 mb-3 md:mb-4 text-[#FC5810]" />
+              <h3 className="text-lg md:text-xl font-bold mb-2">Integrated Systems</h3>
               <p className="text-sm opacity-80 group-hover:opacity-100 transition-opacity duration-300">
                 A single, unified command center. We connect your security, access, and automation systems into one intelligent platform.
               </p>
+            </div>
+          </div>
+
+          {/* Mobile Carousel Layout - 1.5 columns */}
+          <div className="md:hidden animate-on-scroll">
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out pl-6 pr-2"
+                style={{ transform: `translateX(calc(-${currentService} * (75vw + 1rem)))` }}
+                onTouchStart={handleServiceTouchStart}
+                onTouchMove={handleServiceTouchMove}
+                onTouchEnd={handleServiceTouchEnd}
+              >
+                {services.map((service, index) => {
+                  const IconComponent = service.icon;
+                  return (
+                    <div key={index} className={`w-[75vw] flex-shrink-0 mr-4 ${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl`}>
+                      <IconComponent size={36} className={`w-10 h-10 mb-6 ${service.iconColor}`} />
+                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
+                      <p className="text-base opacity-90 leading-relaxed">{service.description}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            
+            {/* Mobile carousel indicators */}
+            <div className="flex justify-center mt-6 gap-1.5">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentService(index)}
+                  className={`w-1 h-1 rounded-full transition-all duration-300 ${
+                    index === currentService 
+                      ? 'bg-[#FC5810] scale-110' 
+                      : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
+                  }`}
+                />
+              ))}
+            </div>
+            
+            {/* Mobile navigation buttons */}
+            <div className="flex justify-center mt-6 gap-4">
+              <button 
+                onClick={prevService}
+                disabled={currentService === 0}
+                className={`p-3 rounded-full transition-all duration-300 transform hover:scale-110 ${
+                  currentService === 0 
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                    : 'bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3]'
+                }`}
+              >
+                <ChevronLeft size={20} />
+              </button>
+              <button 
+                onClick={nextService}
+                disabled={currentService === services.length - 2}
+                className={`p-3 rounded-full transition-all duration-300 transform hover:scale-110 ${
+                  currentService === services.length - 2 
+                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                    : 'bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3]'
+                }`}
+              >
+                <ChevronRight size={20} />
+              </button>
             </div>
           </div>
         </div>
@@ -373,14 +517,14 @@ function App() {
             </div>
             
             {/* Mobile carousel indicators */}
-            <div className="flex justify-center mt-6 gap-2">
+            <div className="flex justify-center mt-6 gap-1.5">
               {projects.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentProject(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  className={`w-1 h-1 rounded-full transition-all duration-300 ${
                     index === currentProject 
-                      ? 'bg-[#FC5810] scale-125' 
+                      ? 'bg-[#FC5810] scale-110' 
                       : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
                   }`}
                 />

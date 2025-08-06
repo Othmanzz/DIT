@@ -41,6 +41,22 @@ html {
   transform: translateY(0);
 }
 
+/* Hero section immediate animation */
+.animate-in {
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -108,6 +124,23 @@ button:focus, a:focus {
     scroll-snap-align: start;
   }
   
+  /* Services carousel specific styles */
+  .services-carousel {
+    touch-action: pan-y pinch-zoom;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  
+  .services-carousel::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .service-slide {
+    scroll-snap-align: center;
+    transition: all 0.3s ease;
+  }
+  
   /* Improved touch targets for mobile */
   button {
     min-height: 44px;
@@ -135,6 +168,18 @@ button:focus, a:focus {
   .mobile-touch-target {
     min-height: 48px;
     min-width: 48px;
+  }
+  
+  /* Services carousel mobile improvements */
+  .services-carousel-mobile {
+    will-change: transform;
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+  
+  .service-card-mobile {
+    transform: translateZ(0);
+    will-change: transform;
   }
   
   /* Better button spacing */
@@ -256,8 +301,8 @@ p {
 }
 
 .carousel-indicator {
-  width: 12px;
-  height: 12px;
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
@@ -265,7 +310,7 @@ p {
 
 .carousel-indicator.active {
   background-color: #FC5810;
-  transform: scale(1.25);
+  transform: scale(1.2);
 }
 
 .carousel-indicator:not(.active) {
