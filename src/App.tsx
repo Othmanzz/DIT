@@ -178,7 +178,7 @@ function App() {
   return (
     <div className="min-h-screen bg-[#FFF9F3] text-black">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FFF9F3]/95 backdrop-blur-sm border-b border-[#D9D9D9]/20">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FFF9F3]/95 backdrop-blur-sm border-b border-[#D9D9D9]/20 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center gap-3">
@@ -193,12 +193,27 @@ function App() {
             </div>
             
             <div className="hidden md:block">
-              <div className="ml-10 flex items-baseline space-x-8">
-                <a href="#home" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Home</a>
-                <a href="#about" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">About</a>
-                <a href="#services" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Solutions</a>
-                <a href="#portfolio" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Installations</a>
-                <a href="#contact" className="text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll">Contact</a>
+              <div className="ml-10 flex items-center space-x-8">
+                <a href="#home" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                  <span>Home</span>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                <a href="#about" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                  <span>About</span>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                <a href="#services" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                  <span>Solutions</span>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                <a href="#portfolio" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                  <span>Installations</span>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
+                </a>
+                <a href="#contact" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                  <span>Contact</span>
+                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
+                </a>
               </div>
             </div>
 
