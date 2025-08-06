@@ -355,33 +355,6 @@ function App() {
               ))}
             </div>
             
-            {/* Mobile navigation buttons - positioned to the sides */}
-            <div className="relative">
-              <button 
-                onClick={prevService}
-                disabled={currentService === 0}
-                className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg ${
-                  currentService === 0 
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                    : 'bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700'
-                }`}
-                style={{ marginTop: '-140px' }}
-              >
-                <ChevronLeft size={18} />
-              </button>
-              <button 
-                onClick={nextService}
-                disabled={currentService === services.length - 1}
-                className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg ${
-                  currentService === services.length - 1 
-                    ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                    : 'bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700'
-                }`}
-                style={{ marginTop: '-140px' }}
-              >
-                <ChevronRight size={18} />
-              </button>
-            </div>
           </div>
         </div>
       </section>
