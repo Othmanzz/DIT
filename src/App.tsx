@@ -129,7 +129,7 @@ function App() {
     const isLeftSwipe = distance > 30;
     const isRightSwipe = distance < -30;
 
-    if (isLeftSwipe && currentService < services.length - 2) {
+    if (isLeftSwipe && currentService < services.length - 1) {
       nextService();
     }
     if (isRightSwipe && currentService > 0) {
@@ -151,7 +151,7 @@ function App() {
   };
 
   const nextService = () => {
-    setCurrentService((prev) => Math.min(prev + 1, services.length - 2));
+    setCurrentService((prev) => Math.min(prev + 1, services.length - 1));
   };
 
   const prevService = () => {
@@ -355,29 +355,31 @@ function App() {
               ))}
             </div>
             
-            {/* Mobile navigation buttons */}
-            <div className="flex justify-center mt-6 gap-4">
+            {/* Mobile navigation buttons - positioned to the sides */}
+            <div className="relative">
               <button 
                 onClick={prevService}
                 disabled={currentService === 0}
-                className={`p-3 rounded-full transition-all duration-300 transform hover:scale-110 ${
+                className={`absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg ${
                   currentService === 0 
                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                    : 'bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3]'
+                    : 'bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700'
                 }`}
+                style={{ marginTop: '-140px' }}
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} />
               </button>
               <button 
                 onClick={nextService}
-                disabled={currentService === services.length - 2}
-                className={`p-3 rounded-full transition-all duration-300 transform hover:scale-110 ${
-                  currentService === services.length - 2 
+                disabled={currentService === services.length - 1}
+                className={`absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full transition-all duration-300 transform hover:scale-110 shadow-lg ${
+                  currentService === services.length - 1 
                     ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
-                    : 'bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3]'
+                    : 'bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700'
                 }`}
+                style={{ marginTop: '-140px' }}
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
               </button>
             </div>
           </div>
@@ -541,25 +543,25 @@ function App() {
               ))}
             </div>
             
-            {/* Mobile navigation buttons */}
+            {/* Mobile navigation buttons - centered with play/pause */}
             <div className="flex justify-center mt-6 gap-4">
               <button 
                 onClick={prevProject}
-                className="p-3 rounded-full bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3] transition-all duration-300 transform hover:scale-110"
+                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-300 transform hover:scale-110 shadow-lg"
               >
-                <ChevronLeft size={20} />
+                <ChevronLeft size={18} />
               </button>
               <button 
                 onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className="p-3 rounded-full bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3] transition-all duration-300 transform hover:scale-110"
+                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-300 transform hover:scale-110 shadow-lg"
               >
-                {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
+                {isAutoPlay ? <Pause size={16} /> : <Play size={16} />}
               </button>
               <button 
                 onClick={nextProject}
-                className="p-3 rounded-full bg-[#D9D9D9] hover:bg-[#FC5810] hover:text-[#FFF9F3] transition-all duration-300 transform hover:scale-110"
+                className="p-2 rounded-full bg-white/90 hover:bg-[#FC5810] hover:text-white text-gray-700 transition-all duration-300 transform hover:scale-110 shadow-lg"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
               </button>
             </div>
           </div>
