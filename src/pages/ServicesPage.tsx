@@ -53,8 +53,8 @@ const ServicesPage = () => {
       title: "IT Solutions & Management",
       description: "🔧 Your IT guardian angel! We monitor, optimize & protect your systems 24/7 so you can focus on what you do best - growing your business.",
       mobileDescription: "🔧 24/7 IT monitoring & optimization",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/it-solutions"
     },
@@ -63,8 +63,8 @@ const ServicesPage = () => {
       title: "Business Apps Solutions",
       description: "🚀 Transform chaos into clarity! Custom apps that make your team work smarter, not harder. Say goodbye to spreadsheet nightmares!",
       mobileDescription: "🚀 Custom apps that work smarter",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/business-apps"
     },
@@ -73,8 +73,8 @@ const ServicesPage = () => {
       title: "Software Development",
       description: "💻 Got an app idea? We bring it to life! From concept to launch, we code your vision into reality with the latest tech magic.",
       mobileDescription: "💻 From idea to app - we code it all",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/software-development"
     },
@@ -83,8 +83,8 @@ const ServicesPage = () => {
       title: "Cybersecurity Solutions",
       description: "🛡️ Your digital fortress awaits! Advanced security that stops hackers in their tracks while keeping your data bulletproof.",
       mobileDescription: "🛡️ Advanced security & threat protection",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/cybersecurity"
     },
@@ -93,8 +93,8 @@ const ServicesPage = () => {
       title: "Cloud & DevOps Solutions",
       description: "☁️ Rocket fuel for your tech! Lightning-fast deployments and rock-solid cloud infrastructure that scales with your dreams.",
       mobileDescription: "☁️ Lightning-fast cloud deployments",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/cloud-devops"
     },
@@ -103,8 +103,8 @@ const ServicesPage = () => {
       title: "Procurement Solutions",
       description: "📦 Smart buying made simple! AI-powered procurement that finds the best deals and keeps your supply chain flowing smoothly.",
       mobileDescription: "📦 Smart procurement & cost optimization",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/procurement"
     },
@@ -113,8 +113,8 @@ const ServicesPage = () => {
       title: "EduIT Solutions",
       description: "🎓 Education revolution starts here! Interactive platforms that make learning fun and management a breeze for modern schools.",
       mobileDescription: "🎓 Interactive learning platforms",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/eduit"
     },
@@ -123,8 +123,8 @@ const ServicesPage = () => {
       title: "IT Projects Solutions",
       description: "⚡ Project success guaranteed! Expert managers who turn tech chaos into smooth launches - on time, every time.",
       mobileDescription: "⚡ Expert IT project management",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/it-projects"
     }
@@ -156,21 +156,23 @@ const ServicesPage = () => {
         <div className="max-w-7xl mx-auto">
           
           {/* Desktop Grid Layout */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <Link 
                   key={index} 
                   to={service.link}
-                  className={`${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group block"
                 >
-                  <IconComponent size={36} className={`mb-6 ${service.iconColor}`} />
-                  <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-sm opacity-90 leading-relaxed mb-4">{service.description}</p>
-                  <div className="flex items-center gap-2 mt-auto opacity-80">
+                  <div className="bg-[#FC5810]/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-8 h-8 text-[#FC5810]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">{service.description}</p>
+                  <div className="flex items-center gap-2 text-[#FC5810] group-hover:gap-3 transition-all duration-300">
                     <span className="text-sm font-medium">Learn More</span>
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </Link>
               );
@@ -193,11 +195,13 @@ const ServicesPage = () => {
                     <Link 
                       key={index} 
                       to={service.link} 
-                      className={`w-[75vw] flex-shrink-0 mr-4 ${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl hover:opacity-90 transition-opacity`}
+                      className="w-[75vw] flex-shrink-0 mr-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group min-h-[280px] flex flex-col justify-center"
                     >
-                      <IconComponent size={36} className={`w-10 h-10 mb-6 ${service.iconColor}`} />
-                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                      <p className="text-base opacity-90 leading-relaxed">{service.mobileDescription}</p>
+                      <div className="bg-[#FC5810]/10 rounded-full w-14 h-14 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-7 h-7 text-[#FC5810]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{service.mobileDescription}</p>
                     </Link>
                   );
                 })}

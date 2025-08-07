@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Star, Users, Award, Zap, Palette, Code, Megaphone, BarChart3, Quote, Calendar, Clock } from 'lucide-react';
+import { ArrowRight, ChevronLeft, ChevronRight, Star, Users, Award, Zap, Palette, Code, Megaphone, BarChart3, Quote, Calendar, Clock, Menu } from 'lucide-react';
+import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 
 // Animated Text Component for changing words
@@ -59,7 +60,6 @@ const AnimatedDescription = () => {
 };
 
 function App() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [currentService, setCurrentService] = useState(0);
   const [serviceTouchStart, setServiceTouchStart] = useState(0);
   const [serviceTouchEnd, setServiceTouchEnd] = useState(0);
@@ -113,8 +113,8 @@ function App() {
       icon: Zap,
       title: "IT Solutions & Management",
       description: "🔧 Your IT guardian angel! We monitor, optimize & protect your systems 24/7 so you can focus on what you do best - growing your business.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/it-solutions"
     },
@@ -122,8 +122,8 @@ function App() {
       icon: Users,
       title: "Business Apps Solutions",
       description: "🚀 Transform chaos into clarity! Custom apps that make your team work smarter, not harder. Say goodbye to spreadsheet nightmares!",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/business-apps"
     },
@@ -131,8 +131,8 @@ function App() {
       icon: Code,
       title: "Software Development",
       description: "💻 Got an app idea? We bring it to life! From concept to launch, we code your vision into reality with the latest tech magic.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/software-development"
     },
@@ -140,8 +140,8 @@ function App() {
       icon: Award,
       title: "Cybersecurity Solutions",
       description: "🛡️ Your digital fortress awaits! Advanced security that stops hackers in their tracks while keeping your data bulletproof.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/cybersecurity"
     },
@@ -149,8 +149,8 @@ function App() {
       icon: BarChart3,
       title: "Cloud & DevOps Solutions",
       description: "☁️ Rocket fuel for your tech! Lightning-fast deployments and rock-solid cloud infrastructure that scales with your dreams.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/cloud-devops"
     },
@@ -158,8 +158,8 @@ function App() {
       icon: Palette,
       title: "Procurement Solutions",
       description: "📦 Smart buying made simple! AI-powered procurement that finds the best deals and keeps your supply chain flowing smoothly.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/procurement"
     },
@@ -167,8 +167,8 @@ function App() {
       icon: Megaphone,
       title: "EduIT Solutions",
       description: "🎓 Education revolution starts here! Interactive platforms that make learning fun and management a breeze for modern schools.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/eduit"
     },
@@ -176,8 +176,8 @@ function App() {
       icon: BarChart3,
       title: "IT Projects Solutions",
       description: "⚡ Project success guaranteed! Expert managers who turn tech chaos into smooth launches - on time, every time.",
-      bgColor: "bg-black",
-      textColor: "text-[#FFF9F3]",
+      bgColor: "bg-white",
+      textColor: "text-gray-900",
       iconColor: "text-[#FC5810]",
       link: "/services/it-projects"
     }
@@ -302,76 +302,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#FFF9F3] text-black">
-      {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FFF9F3]/95 backdrop-blur-sm border-b border-[#D9D9D9]/20 shadow-sm">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 flex flex-col items-center">
-              <img 
-                src="/orange.svg" 
-                alt="Logo" 
-                className="h-8 w-auto"
-              />
-              <div className="text-sm font-bold text-black mt-1 text-center" dir="rtl" style={{ fontFamily: 'RH-Zak Bold, sans-serif' }}>
-                دار الابتكار والتقنية
-              </div>
-            </div>
-            
-            <div className="hidden md:block">
-              <div className="ml-10 flex items-center space-x-8">
-                <a href="#home" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
-                  <span>Home</span>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-                </a>
-                <Link to="/about" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
-                  <span>About</span>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-                </Link>
-                <Link to="/services" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
-                  <span>Solutions</span>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-                </Link>
-                <a href="/blogs" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
-                  <span>Blogs</span>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-                </a>
-                <a href="/contact" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
-                  <span>Contact</span>
-                  <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-                </a>
-              </div>
-            </div>
-
-            <div className="hidden md:block">
-              <button className="bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-2xl font-semibold hover:bg-[#E63D1F] transition-all duration-300 transform hover:scale-105">
-                Get in Touch
-              </button>
-            </div>
-
-            <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-black hover:text-[#FC5810] transition-colors duration-300">
-                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-[#FFF9F3] border-t border-[#D9D9D9]/20">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-              <a href="#home" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Home</a>
-              <Link to="/about" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>About</Link>
-                              <Link to="/services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
-              <a href="/blogs" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Blogs</a>
-              <a href="/contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Contact</a>
-              <button className="w-full mt-4 bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-2xl font-semibold hover:bg-[#E63D1F] transition-all duration-300">
-                Get in Touch
-              </button>
-            </div>
-          </div>
-        )}
-      </nav>
+      <Header />
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
@@ -717,10 +648,61 @@ function App() {
             <div className="order-1 lg:order-2 animate-on-scroll">
               {/* Mission Statement - Responsive */}
               <div className="mb-8 sm:mb-10">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Our Mission</h3>
-                <p className="text-base sm:text-lg text-gray-600 leading-relaxed mb-4 sm:mb-6">
-                  We believe technology should work for you, seamlessly and intelligently, creating environments that are <em>safer, more efficient, and ready for the future</em>.
-                </p>
+                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
+                  <span className="relative">
+                    Our Mission
+                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#FC5810] to-orange-400 rounded-full animate-pulse"></div>
+                  </span>
+                </h3>
+                <div className="relative">
+                  {/* Animated Mission Text */}
+                  <div className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6 space-y-2">
+                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.1s' }}>We</span>
+                      <span className="inline-block animate-fade-in-up font-semibold text-[#FC5810]" style={{ animationDelay: '0.2s' }}>empower</span>
+                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.3s' }}>Saudi businesses</span>
+                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.4s' }}>to</span>
+                      <span className="inline-block animate-fade-in-up font-semibold text-[#FC5810]" style={{ animationDelay: '0.5s' }}>thrive</span>
+                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.6s' }}>in the</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
+                      <span className="inline-block animate-fade-in-up text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent" style={{ animationDelay: '0.7s' }}>digital age</span>
+                      <span className="inline-block animate-bounce-in" style={{ animationDelay: '1s' }}>🚀</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-1 sm:gap-2 mt-3">
+                      <span className="inline-block animate-slide-in-left" style={{ animationDelay: '1.2s' }}>by delivering</span>
+                      <span className="inline-block">
+                        <span className="relative inline-block animate-scale-in group" style={{ animationDelay: '1.4s' }}>
+                          <span className="text-[#FC5810] font-bold text-lg sm:text-xl">intelligent</span>
+                          <svg className="absolute -bottom-1 left-0 w-full" height="4" viewBox="0 0 100 4">
+                            <path d="M0,2 Q25,0 50,2 T100,2" stroke="#FC5810" strokeWidth="2" fill="none" className="animate-draw-line" />
+                          </svg>
+                        </span>
+                      </span>
+                      <span className="inline-block animate-slide-in-right" style={{ animationDelay: '1.6s' }}>solutions that</span>
+                    </div>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3">
+                      <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium animate-pop-in" style={{ animationDelay: '1.8s' }}>
+                        <span>✓</span> Secure
+                      </span>
+                      <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium animate-pop-in" style={{ animationDelay: '2s' }}>
+                        <span>⚡</span> Optimize
+                      </span>
+                      <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium animate-pop-in" style={{ animationDelay: '2.2s' }}>
+                        <span>🔮</span> Transform
+                      </span>
+                    </div>
+                    <div className="mt-4 p-3 bg-gradient-to-r from-[#FC5810]/5 to-orange-100/30 rounded-xl border-l-4 border-[#FC5810] animate-slide-in-left" style={{ animationDelay: '2.4s' }}>
+                      <p className="text-sm sm:text-base italic text-gray-700">
+                        "Building tomorrow's <span className="font-bold text-[#FC5810]">smart infrastructure</span> today"
+                      </p>
+                    </div>
+                  </div>
+                  
+                  {/* Floating animation elements */}
+                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#FC5810]/10 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                  <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-orange-300/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+                </div>
               </div>
               
               {/* Modern Stats Cards - Responsive */}
@@ -771,21 +753,23 @@ function App() {
           </div>
 
           {/* Desktop Grid Layout */}
-          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-6 animate-on-scroll">
+          <div className="hidden md:grid grid-cols-2 lg:grid-cols-4 gap-8 animate-on-scroll">
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
                 <Link 
                   key={index} 
                   to={service.link}
-                  className={`${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl hover:opacity-90 hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl`}
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group block"
                 >
-                  <IconComponent size={36} className={`mb-6 ${service.iconColor}`} />
-                  <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                  <p className="text-sm opacity-90 leading-relaxed mb-4">{service.description}</p>
-                  <div className="flex items-center gap-2 mt-auto opacity-80">
+                  <div className="bg-[#FC5810]/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <IconComponent className="w-8 h-8 text-[#FC5810]" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                  <p className="text-gray-600 leading-relaxed mb-4">{service.description}</p>
+                  <div className="flex items-center gap-2 text-[#FC5810] group-hover:gap-3 transition-all duration-300">
                     <span className="text-sm font-medium">Learn More</span>
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
                   </div>
                 </Link>
               );
@@ -805,10 +789,16 @@ function App() {
                 {services.map((service, index) => {
                   const IconComponent = service.icon;
                   return (
-                    <Link key={index} to={service.link} className={`w-[75vw] flex-shrink-0 mr-4 ${service.bgColor} ${service.textColor} p-6 min-h-[280px] flex flex-col justify-center rounded-2xl hover:opacity-90 transition-opacity`}>
-                      <IconComponent size={36} className={`w-10 h-10 mb-6 ${service.iconColor}`} />
-                      <h3 className="text-2xl font-bold mb-4">{service.title}</h3>
-                      <p className="text-base opacity-90 leading-relaxed">{service.description}</p>
+                    <Link 
+                      key={index} 
+                      to={service.link} 
+                      className="w-[75vw] flex-shrink-0 mr-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group min-h-[280px] flex flex-col justify-center"
+                    >
+                      <div className="bg-[#FC5810]/10 rounded-full w-14 h-14 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <IconComponent className="w-7 h-7 text-[#FC5810]" />
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                      <p className="text-gray-600 leading-relaxed">{service.description}</p>
                     </Link>
                   );
                 })}
@@ -931,9 +921,7 @@ function App() {
                 <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-[#E63D1F] rounded-full"></div>
               </span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              Stay updated with the latest insights, trends, and best practices in technology and digital transformation.
-            </p>
+
           </div>
 
           {/* Desktop Layout - Static Grid for 3 blogs or less, Carousel for more */}
