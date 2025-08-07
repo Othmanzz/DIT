@@ -1393,25 +1393,25 @@ function App() {
                       Our Solutions
                     </h4>
                     <ul className="space-y-3 text-[#D9D9D9]">
-                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
+                      <li><Link to="/services/it-solutions" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Zap size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                        <span>Smart Surveillance</span>
+                        <span>IT Solutions & Management</span>
                       </Link></li>
-                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
+                      <li><Link to="/services/business-apps" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Users size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                        <span>Access Control</span>
+                        <span>Business Apps Solutions</span>
                       </Link></li>
-                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
-                        <Award size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                        <span>Smart Automation</span>
-                      </Link></li>
-                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
-                        <BarChart3 size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                        <span>Network Infrastructure</span>
-                      </Link></li>
-                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
+                      <li><Link to="/services/software-development" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Code size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                        <span>Integrated Systems</span>
+                        <span>Software Development</span>
+                      </Link></li>
+                      <li><Link to="/services/cybersecurity" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
+                        <Award size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
+                        <span>Cybersecurity Solutions</span>
+                      </Link></li>
+                      <li><Link to="/services/cloud-devops" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
+                        <BarChart3 size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
+                        <span>Cloud & DevOps</span>
                       </Link></li>
                     </ul>
                   </div>
@@ -1487,25 +1487,25 @@ function App() {
                     <span>Solutions</span>
                   </h4>
                   <ul className="space-y-2 text-[#D9D9D9] text-sm">
-                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><Link to="/services/it-solutions" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Zap size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                      <span>Surveillance</span>
+                      <span>IT Solutions</span>
                     </Link></li>
-                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><Link to="/services/business-apps" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Users size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                      <span>Access Control</span>
+                      <span>Business Apps</span>
                     </Link></li>
-                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
-                      <Award size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                      <span>Automation</span>
-                    </Link></li>
-                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
-                      <BarChart3 size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                      <span>Network</span>
-                    </Link></li>
-                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                    <li><Link to="/services/software-development" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Code size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
-                      <span>Integration</span>
+                      <span>Development</span>
+                    </Link></li>
+                    <li><Link to="/services/cybersecurity" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                      <Award size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
+                      <span>Cybersecurity</span>
+                    </Link></li>
+                    <li><Link to="/services/cloud-devops" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
+                      <BarChart3 size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
+                      <span>Cloud & DevOps</span>
                     </Link></li>
                   </ul>
                 </div>
