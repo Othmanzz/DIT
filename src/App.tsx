@@ -869,16 +869,26 @@ function App() {
                 <Link 
                   key={index} 
                   to={service.link}
-                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group block"
+                  className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group block relative overflow-hidden"
                 >
-                  <div className="bg-[#FC5810]/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                    <IconComponent className="w-8 h-8 text-[#FC5810]" />
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                  <p className="text-gray-600 leading-relaxed mb-4">{service.description}</p>
-                  <div className="flex items-center gap-2 text-[#FC5810] group-hover:gap-3 transition-all duration-300">
-                    <span className="text-sm font-medium">Learn More</span>
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                  {/* Hover effect overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  
+                  <div className="relative z-10">
+                    <div className="bg-[#FC5810]/10 rounded-full w-16 h-16 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-[#FC5810]/20 transition-all duration-300">
+                      <IconComponent className="w-8 h-8 text-[#FC5810]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 mb-4 group-hover:text-[#FC5810] transition-colors duration-300">{service.title}</h3>
+                    <p className="text-gray-600 leading-relaxed mb-6">{service.description}</p>
+                    
+                    {/* Enhanced Learn More button */}
+                    <div className="mt-auto">
+                      <div className="inline-flex items-center gap-2 text-[#FC5810] font-semibold group-hover:gap-3 transition-all duration-300 relative">
+                        <span className="text-sm">Learn More</span>
+                        <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
+                        <div className="absolute -bottom-1 left-0 h-0.5 bg-[#FC5810] w-0 group-hover:w-full transition-all duration-300"></div>
+                      </div>
+                    </div>
                   </div>
                 </Link>
               );
@@ -901,13 +911,27 @@ function App() {
                     <Link 
                       key={index} 
                       to={service.link} 
-                      className="w-[75vw] flex-shrink-0 mr-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group min-h-[280px] flex flex-col justify-center"
+                      className="w-[75vw] flex-shrink-0 mr-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group min-h-[320px] flex flex-col relative overflow-hidden"
                     >
-                      <div className="bg-[#FC5810]/10 rounded-full w-14 h-14 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-7 h-7 text-[#FC5810]" />
+                      {/* Hover effect overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#FC5810]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="bg-[#FC5810]/10 rounded-full w-14 h-14 flex items-center justify-center mb-4 group-hover:scale-110 group-hover:bg-[#FC5810]/20 transition-all duration-300">
+                          <IconComponent className="w-7 h-7 text-[#FC5810]" />
+                        </div>
+                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#FC5810] transition-colors duration-300">{service.title}</h3>
+                        <p className="text-gray-600 leading-relaxed text-sm mb-4 flex-grow">{service.description}</p>
+                        
+                        {/* Learn More button */}
+                        <div className="mt-auto">
+                          <div className="inline-flex items-center gap-2 text-[#FC5810] font-semibold group-hover:gap-3 transition-all duration-300 relative">
+                            <span className="text-sm">Learn More</span>
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                            <div className="absolute -bottom-1 left-0 h-0.5 bg-[#FC5810] w-0 group-hover:w-full transition-all duration-300"></div>
+                          </div>
+                        </div>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{service.description}</p>
                     </Link>
                   );
                 })}

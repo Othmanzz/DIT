@@ -13,39 +13,12 @@ import {
   Settings,
   ArrowRight,
   Zap,
-  ChevronLeft,
-  ChevronRight
+  Grid3x3,
+  List
 } from 'lucide-react';
 
 const ServicesPage = () => {
-  const [currentService, setCurrentService] = useState(0);
-  const [serviceTouchStart, setServiceTouchStart] = useState(0);
-  const [serviceTouchEnd, setServiceTouchEnd] = useState(0);
-
-  // Touch handlers for mobile carousel
-  const handleServiceTouchStart = (e: React.TouchEvent) => {
-    setServiceTouchStart(e.targetTouches[0].clientX);
-    setServiceTouchEnd(0);
-  };
-
-  const handleServiceTouchMove = (e: React.TouchEvent) => {
-    setServiceTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const handleServiceTouchEnd = () => {
-    if (!serviceTouchStart || !serviceTouchEnd) return;
-    
-    const distance = serviceTouchStart - serviceTouchEnd;
-    const isLeftSwipe = distance > 50;
-    const isRightSwipe = distance < -50;
-
-    if (isLeftSwipe && currentService < services.length - 1) {
-      setCurrentService((prev) => Math.min(prev + 1, services.length - 1));
-    }
-    if (isRightSwipe && currentService > 0) {
-      setCurrentService((prev) => Math.max(prev - 1, 0));
-    }
-  };
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid'); // State for view mode toggle
 
   const services = [
     {
@@ -179,57 +152,97 @@ const ServicesPage = () => {
             })}
           </div>
 
-          {/* Mobile Carousel Layout - 1.5 columns */}
+          {/* Mobile Layout with Grid/List Toggle */}
           <div className="md:hidden">
-            <div className="relative overflow-hidden carousel-container">
-              <div 
-                className="flex carousel-smooth carousel-touch pl-6 pr-2"
-                style={{ transform: `translateX(calc(-${currentService} * (75vw + 1rem)))` }}
-                onTouchStart={handleServiceTouchStart}
-                onTouchMove={handleServiceTouchMove}
-                onTouchEnd={handleServiceTouchEnd}
-              >
+            {/* View Mode Toggle */}
+            <div className="flex justify-center mb-6">
+              <div className="inline-flex items-center bg-white rounded-xl shadow-md p-1 border border-gray-200">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${
+                    viewMode === 'grid'
+                      ? 'bg-[#FC5810] text-white shadow-md'
+                      : 'text-gray-600 hover:text-[#FC5810]'
+                  }`}
+                >
+                  <Grid3x3 size={16} />
+                  <span>Grid</span>
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-300 ${
+                    viewMode === 'list'
+                      ? 'bg-[#FC5810] text-white shadow-md'
+                      : 'text-gray-600 hover:text-[#FC5810]'
+                  }`}
+                >
+                  <List size={16} />
+                  <span>List</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Grid View */}
+            {viewMode === 'grid' ? (
+              <div className="grid grid-cols-2 gap-4">
                 {services.map((service, index) => {
                   const IconComponent = service.icon;
                   return (
-                    <Link 
-                      key={index} 
-                      to={service.link} 
-                      className="w-[75vw] flex-shrink-0 mr-4 bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group min-h-[280px] flex flex-col justify-center"
+                    <Link
+                      key={index}
+                      to={service.link}
+                      className="bg-white rounded-xl p-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group flex flex-col"
                     >
-                      <div className="bg-[#FC5810]/10 rounded-full w-14 h-14 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                        <IconComponent className="w-7 h-7 text-[#FC5810]" />
+                      <div className="bg-[#FC5810]/10 rounded-full w-12 h-12 flex items-center justify-center mb-3 group-hover:scale-110 group-hover:bg-[#FC5810]/20 transition-all duration-300 mx-auto">
+                        <IconComponent className="w-6 h-6 text-[#FC5810]" />
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-4">{service.title}</h3>
-                      <p className="text-gray-600 leading-relaxed">{service.mobileDescription}</p>
+                      <h3 className="text-base font-bold text-gray-900 mb-2 text-center group-hover:text-[#FC5810] transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="text-xs text-gray-600 text-center mb-3 flex-grow">
+                        {service.mobileDescription}
+                      </p>
+                      <div className="flex items-center justify-center gap-1 text-[#FC5810] group-hover:gap-2 transition-all duration-300">
+                        <span className="text-xs font-semibold">Learn More</span>
+                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300" />
+                      </div>
                     </Link>
                   );
                 })}
               </div>
-            </div>
-            
-            {/* Mobile carousel indicators with swipe hint */}
-            <div className="flex flex-col items-center mt-6 gap-3">
-              <div className="flex justify-center gap-1">
-                {services.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentService(index)}
-                    className={`w-0.5 h-0.5 rounded-full transition-all duration-300 ${
-                      index === currentService 
-                        ? 'bg-[#FC5810] scale-150' 
-                        : 'bg-[#D9D9D9] hover:bg-[#E63D1F]'
-                    }`}
-                  />
-                ))}
+            ) : (
+              /* List View */
+              <div className="space-y-4">
+                {services.map((service, index) => {
+                  const IconComponent = service.icon;
+                  return (
+                    <Link
+                      key={index}
+                      to={service.link}
+                      className="bg-white rounded-xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-gray-100 group block"
+                    >
+                      <div className="flex items-start gap-4">
+                        <div className="bg-[#FC5810]/10 rounded-full w-14 h-14 flex items-center justify-center flex-shrink-0 group-hover:scale-110 group-hover:bg-[#FC5810]/20 transition-all duration-300">
+                          <IconComponent className="w-7 h-7 text-[#FC5810]" />
+                        </div>
+                        <div className="flex-grow">
+                          <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#FC5810] transition-colors duration-300">
+                            {service.title}
+                          </h3>
+                          <p className="text-sm text-gray-600 mb-3 leading-relaxed">
+                            {service.description}
+                          </p>
+                          <div className="flex items-center gap-2 text-[#FC5810] group-hover:gap-3 transition-all duration-300">
+                            <span className="text-sm font-semibold">Explore Solution</span>
+                            <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
               </div>
-              {/* Swipe hint */}
-              <div className="flex items-center gap-2 text-xs text-gray-400 animate-pulse">
-                <ChevronLeft size={12} />
-                <span>Swipe to explore</span>
-                <ChevronRight size={12} />
-              </div>
-            </div>
+            )}
           </div>
           
         </div>
