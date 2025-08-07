@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import App from './App';
 import AboutPage from './pages/AboutPage';
+import ServicesPage from './pages/ServicesPage';
 import ITSolutionsPage from './pages/ITSolutions';
 import BusinessAppsPage from './pages/BusinessApps';
 import SoftwareDevelopmentPage from './pages/SoftwareDevelopment';
@@ -24,6 +25,7 @@ const AppRouter = () => {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/it-solutions" element={<ITSolutionsPage />} />
         <Route path="/services/business-apps" element={<BusinessAppsPage />} />
         <Route path="/services/software-development" element={<SoftwareDevelopmentPage />} />

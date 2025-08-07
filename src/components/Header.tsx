@@ -30,10 +30,10 @@ const Header = () => {
                 <span>About</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
               </Link>
-              <a href="/#services" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+              <Link to="/services" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
                 <span>Solutions</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-              </a>
+              </Link>
               <Link to="/blogs" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
                 <span>Blogs</span>
                 <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
@@ -65,7 +65,7 @@ const Header = () => {
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="/#home" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Home</a>
             <Link to="/about" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>About</Link>
-            <a href="/#services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Solutions</a>
+                          <Link to="/services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
             <Link to="/blogs" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>Blogs</Link>
             <Link to="/contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>Contact</Link>
             <button className="w-full mt-4 bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-2xl font-semibold hover:bg-[#E63D1F] transition-all duration-300">

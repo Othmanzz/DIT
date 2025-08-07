@@ -1,7 +1,92 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Star, Users, Award, Zap, Palette, Code, Megaphone, BarChart3, Quote, Calendar, Clock, Play, Pause } from 'lucide-react';
+import { Menu, X, ArrowRight, ChevronLeft, ChevronRight, Star, Users, Award, Zap, Palette, Code, Megaphone, BarChart3, Quote, Calendar, Clock } from 'lucide-react';
 import ScrollToTop from './components/ScrollToTop';
+
+// Animated Text Component for changing words
+const AnimatedDescription = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationClass, setAnimationClass] = useState('animate-slide-in');
+
+  const variations = [
+    {
+      start: "Empowering your digital transformation journey with",
+      changing: "comprehensive IT services",
+      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
+    },
+    {
+      start: "Empowering your digital transformation journey with",
+      changing: "cutting-edge technology solutions", 
+      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
+    },
+    {
+      start: "Empowering your digital transformation journey with",
+      changing: "innovative automation systems",
+      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
+    },
+    {
+      start: "Empowering your digital transformation journey with",
+      changing: "intelligent security solutions",
+      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
+    },
+    {
+      start: "Empowering your digital transformation journey with",
+      changing: "seamless cloud integrations",
+      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
+    },
+    {
+      start: "Empowering your digital transformation journey with",
+      changing: "powerful digital ecosystems", 
+      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setAnimationClass('animate-slide-out');
+      
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % variations.length);
+        setAnimationClass('animate-slide-in');
+        setTimeout(() => {
+          setIsAnimating(false);
+        }, 100);
+      }, 300);
+    }, 3500);
+
+    return () => clearInterval(interval);
+  }, [variations.length]);
+
+  const currentVariation = variations[currentIndex];
+
+  return (
+    <div className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed">
+      <span className="block sm:inline">
+        {currentVariation.start}{' '}
+      </span>
+      <span className={`changing-word ${isAnimating ? 'animating' : ''} relative inline-block overflow-hidden`}>
+        <span 
+          key={currentIndex}
+          className={`font-bold text-[#FC5810] bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent ${animationClass} block`}
+          style={{
+            background: 'linear-gradient(90deg, #FC5810 0%, #E63D1F 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text'
+          }}
+        >
+          {currentVariation.changing}
+        </span>
+      </span>{' '}
+      <span className="block sm:inline">
+        {currentVariation.end}
+      </span>
+      <span className="typing-cursor"></span>
+    </div>
+  );
+};
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +96,7 @@ function App() {
   const [currentBlog, setCurrentBlog] = useState(0);
   const [blogTouchStart, setBlogTouchStart] = useState(0);
   const [blogTouchEnd, setBlogTouchEnd] = useState(0);
-  const [isAutoPlay, setIsAutoPlay] = useState(true);
+
 
   // Technology logos data
   const technologies = [
@@ -168,12 +253,10 @@ function App() {
 
   // Blog carousel functions
   const nextBlog = () => {
-    setIsAutoPlay(false);
     setCurrentBlog((prev) => (prev + 1) % blogs.length);
   };
 
   const prevBlog = () => {
-    setIsAutoPlay(false);
     setCurrentBlog((prev) => (prev - 1 + blogs.length) % blogs.length);
   };
 
@@ -206,16 +289,7 @@ function App() {
     setBlogTouchEnd(0);
   };
 
-  // Auto-play functionality for blogs
-  useEffect(() => {
-    if (!isAutoPlay) return;
-    
-    const interval = setInterval(() => {
-      setCurrentBlog((prev) => (prev + 1) % blogs.length);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, [isAutoPlay, blogs.length]);
+
 
   useEffect(() => {
     let ticking = false;
@@ -283,10 +357,10 @@ function App() {
                   <span>About</span>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
                 </Link>
-                <a href="#services" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
+                <Link to="/services" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
                   <span>Solutions</span>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
-                </a>
+                </Link>
                 <a href="/blogs" className="relative text-black hover:text-[#FC5810] transition-all duration-300 font-medium smooth-scroll py-2 px-3 rounded-lg hover:bg-[#FC5810]/5 group">
                   <span>Blogs</span>
                   <div className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#FC5810] transition-all duration-300 group-hover:w-full"></div>
@@ -318,7 +392,7 @@ function App() {
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               <a href="#home" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Home</a>
               <Link to="/about" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>About</Link>
-              <a href="#services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Solutions</a>
+                              <Link to="/services" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium" onClick={() => setIsMenuOpen(false)}>Solutions</Link>
               <a href="/blogs" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Blogs</a>
               <a href="/contact" className="block px-3 py-2 text-black hover:text-[#FC5810] transition-all duration-500 font-medium smooth-scroll" onClick={() => setIsMenuOpen(false)}>Contact</a>
               <button className="w-full mt-4 bg-[#FC5810] text-[#FFF9F3] px-6 py-2 rounded-2xl font-semibold hover:bg-[#E63D1F] transition-all duration-300">
@@ -723,9 +797,7 @@ function App() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-on-scroll">
             <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-6">Our <span className="text-[#FC5810]">Solutions</span></h2>
-            <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
-              Empowering your digital transformation journey with comprehensive IT services that drive growth, ensure security, and unlock innovation across the Kingdom.
-            </p>
+            <AnimatedDescription />
           </div>
 
           {/* Desktop Grid Layout */}
@@ -1050,13 +1122,6 @@ function App() {
                   >
                     <ChevronRight size={20} />
                   </button>
-                  
-                  <button 
-                    onClick={() => setIsAutoPlay(!isAutoPlay)}
-                    className="p-4 bg-white rounded-full shadow-md hover:shadow-lg hover:bg-[#FC5810] hover:text-white transition-all duration-300 hover:scale-110 ml-4"
-                  >
-                    {isAutoPlay ? <Pause size={18} /> : <Play size={18} />}
-                  </button>
                 </div>
               </>
             )}
@@ -1157,13 +1222,6 @@ function App() {
                 className="p-3 bg-white rounded-full shadow-md hover:shadow-lg hover:bg-[#FC5810] hover:text-white transition-all duration-300"
               >
                 <ChevronRight size={18} />
-              </button>
-              
-              <button 
-                onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className="p-3 bg-white rounded-full shadow-md hover:shadow-lg hover:bg-[#FC5810] hover:text-white transition-all duration-300 ml-2"
-              >
-                {isAutoPlay ? <Pause size={16} /> : <Play size={16} />}
               </button>
             </div>
           </div>
@@ -1268,26 +1326,26 @@ function App() {
                       Our Solutions
                     </h4>
                     <ul className="space-y-3 text-[#D9D9D9]">
-                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Zap size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                         <span>Smart Surveillance</span>
-                      </a></li>
-                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      </Link></li>
+                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Users size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                         <span>Access Control</span>
-                      </a></li>
-                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      </Link></li>
+                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Award size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                         <span>Smart Automation</span>
-                      </a></li>
-                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      </Link></li>
+                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <BarChart3 size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                         <span>Network Infrastructure</span>
-                      </a></li>
-                      <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      </Link></li>
+                      <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <Code size={14} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                         <span>Integrated Systems</span>
-                      </a></li>
+                      </Link></li>
                     </ul>
                   </div>
 
@@ -1297,22 +1355,22 @@ function App() {
                       Quick Links
                     </h4>
                     <ul className="space-y-3 text-[#D9D9D9] mb-6">
-                      <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      <li><Link to="/" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                         <span>Home</span>
-                      </a></li>
-                      <li><Link to="/about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      </Link></li>
+                      <li><Link to="/about" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                         <span>About Us</span>
                       </Link></li>
-                      <li><a href="/blogs" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      <li><Link to="/blogs" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                         <span>Blogs</span>
-                      </a></li>
-                      <li><a href="/contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-3 group">
+                      </Link></li>
+                      <li><Link to="/contact" className="hover:text-[#FC5810] transition-colors duration-300 flex gap-3 group">
                         <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                         <span>Contact</span>
-                      </a></li>
+                      </Link></li>
                     </ul>
                     
                     <div>
@@ -1356,58 +1414,58 @@ function App() {
               {/* Two Column Links for Mobile */}
               <div className="grid grid-cols-2 gap-6 mb-6 items-start">
                 {/* Left Column - Solutions */}
-                <div className="text-center">
-                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center justify-center gap-2">
+                <div className="text-left">
+                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center gap-2">
                     <Zap size={16} className="flex-shrink-0" />
                     <span>Solutions</span>
                   </h4>
                   <ul className="space-y-2 text-[#D9D9D9] text-sm">
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Zap size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Surveillance</span>
-                    </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    </Link></li>
+                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Users size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Access Control</span>
-                    </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    </Link></li>
+                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Award size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Automation</span>
-                    </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    </Link></li>
+                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <BarChart3 size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Network</span>
-                    </a></li>
-                    <li><a href="#services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    </Link></li>
+                    <li><Link to="/services" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <Code size={12} className="text-[#FC5810]/60 group-hover:text-[#FC5810] flex-shrink-0" />
                       <span>Integration</span>
-                    </a></li>
+                    </Link></li>
                   </ul>
                 </div>
 
                 {/* Right Column - Navigation */}
-                <div className="text-center">
-                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center justify-center gap-2">
+                <div className="text-left">
+                  <h4 className="text-[#FC5810] font-bold mb-3 flex items-center gap-2">
                     <Menu size={16} className="flex-shrink-0" />
                     <span>Links</span>
                   </h4>
                   <ul className="space-y-2 text-[#D9D9D9] text-sm">
-                    <li><a href="#home" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    <li><Link to="/" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Home</span>
-                    </a></li>
-                    <li><Link to="/about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    </Link></li>
+                    <li><Link to="/about" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>About</span>
                     </Link></li>
-                    <li><a href="/blogs" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    <li><Link to="/blogs" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Blogs</span>
-                    </a></li>
-                    <li><a href="/contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center justify-center gap-2 group">
+                    </Link></li>
+                    <li><Link to="/contact" className="hover:text-[#FC5810] transition-colors duration-300 flex items-center gap-2 group">
                       <div className="w-1 h-1 rounded-full bg-[#FC5810]/60 group-hover:bg-[#FC5810] transition-colors duration-300 flex-shrink-0"></div>
                       <span>Contact</span>
-                    </a></li>
+                    </Link></li>
                   </ul>
                 </div>
               </div>

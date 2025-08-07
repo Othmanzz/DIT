@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 @font-face {
   font-family: 'RH-Zak Bold';
@@ -12,6 +12,13 @@
   font-display: swap;
 }
 
+/* CSS Custom Properties for Fonts */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-arabic: 'RH-Zak Bold', 'Amiri', 'Noto Sans Arabic', 'Cairo', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +26,12 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'kern' 1;
 }
 
 html {
@@ -784,4 +793,83 @@ body.scrolling .animate-pulse {
 
 .blog-card:hover {
   will-change: auto;
+}
+
+/* Animated Text Effects for Changing Words */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideOutUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.animate-slide-in {
+  animation: slideInUp 0.4s ease-out forwards;
+}
+
+.animate-slide-out {
+  animation: slideOutUp 0.3s ease-in forwards;
+}
+
+/* Enhanced word changing effect */
+.changing-word {
+  position: relative;
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+}
+
+.changing-word::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(252, 88, 16, 0.1) 50%, transparent 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease-in-out;
+}
+
+.changing-word.animating::after {
+  transform: translateX(100%);
+}
+
+/* Typing effect for better UX */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background-color: #FC5810;
+  animation: blink 1s infinite;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
 }

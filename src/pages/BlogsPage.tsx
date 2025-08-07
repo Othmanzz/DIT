@@ -72,7 +72,7 @@ const BlogsPage = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black text-white">
+      <section className="pt-32 pb-16 px-6 lg:px-8 bg-black text-white">
         <div className="max-w-7xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 bg-[#FC5810]/20 px-4 py-2 rounded-full text-[#FC5810] font-medium text-sm mb-6">
             <Tag size={16} />
