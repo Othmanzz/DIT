@@ -887,9 +887,9 @@ function App() {
 
           {/* Mobile Carousel Layout - 1.5 columns */}
           <div className="md:hidden animate-on-scroll">
-            <div className="relative overflow-hidden carousel-container">
+            <div className="relative overflow-x-hidden carousel-container py-4">
               <div 
-                className="flex carousel-smooth carousel-touch pl-6 pr-2"
+                className="flex carousel-smooth carousel-touch pl-6 pr-2 my-4"
                 style={{ transform: `translateX(calc(-${currentService} * (75vw + 1rem)))` }}
                 onTouchStart={handleServiceTouchStart}
                 onTouchMove={handleServiceTouchMove}
@@ -1196,9 +1196,9 @@ function App() {
 
           {/* Smooth Carousel Layout - Mobile */}
           <div className="md:hidden animate-on-scroll">
-            <div className="relative overflow-hidden">
+            <div className="relative overflow-x-hidden py-4">
               <div 
-                className="flex transition-transform duration-700 ease-in-out"
+                className="flex transition-transform duration-700 ease-in-out my-4"
                 style={{ transform: `translateX(-${currentBlog * 100}%)` }}
                 onTouchStart={handleBlogTouchStart}
                 onTouchMove={handleBlogTouchMove}
