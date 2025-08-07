@@ -780,8 +780,8 @@ function App() {
       {/* Services Section - Bento Grid */}
       <section id="services" className="py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12 sm:mb-16 animate-on-scroll">
-            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-4 sm:mb-6">Our <span className="text-[#FC5810]">Solutions</span></h2>
+          <div className="text-center mb-8 sm:mb-10 lg:mb-12 animate-on-scroll">
+            <h2 className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-3 sm:mb-4">Our <span className="text-[#FC5810]">Solutions</span></h2>
             <div className="hidden sm:block">
               <AnimatedDescription />
             </div>

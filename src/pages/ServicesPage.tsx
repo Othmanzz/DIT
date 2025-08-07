@@ -107,20 +107,46 @@ const ServicesPage = () => {
     <div className="min-h-screen bg-[#FFF9F3]">
       <Header />
       
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-6 lg:px-8 bg-gradient-to-br from-black via-gray-900 to-black text-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-[#FC5810]/20 px-4 py-2 rounded-full text-[#FC5810] font-medium text-sm mb-6">
-            <Zap size={16} />
+      {/* Enhanced Hero Section */}
+      <section className="pt-24 sm:pt-28 lg:pt-32 pb-12 sm:pb-14 lg:pb-16 px-4 sm:px-6 lg:px-8 bg-black text-white relative overflow-hidden">
+        {/* Background Effects */}
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-20 w-48 sm:w-72 h-48 sm:h-72 bg-[#FC5810] rounded-full filter blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-40 sm:w-64 h-40 sm:h-64 bg-orange-600 rounded-full filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 sm:w-96 h-32 sm:h-96 bg-[#FC5810]/30 rounded-full blur-3xl"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-[#FC5810]/20 backdrop-blur-sm px-3 sm:px-4 py-2 rounded-full text-[#FC5810] font-semibold text-xs sm:text-sm mb-4 sm:mb-6 border border-[#FC5810]/30">
+            <Zap size={14} className="sm:w-4 sm:h-4" />
             <span>Our Solutions</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-            Comprehensive <span className="text-[#FC5810]">Technology</span> Solutions
+          
+          <h1 className="text-2xl sm:text-3xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+            Comprehensive{' '}
+            <span className="text-[#FC5810] relative inline-block">
+              Technology
+              <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-transparent via-[#FC5810] to-transparent"></div>
+            </span>{' '}
+            Solutions
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Empowering your digital transformation journey with cutting-edge technology solutions 
-            that drive growth, ensure security, and unlock innovation across Saudi Arabia.
+          
+          <p className="text-sm sm:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed px-2 sm:px-0">
+            <span className="hidden sm:inline">Empowering your digital transformation journey with cutting-edge technology solutions 
+            that drive growth, ensure security, and unlock innovation across Saudi Arabia.</span>
+            <span className="sm:hidden">Cutting-edge technology solutions that drive growth and innovation across Saudi Arabia.</span>
           </p>
+          
+          {/* Enhanced CTA */}
+          <div className="mt-6 sm:mt-8">
+            <Link 
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-[#FC5810] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl sm:rounded-2xl font-semibold text-sm sm:text-base hover:bg-[#E63D1F] transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+            >
+              <span>Get Started Today</span>
+              <ArrowRight size={16} className="sm:w-5 sm:h-5" />
+            </Link>
+          </div>
         </div>
       </section>
 
