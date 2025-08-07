@@ -10,36 +10,12 @@ const AnimatedDescription = () => {
   const [animationClass, setAnimationClass] = useState('animate-slide-in');
 
   const variations = [
-    {
-      start: "Empowering your digital transformation journey with",
-      changing: "comprehensive IT services",
-      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
-    },
-    {
-      start: "Empowering your digital transformation journey with",
-      changing: "cutting-edge technology solutions", 
-      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
-    },
-    {
-      start: "Empowering your digital transformation journey with",
-      changing: "innovative automation systems",
-      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
-    },
-    {
-      start: "Empowering your digital transformation journey with",
-      changing: "intelligent security solutions",
-      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
-    },
-    {
-      start: "Empowering your digital transformation journey with",
-      changing: "seamless cloud integrations",
-      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
-    },
-    {
-      start: "Empowering your digital transformation journey with",
-      changing: "powerful digital ecosystems", 
-      end: "that drive growth, ensure security, and unlock innovation across the Kingdom."
-    }
+    "Comprehensive IT Services",
+    "Cutting-Edge Technology Solutions", 
+    "Innovative Automation Systems",
+    "Intelligent Security Solutions",
+    "Seamless Cloud Integrations",
+    "Powerful Digital Ecosystems"
   ];
 
   useEffect(() => {
@@ -62,14 +38,11 @@ const AnimatedDescription = () => {
   const currentVariation = variations[currentIndex];
 
   return (
-    <div className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed">
-      <span className="block sm:inline">
-        {currentVariation.start}{' '}
-      </span>
+    <div className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed text-center">
       <span className={`changing-word ${isAnimating ? 'animating' : ''} relative inline-block overflow-hidden`}>
         <span 
           key={currentIndex}
-          className={`font-bold text-[#FC5810] bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent ${animationClass} block`}
+          className={`font-bold text-[#FC5810] bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent ${animationClass} block text-2xl sm:text-3xl`}
           style={{
             background: 'linear-gradient(90deg, #FC5810 0%, #E63D1F 100%)',
             WebkitBackgroundClip: 'text',
@@ -77,11 +50,8 @@ const AnimatedDescription = () => {
             backgroundClip: 'text'
           }}
         >
-          {currentVariation.changing}
+          {currentVariation}
         </span>
-      </span>{' '}
-      <span className="block sm:inline">
-        {currentVariation.end}
       </span>
       <span className="typing-cursor"></span>
     </div>
