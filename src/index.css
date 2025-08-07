@@ -795,26 +795,43 @@ body.scrolling .animate-pulse {
   will-change: auto;
 }
 
-/* Animated Text Effects for Changing Words */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
+/* Animated Text Effects for Changing Words - 3D Flip Animation */
+@keyframes flipOut {
+  0% {
     opacity: 1;
-    transform: translateY(0);
+    transform: perspective(800px) rotateY(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: perspective(800px) rotateY(90deg) scale(0.95);
+  }
+  100% {
+    opacity: 0;
+    transform: perspective(800px) rotateY(90deg) scale(0.9);
   }
 }
 
-@keyframes slideOutUp {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
+@keyframes flipIn {
+  0% {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: perspective(800px) rotateY(-90deg) scale(0.9);
+  }
+  50% {
+    opacity: 0.5;
+    transform: perspective(800px) rotateY(-30deg) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(800px) rotateY(0deg) scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(252, 88, 16, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(252, 88, 16, 0.5), 0 0 30px rgba(252, 88, 16, 0.3);
   }
 }
 
@@ -827,20 +844,22 @@ body.scrolling .animate-pulse {
   }
 }
 
-.animate-slide-in {
-  animation: slideInUp 0.4s ease-out forwards;
+.animate-flip-in {
+  animation: flipIn 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-.animate-slide-out {
-  animation: slideOutUp 0.3s ease-in forwards;
+.animate-flip-out {
+  animation: flipOut 0.4s cubic-bezier(0.55, 0.06, 0.68, 0.19) forwards;
 }
 
-/* Enhanced word changing effect */
+/* Enhanced word changing effect with 3D support */
 .changing-word {
   position: relative;
   display: inline-block;
   min-width: 2ch;
   text-align: center;
+  perspective: 1000px;
+  transform-style: preserve-3d;
 }
 
 .changing-word::after {
@@ -850,13 +869,20 @@ body.scrolling .animate-pulse {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(90deg, transparent 0%, rgba(252, 88, 16, 0.1) 50%, transparent 100%);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease-in-out;
+  background: linear-gradient(45deg, 
+    transparent 0%, 
+    rgba(252, 88, 16, 0.1) 25%, 
+    rgba(252, 88, 16, 0.2) 50%, 
+    rgba(252, 88, 16, 0.1) 75%, 
+    transparent 100%);
+  opacity: 0;
+  border-radius: 8px;
+  transition: opacity 0.3s ease-in-out;
+  pointer-events: none;
 }
 
 .changing-word.animating::after {
-  transform: translateX(100%);
+  opacity: 1;
 }
 
 /* Typing effect for better UX */

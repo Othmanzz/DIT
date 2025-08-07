@@ -4,11 +4,11 @@ import { ArrowRight, ChevronLeft, ChevronRight, Star, Users, Award, Zap, Palette
 import Header from './components/Header';
 import ScrollToTop from './components/ScrollToTop';
 
-// Animated Text Component for changing words
+// Animated Text Component for changing words with 3D Flip Effect
 const AnimatedDescription = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [animationClass, setAnimationClass] = useState('animate-slide-in');
+  const [animationClass, setAnimationClass] = useState('animate-flip-in');
 
   const variations = [
     "Comprehensive IT Services",
@@ -22,15 +22,15 @@ const AnimatedDescription = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setIsAnimating(true);
-      setAnimationClass('animate-slide-out');
+      setAnimationClass('animate-flip-out');
       
       setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % variations.length);
-        setAnimationClass('animate-slide-in');
+        setAnimationClass('animate-flip-in');
         setTimeout(() => {
           setIsAnimating(false);
-        }, 100);
-      }, 300);
+        }, 150);
+      }, 400);
     }, 3500);
 
     return () => clearInterval(interval);
@@ -40,7 +40,7 @@ const AnimatedDescription = () => {
 
   return (
     <div className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-4 leading-relaxed text-center">
-      <span className={`changing-word ${isAnimating ? 'animating' : ''} relative inline-block overflow-hidden`}>
+      <span className={`changing-word ${isAnimating ? 'animating' : ''} relative inline-block`} style={{ perspective: '1000px' }}>
         <span 
           key={currentIndex}
           className={`font-bold text-[#FC5810] bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent ${animationClass} block text-2xl sm:text-3xl`}
@@ -48,13 +48,74 @@ const AnimatedDescription = () => {
             background: 'linear-gradient(90deg, #FC5810 0%, #E63D1F 100%)',
             WebkitBackgroundClip: 'text',
             WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text'
+            backgroundClip: 'text',
+            transformStyle: 'preserve-3d'
           }}
         >
           {currentVariation}
         </span>
       </span>
       <span className="typing-cursor"></span>
+    </div>
+  );
+};
+
+// Animated Hero Description Component for changing phrases with 3D Flip Effect
+const AnimatedHeroDescription = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [animationClass, setAnimationClass] = useState('animate-flip-in');
+
+  const variations = [
+    "Pioneering Saudi Arabia's digital transformation",
+    "Empowering Vision 2030 through technology", 
+    "Building tomorrow's smart infrastructure today",
+    "Revolutionizing business with AI & automation",
+    "Creating secure, connected digital ecosystems",
+    "Driving innovation across the Kingdom",
+    "Transforming industries with cutting-edge solutions",
+    "Engineering the future of Saudi business"
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setAnimationClass('animate-flip-out');
+      
+      setTimeout(() => {
+        setCurrentIndex((prev) => (prev + 1) % variations.length);
+        setAnimationClass('animate-flip-in');
+        setTimeout(() => {
+          setIsAnimating(false);
+        }, 150);
+      }, 400);
+    }, 4000); // Slightly longer interval for hero text
+
+    return () => clearInterval(interval);
+  }, [variations.length]);
+
+  const currentVariation = variations[currentIndex];
+
+  return (
+    <div className="text-center">
+      <div className="text-xl sm:text-2xl text-gray-700 font-medium leading-relaxed mb-4">
+        <span className={`changing-word ${isAnimating ? 'animating' : ''} relative inline-block`} style={{ perspective: '1000px' }}>
+          <span 
+            key={currentIndex}
+            className={`font-semibold bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent ${animationClass} block`}
+            style={{
+              background: 'linear-gradient(90deg, #FC5810 0%, #E63D1F 100%)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              transformStyle: 'preserve-3d'
+            }}
+          >
+            {currentVariation}
+          </span>
+        </span>
+        <span className="typing-cursor"></span>
+      </div>
     </div>
   );
 };
@@ -573,176 +634,224 @@ function App() {
         </div>
       </section>
 
-      {/* About Us Section - Modern Style - Fully Responsive */}
-      <section id="about" className="py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Background Elements - Responsive */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-10 right-10 sm:top-20 sm:right-20 w-48 h-48 sm:w-96 sm:h-96 bg-[#FC5810]/5 rounded-full blur-2xl sm:blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 left-10 sm:bottom-20 sm:left-20 w-32 h-32 sm:w-80 sm:h-80 bg-orange-300/10 rounded-full blur-xl sm:blur-2xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+      {/* About Us Section - Enhanced Modern Style */}
+      <section id="about" className="py-32 px-6 lg:px-8 bg-gradient-to-br from-gray-50 via-white to-[#FFF9F3] relative overflow-hidden">
+        {/* Enhanced Background Elements */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FC5810]/5 via-transparent to-[#FC5810]/5"></div>
+        <div className="absolute top-20 right-10 w-64 h-64 bg-[#FC5810]/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-48 h-48 bg-orange-300/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#FC5810]/3 rounded-full blur-3xl"></div>
         
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Section Header - Centered and Responsive */}
-          <div className="text-center mb-12 sm:mb-16 animate-on-scroll">
-            <div className="inline-flex items-center gap-2 bg-[#FC5810]/10 px-3 sm:px-4 py-2 rounded-full text-[#FC5810] font-semibold text-xs sm:text-sm mb-4 sm:mb-6">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
-              Transforming Saudi Business Since 2008
+          {/* Enhanced Section Header with Better UX */}
+          <div className="text-center mb-24 animate-on-scroll">
+            {/* Trust Signal */}
+            <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#FC5810]/10 to-orange-100/50 px-6 py-3 rounded-full text-[#FC5810] font-semibold text-sm mb-6 border border-[#FC5810]/20">
+              <Users size={18} />
+              <span>Trusted by 500+ Saudi Businesses Since 2008</span>
+              <div className="w-2 h-2 bg-[#FC5810] rounded-full animate-pulse"></div>
             </div>
             
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight mb-4 sm:mb-6">
+            {/* Main Headline with Better Hierarchy */}
+            <div className="space-y-6">
+              <h2 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
               We Are the <br/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FC5810] to-orange-600">
+                <span className="text-[#FC5810] relative inline-block">
                 Architects
-              </span> of{' '}
-              <span className="relative">
-                Modern
-                <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#FC5810] to-orange-600 rounded-full"></div>
+                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-[#FC5810] to-transparent"></div>
+                </span> of <br/>
+                <span className="relative inline-block">
+                  Modern Environments
+                  <div className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-[#FC5810] to-orange-600 rounded-full"></div>
               </span>
-              <br/>Environments
             </h2>
             
-            <p className="text-lg sm:text-xl text-gray-700 leading-relaxed max-w-4xl mx-auto px-2 sm:px-0">
-
-            </p>
+              {/* Animated Value Proposition */}
+              <div className="max-w-4xl mx-auto">
+                <AnimatedHeroDescription />
+              </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-center">
+            {/* Quick Stats Bar */}
+            <div className="mt-12 grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              <div className="text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-[#FC5810] mb-1">15+</div>
+                <div className="text-sm text-gray-600 font-medium">Years Experience</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-[#FC5810] mb-1">500+</div>
+                <div className="text-sm text-gray-600 font-medium">Projects Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-[#FC5810] mb-1">100+</div>
+                <div className="text-sm text-gray-600 font-medium">Secure Buildings</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl lg:text-3xl font-bold text-[#FC5810] mb-1">24/7</div>
+                <div className="text-sm text-gray-600 font-medium">Support</div>
+              </div>
+            </div>
+          </div>
+
+                    {/* Balanced Content Layout */}
+          <div className="space-y-16">
             
-            {/* Left Column - Modern Visual - Responsive */}
-            <div className="order-2 lg:order-1 animate-on-scroll">
-              <div className="relative">
-                {/* Main Image Container - Responsive */}
-                <div className="relative bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 lg:p-8 shadow-xl sm:shadow-2xl hover:shadow-2xl sm:hover:shadow-3xl transition-all duration-700 transform hover:-translate-y-2">
+            {/* Main Content Section - Full Width */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+              
+              {/* Left Column - Who We Are */}
+              <div className="lg:col-span-1 animate-on-scroll">
+                <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="bg-[#FC5810]/10 p-3 rounded-2xl">
+                      <Award className="w-8 h-8 text-[#FC5810]" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">Who We Are</h3>
+                  </div>
+                  
+                  <p className="text-gray-600 leading-relaxed mb-6">
+                    Your trusted technology partner for over 15 years, delivering solutions that work reliably and scale beautifully.
+                  </p>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[#FC5810] rounded-full"></div>
+                      <span className="text-sm font-medium text-gray-700">Saudi-based expertise</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[#FC5810] rounded-full"></div>
+                      <span className="text-sm font-medium text-gray-700">Vision 2030 aligned</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-[#FC5810] rounded-full"></div>
+                      <span className="text-sm font-medium text-gray-700">Enterprise-grade security</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Center Column - Visual with Stats */}
+              <div className="lg:col-span-1 animate-on-scroll">
+                <div className="relative group">
+                  <div className="bg-gradient-to-br from-white to-gray-50 rounded-3xl p-6 shadow-xl border border-gray-100 group-hover:border-[#FC5810]/30 transition-all duration-500">
                   <img 
                     src="/riyadh.jpg" 
                     alt="Modern Saudi Business Environment" 
-                    className="w-full h-48 sm:h-64 lg:h-72 xl:h-80 object-cover rounded-xl sm:rounded-2xl shadow-lg"
-                  />
-                  
-                  {/* Floating Stats Cards - Responsive */}
-                  <div className="absolute -top-2 -right-2 sm:-top-4 sm:-right-4 bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-2 sm:p-3 lg:p-4 animate-bounce" style={{ animationDelay: '1s', animationDuration: '3s' }}>
-                    <div className="text-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#FC5810] mb-1">99.9%</div>
+                      className="w-full h-64 object-cover rounded-2xl shadow-lg mb-6"
+                    />
+                    
+                    {/* Integrated Stats */}
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="text-center p-3 bg-[#FC5810]/5 rounded-xl">
+                        <div className="text-2xl font-bold text-[#FC5810] mb-1">99.9%</div>
                       <div className="text-xs text-gray-600 font-semibold">Uptime</div>
                     </div>
-                  </div>
-                  
-                  <div className="absolute -bottom-3 -left-3 sm:-bottom-4 sm:-left-4 lg:-bottom-6 lg:-left-6 bg-white rounded-xl sm:rounded-2xl shadow-lg sm:shadow-xl p-2 sm:p-3 lg:p-4 animate-bounce" style={{ animationDelay: '2s', animationDuration: '4s' }}>
-                    <div className="text-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold text-[#FC5810] mb-1">24/7</div>
+                      <div className="text-center p-3 bg-[#FC5810]/5 rounded-xl">
+                        <div className="text-2xl font-bold text-[#FC5810] mb-1">24/7</div>
                       <div className="text-xs text-gray-600 font-semibold">Support</div>
                     </div>
                   </div>
-                  
-                  {/* Tech Icons Floating - Responsive */}
-                  <div className="absolute top-2 left-2 sm:top-4 sm:left-4 bg-[#FC5810]/10 rounded-full p-2 sm:p-3 animate-pulse">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6 bg-[#FC5810] rounded-sm"></div>
+                  </div>
                   </div>
                 </div>
                 
-                {/* Decorative Elements - Responsive */}
-                <div className="absolute -z-10 top-4 left-4 sm:top-6 sm:left-6 lg:top-8 lg:left-8 w-full h-full bg-gradient-to-br from-[#FC5810]/20 to-transparent rounded-2xl sm:rounded-3xl"></div>
+              {/* Right Column - What We Do */}
+              <div className="lg:col-span-1 animate-on-scroll">
+                <div className="bg-white rounded-3xl p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 h-full">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="bg-blue-100 p-3 rounded-2xl">
+                      <Zap className="w-8 h-8 text-blue-600" />
               </div>
+                    <h3 className="text-xl font-bold text-gray-900">What We Do</h3>
             </div>
             
-            {/* Right Column - Content and Stats - Responsive */}
-            <div className="order-1 lg:order-2 animate-on-scroll">
-              {/* Mission Statement - Responsive */}
-              <div className="mb-8 sm:mb-10">
-                <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-3 sm:mb-4 flex items-center gap-2">
-                  <span className="relative">
-                    Our Mission
-                    <div className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-[#FC5810] to-orange-400 rounded-full animate-pulse"></div>
-                  </span>
-                </h3>
-                <div className="relative">
-                  {/* Animated Mission Text */}
-                  <div className="text-base sm:text-lg text-gray-700 leading-relaxed mb-4 sm:mb-6 space-y-2">
-                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
-                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.1s' }}>We</span>
-                      <span className="inline-block animate-fade-in-up font-semibold text-[#FC5810]" style={{ animationDelay: '0.2s' }}>empower</span>
-                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.3s' }}>Saudi businesses</span>
-                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.4s' }}>to</span>
-                      <span className="inline-block animate-fade-in-up font-semibold text-[#FC5810]" style={{ animationDelay: '0.5s' }}>thrive</span>
-                      <span className="inline-block animate-fade-in-up" style={{ animationDelay: '0.6s' }}>in the</span>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-1 sm:gap-2">
-                      <span className="inline-block animate-fade-in-up text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#FC5810] to-orange-600 bg-clip-text text-transparent" style={{ animationDelay: '0.7s' }}>digital age</span>
-                      <span className="inline-block animate-bounce-in" style={{ animationDelay: '1s' }}>🚀</span>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-1 sm:gap-2 mt-3">
-                      <span className="inline-block animate-slide-in-left" style={{ animationDelay: '1.2s' }}>by delivering</span>
-                      <span className="inline-block">
-                        <span className="relative inline-block animate-scale-in group" style={{ animationDelay: '1.4s' }}>
-                          <span className="text-[#FC5810] font-bold text-lg sm:text-xl">intelligent</span>
-                          <svg className="absolute -bottom-1 left-0 w-full" height="4" viewBox="0 0 100 4">
-                            <path d="M0,2 Q25,0 50,2 T100,2" stroke="#FC5810" strokeWidth="2" fill="none" className="animate-draw-line" />
-                          </svg>
-                        </span>
-                      </span>
-                      <span className="inline-block animate-slide-in-right" style={{ animationDelay: '1.6s' }}>solutions that</span>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-3 mt-3">
-                      <span className="inline-flex items-center gap-1 bg-green-100 text-green-700 px-3 py-1 rounded-full font-medium animate-pop-in" style={{ animationDelay: '1.8s' }}>
-                        <span>✓</span> Secure
-                      </span>
-                      <span className="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-3 py-1 rounded-full font-medium animate-pop-in" style={{ animationDelay: '2s' }}>
-                        <span>⚡</span> Optimize
-                      </span>
-                      <span className="inline-flex items-center gap-1 bg-purple-100 text-purple-700 px-3 py-1 rounded-full font-medium animate-pop-in" style={{ animationDelay: '2.2s' }}>
-                        <span>🔮</span> Transform
-                      </span>
-                    </div>
-                    <div className="mt-4 p-3 bg-gradient-to-r from-[#FC5810]/5 to-orange-100/30 rounded-xl border-l-4 border-[#FC5810] animate-slide-in-left" style={{ animationDelay: '2.4s' }}>
-                      <p className="text-sm sm:text-base italic text-gray-700">
-                        "Building tomorrow's <span className="font-bold text-[#FC5810]">smart infrastructure</span> today"
-                      </p>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3 p-3 bg-green-50 rounded-xl">
+                      <span className="text-lg">🛡️</span>
+                      <div>
+                        <h4 className="font-semibold text-green-800 text-sm">Secure</h4>
+                        <p className="text-xs text-green-700">Enterprise cybersecurity & compliance</p>
+              </div>
+                </div>
+                
+                    <div className="flex items-start gap-3 p-3 bg-blue-50 rounded-xl">
+                      <span className="text-lg">⚡</span>
+                      <div>
+                        <h4 className="font-semibold text-blue-800 text-sm">Optimize</h4>
+                        <p className="text-xs text-blue-700">Performance & automation improvements</p>
+                </div>
+                </div>
+                
+                    <div className="flex items-start gap-3 p-3 bg-purple-50 rounded-xl">
+                      <span className="text-lg">🚀</span>
+                      <div>
+                        <h4 className="font-semibold text-purple-800 text-sm">Transform</h4>
+                        <p className="text-xs text-purple-700">Digital processes & cloud migration</p>
+                      </div>
                     </div>
                   </div>
-                  
-                  {/* Floating animation elements */}
-                  <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#FC5810]/10 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                  <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-orange-300/20 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
                 </div>
-              </div>
-              
-              {/* Modern Stats Cards - Responsive */}
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 mb-8 sm:mb-10">
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">15+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Years Experience</div>
-                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
-                </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">500+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Systems Installed</div>
-                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
-                </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">100+</div>
-                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Secure Buildings</div>
-                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
-                </div>
-                
-                <div className="bg-white/80 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-5 lg:p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-[#FC5810]/20">
-                  <div className="text-2xl sm:text-3xl font-black text-[#FC5810] mb-1 sm:mb-2">24/7</div>
-                  <div className="text-xs sm:text-sm text-gray-600 font-medium">Support Available</div>
-                  <div className="w-6 sm:w-8 h-0.5 sm:h-1 bg-[#FC5810] rounded-full mt-2 sm:mt-3"></div>
                 </div>
               </div>
 
-              {/* Modern CTA Button - Responsive */}
-              <div className="flex justify-center lg:justify-start">
-                <button className="bg-gradient-to-r from-[#FC5810] to-orange-600 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-2xl font-semibold hover:from-orange-600 hover:to-[#FC5810] transition-all duration-300 transform hover:scale-105 flex items-center gap-2 sm:gap-3 shadow-lg hover:shadow-xl text-sm sm:text-base">
+            {/* Mission Statement - Full Width */}
+            <div className="animate-on-scroll">
+              <div className="bg-gradient-to-br from-[#FC5810] to-orange-600 rounded-3xl p-12 shadow-xl text-white relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full -translate-x-20 -translate-y-20"></div>
+                <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/5 rounded-full translate-x-16 translate-y-16"></div>
+                
+                <div className="relative z-10 text-center max-w-4xl mx-auto">
+                  <div className="inline-flex items-center gap-3 bg-white/20 px-6 py-3 rounded-full text-sm font-semibold mb-6">
+                    <Award className="w-5 h-5" />
+                    <span>Our Mission</span>
+                  </div>
+                  
+                  <blockquote className="text-2xl lg:text-3xl font-bold leading-relaxed mb-6">
+                    "Building tomorrow's smart infrastructure today"
+                  </blockquote>
+                  
+                  <p className="text-xl text-white/90 leading-relaxed mb-8">
+                    To be the Kingdom's most trusted technology partner, contributing to Vision 2030 
+                    by creating smarter, more secure business ecosystems.
+                  </p>
+                  
+                  {/* Inline CTA */}
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link 
+                      to="/services"
+                      className="inline-flex items-center gap-3 bg-white text-[#FC5810] px-8 py-4 rounded-2xl font-bold text-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
+                    >
                   <span>Explore Our Solutions</span>
-                  <ArrowRight size={18} className="sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
-                </button>
+                      <ArrowRight size={20} />
+                    </Link>
+                    
+                    <Link 
+                      to="/contact"
+                      className="inline-flex items-center gap-2 border-2 border-white text-white px-8 py-4 rounded-2xl font-semibold text-lg hover:bg-white hover:text-[#FC5810] transition-all duration-300"
+                    >
+                      Get Free Consultation
+                    </Link>
               </div>
             </div>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </section>
+
+      {/* Visual Separator */}
+      <div className="h-24 bg-gradient-to-b from-[#FFF9F3] via-gray-50 to-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FC5810]/5 to-transparent"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-0.5 bg-gradient-to-r from-transparent to-[#FC5810]"></div>
+            <div className="w-3 h-3 bg-[#FC5810] rounded-full"></div>
+            <div className="w-16 h-0.5 bg-gradient-to-l from-transparent to-[#FC5810]"></div>
+          </div>
+        </div>
+      </div>
 
       {/* Services Section - Bento Grid */}
       <section id="services" className="py-24 px-6 lg:px-8">
